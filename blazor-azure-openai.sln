@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33513.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.OpenAI.Server", "Azure.OpenAI\Server\Azure.OpenAI.Server.csproj", "{3D4A2127-E580-4159-99DC-EA4ADFFFF276}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.OpenAI.Client", "Azure.OpenAI\Client\Azure.OpenAI.Client.csproj", "{092D9DF5-A19B-480C-AE3C-3F64D0570D37}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.OpenAI.Shared", "Azure.OpenAI\Shared\Azure.OpenAI.Shared.csproj", "{7F93E74B-538E-43E2-A1D5-1ACD91983FE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89FBD39C-73C2-4A2F-9160-0518CFF860FA}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D4A2127-E580-4159-99DC-EA4ADFFFF276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D4A2127-E580-4159-99DC-EA4ADFFFF276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D4A2127-E580-4159-99DC-EA4ADFFFF276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D4A2127-E580-4159-99DC-EA4ADFFFF276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{092D9DF5-A19B-480C-AE3C-3F64D0570D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{092D9DF5-A19B-480C-AE3C-3F64D0570D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{092D9DF5-A19B-480C-AE3C-3F64D0570D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{092D9DF5-A19B-480C-AE3C-3F64D0570D37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F93E74B-538E-43E2-A1D5-1ACD91983FE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F93E74B-538E-43E2-A1D5-1ACD91983FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F93E74B-538E-43E2-A1D5-1ACD91983FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F93E74B-538E-43E2-A1D5-1ACD91983FE4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5D0D2E6-9A98-499D-88C7-4446E997A886}
+	EndGlobalSection
+EndGlobal
