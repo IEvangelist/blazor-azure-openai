@@ -1,5 +1,7 @@
 # Blazor 💜 OpenAI
 
+[![build & test](https://github.com/IEvangelist/blazor-azure-openai/actions/workflows/dotnet.yml/badge.svg)](https://github.com/IEvangelist/blazor-azure-openai/actions/workflows/dotnet.yml)
+
 ## Home screen
 
 ![Home screen](images/home.png)
