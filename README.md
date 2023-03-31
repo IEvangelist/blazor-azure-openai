@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-> **NOTE:** 
+> **NOTE** 
 > To run this example, you'll need an **Azure subscription with access enabled for the Azure OpenAI service**. You can request access [here](https://aka.ms/oaiapply). You can also visit [here](https://azure.microsoft.com/free/cognitive-search/) to get some free Azure credits to get you started.
 
 This example relies on three environment variables:
