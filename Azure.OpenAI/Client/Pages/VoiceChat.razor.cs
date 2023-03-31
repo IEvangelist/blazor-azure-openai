@@ -1,7 +1,4 @@
-﻿using Azure.OpenAI.Client.Components;
-using Azure.OpenAI.Client.Models;
-
-namespace Azure.OpenAI.Client.Pages;
+﻿namespace Azure.OpenAI.Client.Pages;
 
 public sealed partial class VoiceChat : IDisposable
 {

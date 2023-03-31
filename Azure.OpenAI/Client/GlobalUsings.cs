@@ -2,6 +2,7 @@
 global using System.Text;
 global using System.Text.Json;
 global using Azure.OpenAI.Client;
+global using Azure.OpenAI.Client.Components;
 global using Azure.OpenAI.Client.Models;
 global using Azure.OpenAI.Client.Services;
 global using Azure.OpenAI.Shared;
