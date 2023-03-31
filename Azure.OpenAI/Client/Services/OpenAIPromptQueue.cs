@@ -3,11 +3,13 @@
 public sealed class OpenAIPromptQueue
 {
     readonly IServiceProvider _provider;
+    readonly ILogger<OpenAIPromptQueue> _logger;
     readonly StringBuilder _responseBuffer = new();
 
     Task? _processPromptTask = null;
 
-    public OpenAIPromptQueue(IServiceProvider provider) => _provider = provider;
+    public OpenAIPromptQueue(IServiceProvider provider, ILogger<OpenAIPromptQueue> logger) =>
+        (_provider, _logger) = (provider, logger);
 
     public void Enqueue(string prompt, Func<PromptResponse, Task> handler)
     {
@@ -117,7 +119,7 @@ public sealed class OpenAIPromptQueue
                         // I also tried Task.Delay(0) and Task.Yield(), but neither works.
                         await Task.Delay(1);
 
-                        var responseText = NormalizeResponseText(_responseBuffer);
+                        var responseText = NormalizeResponseText(_responseBuffer, _logger);
                         await handler(
                             new PromptResponse(
                                 prompt, responseText));
@@ -135,7 +137,7 @@ public sealed class OpenAIPromptQueue
             {
                 if (_responseBuffer.Length > 0)
                 {
-                    var responseText = NormalizeResponseText(_responseBuffer);
+                    var responseText = NormalizeResponseText(_responseBuffer, _logger);
                     await handler(
                         new PromptResponse(
                             prompt, responseText, true));
@@ -147,18 +149,23 @@ public sealed class OpenAIPromptQueue
         });
     }
 
-    static string NormalizeResponseText(StringBuilder builder)
+    static string NormalizeResponseText(StringBuilder builder, ILogger logger)
     {
         if (builder is null or { Length: 0 })
         {
             return "";
         }
 
-        var text = builder.ToString()
-            .Replace("null", "")
+        var text = builder.ToString();
+        logger.LogInformation("Before normalize\n\t{Text}", text);
+
+        text = text.Replace("null", "")
+            .Replace("\\\\u", "\\u")
             .Replace("\r", "\n")
             .Replace("\\n\\r", "\n")
             .Replace("\\n", "\n");
+
+        logger.LogInformation("After normalize:\n\t{Text}", text);
 
         return text.StartsWith(",") ? text[1..] : text;
     }

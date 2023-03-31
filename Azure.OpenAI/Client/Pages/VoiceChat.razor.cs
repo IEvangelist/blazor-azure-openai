@@ -62,7 +62,12 @@ public sealed partial class VoiceChat : IDisposable
             async response => await InvokeAsync(() =>
         {
             var (_, responseText, isComplete) = response;
-            var html = Markdown.ToHtml(responseText, _pipeline);
+            var promptWithResponseText = $"""
+                > {_userPrompt}
+
+                {responseText}
+                """;
+            var html = Markdown.ToHtml(promptWithResponseText, _pipeline);
 
             _intermediateResponse = html;
 
@@ -108,7 +113,7 @@ public sealed partial class VoiceChat : IDisposable
     }
 
     protected override void OnAfterRender(bool firstRender) =>
-        JavaScript.InvokeVoid("highlight", true);
+        JavaScript.InvokeVoid("highlight");
 
     void StopTalking()
     {
