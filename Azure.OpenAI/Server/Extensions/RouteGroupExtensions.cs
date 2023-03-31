@@ -1,6 +1,4 @@
-﻿using Azure.OpenAI.Shared;
-
-namespace Azure.OpenAI.Server.Extensions;
+﻿namespace Azure.OpenAI.Server.Extensions;
 
 internal static class RouteGroupExtensions
 {
@@ -28,7 +26,7 @@ internal static class RouteGroupExtensions
                 }
             });
 
-        using StreamingChatCompletions completions = response.Value;
+        using var completions = response.Value;
         await foreach (var choice in completions.GetChoicesStreaming())
         {
             await foreach (var message in choice.GetMessageStreaming())

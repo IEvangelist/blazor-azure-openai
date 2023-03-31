@@ -53,9 +53,9 @@
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/sql.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/wasm.min.js" defer></script>
     <script>
-        window.highlight = () => {
+        window.highlight = (arg) => {
             hljs.highlightAll();
-            console.log("Called highlight all...");
+            console.log(`Called hljs.highlightAll(); ${arg}`);
         };
     </script>
 </body>

@@ -3,6 +3,15 @@ pre {
     padding-bottom: 2rem;
 }
 
+ul, ol {
+    padding: 1.5rem;
+}
+
+    ul > li, ol > li {
+        padding-left: 1.2rem;
+        padding-bottom: .2rem;
+    }
+
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }

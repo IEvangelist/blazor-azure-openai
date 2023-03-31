@@ -13,7 +13,7 @@ public sealed partial class VoiceChat : IDisposable
     string? _intermediateResponse = null;
     IDisposable? _recognitionSubscription;
     SpeechRecognitionErrorEvent? _errorEvent;
-    VoicePreferences _voicePreferences;
+    VoicePreferences? _voicePreferences;
     HashSet<string> _responses = new();
 
     readonly MarkdownPipeline _pipeline = new MarkdownPipelineBuilder()
@@ -27,6 +27,7 @@ public sealed partial class VoiceChat : IDisposable
     [Inject] public required IDialogService Dialog { get; set; }
     [Inject] public required ISpeechRecognitionService SpeechRecognition { get; set; }
     [Inject] public required ISpeechSynthesisService SpeechSynthesis { get; set; }
+    [Inject] public required ILocalStorageService LocalStorage { get; set; }
     [Inject] public required ISessionStorageService SessionStorage { get; set; }
     [Inject] public required IJSInProcessRuntime JavaScript { get; set; }
 
@@ -39,6 +40,7 @@ public sealed partial class VoiceChat : IDisposable
         {
             _responses = responses;
         }
+        _voicePreferences = new VoicePreferences(LocalStorage);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -56,9 +58,11 @@ public sealed partial class VoiceChat : IDisposable
             return;
         }
 
+        _isReceivingResponse = true;
+
         OpenAIPrompts.Enqueue(
             _userPrompt,
-            async response => await InvokeAsync(async () =>
+            async response => await InvokeAsync(() =>
         {
             var (_, responseText, isComplete) = response;
             var html = Markdown.ToHtml(responseText, _pipeline);
@@ -71,26 +75,29 @@ public sealed partial class VoiceChat : IDisposable
                 SessionStorage.SetItem("openai-prompt-responses", _responses);
 
                 _intermediateResponse = null;
-
                 _isReadingResponse = true;
-                await JavaScript.InvokeVoidAsync("highlight");
 
-                if (_voicePreferences.Equals(default))
+                var (voice, rate, isEnabled) = _voicePreferences!;
+                if (isEnabled)
                 {
-                    _voicePreferences = new(new SpeechSynthesisVoice
+                    var utterance = new SpeechSynthesisUtterance
                     {
-                        Name = "Microsoft Aria Online (Natural) - English (United States)"
-                    }, 1.5);
+                        Rate = rate,
+                        Text = responseText
+                    };
+                    if (voice is not null)
+                    {
+                        utterance.Voice = new SpeechSynthesisVoice
+                        {
+                            Name = voice
+                        };
+                    }
+                    SpeechSynthesis.Speak(utterance, duration =>
+                    {
+                        _isReadingResponse = false;
+                        StateHasChanged();
+                    });
                 }
-
-                var (voice, rate) = _voicePreferences;
-
-                SpeechSynthesis.Speak(new SpeechSynthesisUtterance
-                {
-                    Rate = rate,
-                    Text = responseText,
-                    Voice = voice
-                }, duration => _isReadingResponse = false);
             }
 
             _isReceivingResponse = isComplete is false;
@@ -102,6 +109,9 @@ public sealed partial class VoiceChat : IDisposable
             StateHasChanged();
         }));
     }
+
+    protected override void OnAfterRender(bool firstRender) =>
+        JavaScript.InvokeVoid("highlight", true);
 
     void StopTalking()
     {

@@ -1,17 +1,12 @@
-﻿using Azure.OpenAI.Client.Models;
-
-namespace Azure.OpenAI.Client.Components;
+﻿namespace Azure.OpenAI.Client.Components;
 
 public sealed partial class VoiceDialog : IDisposable
 {
-    const string PreferredVoiceKey = "preferred-voice";
-    const string PreferredSpeedKey = "preferred-speed";
-
     SpeechSynthesisVoice[] _voices = Array.Empty<SpeechSynthesisVoice>();
     readonly IList<double> _voiceSpeeds =
         Enumerable.Range(0, 12).Select(i => (i + 1) * .25).ToList();
-    double _voiceSpeed = 1.5;
-    string? _selectedVoice;
+
+    VoicePreferences? _voicePreferences;
     RequestVoiceState _state;
 
     [Inject] public required ISpeechSynthesisService SpeechSynthesis { get; set; }
@@ -27,14 +22,7 @@ public sealed partial class VoiceDialog : IDisposable
         await GetVoicesAsync();
         SpeechSynthesis.OnVoicesChanged(() => GetVoicesAsync(true));
 
-        if (LocalStorage.GetItem<string>(PreferredVoiceKey) is { Length: > 0 } voice)
-        {
-            _selectedVoice = voice;
-        }
-        if (LocalStorage.GetItem<double>(PreferredSpeedKey) is double speed && speed > 0)
-        {
-            _voiceSpeed = speed;
-        }
+        _voicePreferences = new VoicePreferences(LocalStorage);
     }
 
     async Task GetVoicesAsync(bool isFromCallback = false)
@@ -51,22 +39,14 @@ public sealed partial class VoiceDialog : IDisposable
         }
     }
 
-    void OnValueChanged(string args) => _selectedVoice = args;
-
-    void SaveVoiceSelection()
+    void OnValueChanged(string selectedVoice) => _voicePreferences = _voicePreferences! with
     {
-        LocalStorage.SetItem(PreferredVoiceKey, _selectedVoice);
-        LocalStorage.SetItem(PreferredSpeedKey, _voiceSpeed);
+        Voice = selectedVoice
+    };
 
-        var voice = _voices.First(v => v.Name == _selectedVoice);
+    void SaveVoiceSelection() => Dialog.Close(DialogResult.Ok(_voicePreferences));
 
-        Dialog.Close(DialogResult.Ok(
-            new VoicePreferences(voice, _voiceSpeed)));
-    }
-
-    void Cancel() => Dialog.Close(DialogResult.Ok(
-            new VoicePreferences(
-                _voices.First(v => v.Name == _selectedVoice), _voiceSpeed)));
+    void Cancel() => Dialog.Close(DialogResult.Ok(_voicePreferences));
 
     void IDisposable.Dispose() => SpeechSynthesis.UnsubscribeFromVoicesChanged();
 }

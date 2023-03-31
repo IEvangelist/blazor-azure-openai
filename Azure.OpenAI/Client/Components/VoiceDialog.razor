@@ -15,7 +15,7 @@
                                AutoFocus="true" Strict="true" Variant="Variant.Outlined"
                                AnchorOrigin="Origin.BottomCenter" ReadOnly="(_state is RequestVoiceState.RequestingVoices)"
                                TextChanged="OnValueChanged"
-                               OpenIcon="@Icons.Material.Filled.RecordVoiceOver" @bind-Value="@_selectedVoice">
+                               OpenIcon="@Icons.Material.Filled.RecordVoiceOver" @bind-Value="@_voicePreferences!.Voice">
                         @foreach (var voice in _voices!)
                         {
                             <MudSelectItem T="string" Value="@voice.Name">
@@ -25,10 +25,13 @@
                     </MudSelect>
 
                     <MudSlider TickMarks=true Step=".25" Min="_voiceSpeeds.Min()" Max="_voiceSpeeds.Max()"
-                               Variant="Variant.Filled" @bind-Value="@_voiceSpeed"
+                               Variant="Variant.Filled" @bind-Value="@_voicePreferences!.Rate"
                                ValueLabel=true Immediate=true>
-                        Voice Speed (@(_voiceSpeed))
+                        Voice Speed (@(_voicePreferences!.Rate))
                     </MudSlider>
+
+                    <MudCheckBox @bind-Checked=@_voicePreferences!.IsEnabled Size="Size.Large" Color="Color.Primary"
+                                 Label="Text-to-speech Enabled (responses will be read aloud)" />
                 }
                 break;
             default:

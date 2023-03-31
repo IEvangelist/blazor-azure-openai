@@ -35,6 +35,10 @@ public sealed class OpenAIPromptQueue
                     using var stream = await response.Content.ReadAsStreamAsync();
                     using var reader = new StreamReader(stream, Encoding.UTF8);
 
+                    // TODO:
+                    // There be dragons! 🐉 Look away to avoid hurting your eyes...
+                    // I'm not familiar with a way to receive each complete token from the server.
+                    // Instead, we read each character individually, and that gets messy!
                     List<char> raw = new();
                     List<char> buffer = new();
                     BufferSegment segment = new();
@@ -110,6 +114,7 @@ public sealed class OpenAIPromptQueue
                         buffer.Add(partialResponse);
 
                         // Required for the Blazor UI to update...
+                        // I also tried Task.Delay(0) and Task.Yield(), but neither works.
                         await Task.Delay(1);
 
                         var responseText = NormalizeResponseText(_responseBuffer);
