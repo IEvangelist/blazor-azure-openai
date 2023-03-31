@@ -11,6 +11,7 @@ internal static class RouteGroupExtensions
 
     static async IAsyncEnumerable<string> OnChatPromptPost(OpenAIClient client, [FromBody] ChatPrompt prompt)
     {
+        var deploymentId = Environment.GetEnvironmentVariable("") ?? "pine-chat";
         var response = await client.GetChatCompletionsStreamingAsync(
             "pine-chat", new ChatCompletionsOptions
             {
