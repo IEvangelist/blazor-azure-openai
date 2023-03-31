@@ -41,7 +41,7 @@
                             OnClick="@OnRecognizeSpeechClick" Disabled=@_isReceivingResponse />
 
                     <MudFab Color="Color.Primary" Label="Ask?" Size="Size.Medium"
-                            StartIcon=@Icons.Material.Filled.Send                            
+                            StartIcon=@Icons.Material.Filled.Send
                             OnClick="@OnSendPrompt" Disabled=@(_isRecognizingSpeech || _isReceivingResponse) />
                 </MudStack>
             </MudItem>
