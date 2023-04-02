@@ -1,4 +1,6 @@
-﻿namespace Azure.OpenAI.Client.Pages;
+﻿using Azure.OpenAI.Shared.Resources;
+
+namespace Azure.OpenAI.Client.Pages;
 
 public sealed partial class VoiceChat : IDisposable
 {
@@ -143,7 +145,7 @@ public sealed partial class VoiceChat : IDisposable
 
     async Task ShowVoiceDialog()
     {
-        var dialog = await Dialog.ShowAsync<VoiceDialog>("Text-to-speech Preferences");
+        var dialog = await Dialog.ShowAsync<VoiceDialog>(title: DataDictionary.TTPPreferences);
         var result = await dialog.Result;
         if (result is not { Canceled: true })
         {
