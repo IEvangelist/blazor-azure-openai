@@ -1,0 +1,42 @@
+﻿@using System.Globalization
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+<MudItem>
+	<MudSelect Dense="true"
+			   T="CultureInfo"
+			   Variant="Variant.Outlined"
+			   @bind-Value="Culture"
+			   Style="width:120px !important">
+
+		@foreach (var culture in supportedCultures)
+		{
+			<MudSelectItem Value="@(culture)" />
+		}
+
+	</MudSelect>
+</MudItem>
+
+@code
+{
+	private CultureInfo[] supportedCultures = new[]
+	{
+		new CultureInfo("en-US"),
+		new CultureInfo("fa-IR"),
+	};
+
+	private CultureInfo Culture
+	{
+		get => CultureInfo.CurrentCulture;
+		set
+		{
+			if (CultureInfo.CurrentCulture != value)
+			{
+				var js = (IJSInProcessRuntime)JS;
+				js.InvokeVoid("blazorCulture.set", value.Name);
+
+				Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+			}
+		}
+	}
+}
