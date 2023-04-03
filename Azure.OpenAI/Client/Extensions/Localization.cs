@@ -6,7 +6,7 @@ namespace Azure.OpenAI.Client.Extensions;
 internal sealed class Localization
 {
 
-    internal  static async Task ConfigCulture(WebAssemblyHost host)
+    internal static void ConfigCulture(this WebAssemblyHost host)
     {
         var localStorage = host.Services.GetRequiredService<ILocalStorageService>();
         var clientCulture = localStorage.GetItem<string>("blazor-openai-client-culture");
