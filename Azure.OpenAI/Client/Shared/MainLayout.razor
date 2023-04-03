@@ -69,14 +69,8 @@
 		set => LocalStorage.SetItem<bool>(PrefersDarkThemeKey, value);
 	}
 
-	bool _isRightToLeft
-	{
-		get
-		{
-			return Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "fa"
-				   || Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "ar";
-		}
-	}
+	bool _isRightToLeft =>
+	    Thread.CurrentThread.CurrentUICulture is { TextInfo.IsRightToLeft: true };
 
 	void DrawerToggle() => _drawerOpen = !_drawerOpen;
 	void OnToggledChanged() => _isDarkTheme = !_isDarkTheme;
