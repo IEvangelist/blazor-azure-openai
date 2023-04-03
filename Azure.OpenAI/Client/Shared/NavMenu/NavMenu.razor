@@ -1,0 +1,22 @@
+﻿@using Microsoft.Extensions.Localization;
+
+<MudNavMenu Rounded="true" Margin=Margin.Normal Class="pa-2" Color=Color.Error>
+    <MudNavLink Href="" Match="NavLinkMatch.All"
+                Icon="@Icons.Material.Filled.Home">
+        @(Home)
+    </MudNavLink>
+    <MudNavLink Href="voicechat"
+                Icon="@Icons.Material.Filled.VoiceChat">
+		@(VoiceChat)
+	</MudNavLink>
+</MudNavMenu>
+
+@code {
+	#region NavMenuLocalizer
+	[Inject] public IStringLocalizer<NavMenu> Localizer { get; set; }
+
+	public string Home => Localizer[nameof(Home)];
+	public string VoiceChat => Localizer[nameof(VoiceChat)];
+
+	#endregion \NavMenuLocalizer
+}
