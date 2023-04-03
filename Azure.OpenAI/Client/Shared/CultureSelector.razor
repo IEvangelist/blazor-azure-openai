@@ -31,8 +31,8 @@
 		{
 			if (CultureInfo.CurrentCulture != value)
 			{
-				var js = (IJSInProcessRuntime)JS;
-				js.InvokeVoid("blazorCulture.set", value.Name);
+				LocalStorage.SetItem(
+				    "blazor-openai-client-culture", value.Name);
 
 				Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
 			}
