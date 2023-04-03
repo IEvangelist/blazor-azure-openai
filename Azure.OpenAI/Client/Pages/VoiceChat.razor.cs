@@ -145,7 +145,7 @@ public sealed partial class VoiceChat : IDisposable
 
     async Task ShowVoiceDialog()
     {
-        var dialog = await Dialog.ShowAsync<VoiceDialog>(title: DataDictionary.TTPPreferences);
+        var dialog = await Dialog.ShowAsync<VoiceDialog>(title: DataDictionary.TTSPreferences);
         var result = await dialog.Result;
         if (result is not { Canceled: true })
         {
