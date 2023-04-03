@@ -3,7 +3,7 @@
 
 namespace Azure.OpenAI.Client.Extensions;
 
-internal sealed class Localization
+internal static class Localization
 {
     internal static void ConfigCulture(this WebAssemblyHost host)
     {
