@@ -18,6 +18,6 @@ builder.Services.AddLocalization();
 
 var host = builder.Build();
 
-await Localization.ConfigCulture(host);
+host.ConfigCulture();
 
 await host.RunAsync();
