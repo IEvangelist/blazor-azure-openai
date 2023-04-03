@@ -1,19 +1,18 @@
-﻿@using Azure.OpenAI.Shared.Resources;
-
+﻿
 <MudDialog>
     <DialogContent>
         @switch (_state)
         {
             case RequestVoiceState.RequestingVoices:
                 <div class="d-flex">
-				<MudText Typo="Typo.subtitle1" Class="flex-grow-1">@(DataDictionary.ClientVoicesMsg)</MudText>
+				<MudText Typo="Typo.subtitle1" Class="flex-grow-1">@(ClientVoicesMsg)</MudText>
                     <MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
                 </div>
                 break;
             case RequestVoiceState.FoundVoices:
                 if (_voices is { Length: > 0 })
                 {
-				<MudSelect T="string" Label="@(DataDictionary.Voice)" AdornmentColor="Color.Secondary"
+				<MudSelect T="string" Label="@(Voice)" AdornmentColor="Color.Secondary"
                                AutoFocus="true" Strict="true" Variant="Variant.Outlined"
                                AnchorOrigin="Origin.BottomCenter" ReadOnly="(_state is RequestVoiceState.RequestingVoices)"
                                TextChanged="OnValueChanged"
@@ -29,15 +28,15 @@
                     <MudSlider TickMarks=true Step=".25" Min="_voiceSpeeds.Min()" Max="_voiceSpeeds.Max()"
                                Variant="Variant.Filled" @bind-Value="@_voicePreferences!.Rate"
                                ValueLabel=true Immediate=true>
-					@(DataDictionary.VoiceSpeed) (@(_voicePreferences!.Rate))
+					@(VoiceSpeed) (@(_voicePreferences!.Rate))
                     </MudSlider>
 
                     <MudCheckBox @bind-Checked=@_voicePreferences!.IsEnabled Size="Size.Large" Color="Color.Primary"
-                                 Label="@(DataDictionary.TTSEnabled)" />
+                                 Label="@(TTPEnabled)" />
                 }
                 break;
             default:
-				<MudTextField Value=@(DataDictionary.LoadVociesError) Label="Error"
+				<MudTextField Value=@(LoadVoicesError) Label="Error"
                               ReadOnly="true" Variant="Variant.Outlined" Error="true" />
                 break;
         }
@@ -45,10 +44,10 @@
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="Cancel" Size="Size.Large"
-                   Variant="Variant.Filled">@(DataDictionary.Cancel)</MudButton>
+                   Variant="Variant.Filled">@(cancel)</MudButton>
         <MudSpacer />
         <MudButton Color="Color.Secondary" Size="Size.Large"
                    StartIcon="@Icons.Material.Filled.Save"
-                   Variant="Variant.Filled" OnClick="SaveVoiceSelection">@(DataDictionary.Save)</MudButton>
+                   Variant="Variant.Filled" OnClick="SaveVoiceSelection">@(Save)</MudButton>
     </DialogActions>
 </MudDialog>
