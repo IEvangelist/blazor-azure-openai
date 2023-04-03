@@ -1,4 +1,7 @@
-﻿namespace Azure.OpenAI.Client.Pages;
+﻿using Azure.OpenAI.Client.Components.VoiceDialog;
+using Microsoft.Extensions.Localization;
+
+namespace Azure.OpenAI.Client.Pages.VoiceChat;
 
 public sealed partial class VoiceChat : IDisposable
 {
@@ -27,6 +30,21 @@ public sealed partial class VoiceChat : IDisposable
     [Inject] public required ILocalStorageService LocalStorage { get; set; }
     [Inject] public required ISessionStorageService SessionStorage { get; set; }
     [Inject] public required IJSInProcessRuntime JavaScript { get; set; }
+
+    #region VoiceChatLocalizer
+    [Inject] public IStringLocalizer<VoiceChat> Localizer { get; set; }
+
+    public string Prompt => Localizer[nameof(Prompt)];
+    public string Save => Localizer[nameof(Save)];
+    public string Speak => Localizer[nameof(Speak)];
+    public string Stop => Localizer[nameof(Stop)];
+    public string Voice => Localizer[nameof(Voice)];
+    public string Voicechat => Localizer[nameof(Voicechat)];
+    public string ChatPrompt => Localizer[nameof(ChatPrompt)];
+    public string Ask => Localizer[nameof(Ask)];
+    public string TTPPreferences => Localizer[nameof(TTPPreferences)];
+    
+    #endregion \VoiceChatLocalizer
 
     protected override void OnInitialized()
     {
@@ -143,7 +161,7 @@ public sealed partial class VoiceChat : IDisposable
 
     async Task ShowVoiceDialog()
     {
-        var dialog = await Dialog.ShowAsync<VoiceDialog>("Text-to-speech Preferences");
+        var dialog = await Dialog.ShowAsync<VoiceDialog>(title: TTPPreferences);
         var result = await dialog.Result;
         if (result is not { Canceled: true })
         {

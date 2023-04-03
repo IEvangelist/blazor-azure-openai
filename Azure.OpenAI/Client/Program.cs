@@ -3,9 +3,9 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(
-    sp => new HttpClient 
+    sp => new HttpClient
     {
-        BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) 
+        BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
     });
 
 builder.Services.AddSingleton<OpenAIPromptQueue>();
@@ -14,5 +14,10 @@ builder.Services.AddSessionStorageServices();
 builder.Services.AddSpeechSynthesisServices();
 builder.Services.AddSpeechRecognitionServices();
 builder.Services.AddMudServices();
+builder.Services.AddLocalization();
 
-await builder.Build().RunAsync();
+var host = builder.Build();
+
+host.ConfigCulture();
+
+await host.RunAsync();

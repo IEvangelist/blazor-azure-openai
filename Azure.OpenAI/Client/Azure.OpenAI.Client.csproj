@@ -5,7 +5,8 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-	</PropertyGroup>
+        <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+    </PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="MarkdownSharp" Version="2.0.5" />
@@ -16,6 +17,7 @@
 		<PackageReference Include="Blazor.SpeechRecognition.WebAssembly" Version="7.0.3" />
 		<PackageReference Include="Blazor.SpeechSynthesis.WebAssembly" Version="7.0.3" />
 		<PackageReference Include="Markdig" Version="0.31.0" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.4" />
 		<PackageReference Include="MudBlazor" Version="6.2.0" />
 	</ItemGroup>
 
@@ -25,6 +27,15 @@
 
 	<ItemGroup>
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Pages\VoiceChat\VoiceChat.fa.resx">
+	    <SubType>Designer</SubType>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Pages\VoiceChat\VoiceChat.en.resx">
+	    <Generator></Generator>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>
