@@ -8,20 +8,11 @@ internal sealed class Localization
 
     internal  static async Task ConfigCulture(WebAssemblyHost host)
     {
-        var js = host.Services.GetRequiredService<IJSRuntime>();
-        var result = await js.InvokeAsync<string>("blazorCulture.get");
+        var localStorage = host.Services.GetRequiredService<ILocalStorageService>();
+        var clientCulture = localStorage.GetItem<string>("blazor-openai-client-culture");
+        clientCulture ??= "en";
 
-        CultureInfo culture;
-        if (result != null)
-        {
-            culture = new CultureInfo(result);
-        }
-        else
-        {
-            culture = new CultureInfo("en");
-            await js.InvokeVoidAsync("blazorCulture.set", "en");
-        }
-
+        CultureInfo culture = new(clientCulture);
         CultureInfo.DefaultThreadCurrentCulture = culture;
         CultureInfo.DefaultThreadCurrentUICulture = culture;
     }
