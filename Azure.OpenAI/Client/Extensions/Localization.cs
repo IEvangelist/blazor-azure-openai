@@ -5,7 +5,6 @@ namespace Azure.OpenAI.Client.Extensions;
 
 internal sealed class Localization
 {
-
     internal static void ConfigCulture(this WebAssemblyHost host)
     {
         var localStorage = host.Services.GetRequiredService<ILocalStorageService>();
