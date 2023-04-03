@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using Microsoft.Extensions.Localization;
 
 <PageTitle>Home</PageTitle>
 
@@ -21,7 +22,7 @@
     <MudCardMedia Image="bing-generated.jpg" Height="580" />
     <MudCardContent>
         <MudText Typo="Typo.body2">
-            @(Azure.OpenAI.Shared.Resources.DataDictionary.BingImageText) <MudLink Href="https://www.bing.com/images/create/" Target="_blank">Bing - Image Creater (powered by DALL-E)</MudLink>.
+            @(BingImageText) <MudLink Href="https://www.bing.com/images/create/" Target="_blank">Bing - Image Creater (powered by DALL-E)</MudLink>.
         </MudText>
     </MudCardContent>
     <MudCardActions>
@@ -37,3 +38,10 @@
     </MudCardActions>
 </MudCard>
 
+@code {
+	#region IndexLocalizer
+	[Inject] public IStringLocalizer<Index> Localizer { get; set; }
+
+	public string BingImageText => Localizer[nameof(BingImageText)];
+	#endregion \IndexLocalizer
+}

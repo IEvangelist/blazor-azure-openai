@@ -1,7 +1,6 @@
 ﻿@page "/voicechat"
-@using Azure.OpenAI.Shared.Resources;
 
-<PageTitle>@(DataDictionary.VoiceChat)</PageTitle>
+<PageTitle>@Voicechat)</PageTitle>
 
 <MudGrid Justify="Justify.Center">
     <MudItem xs="12" Style="min-height: 75vh; max-height: 75vh" Class="overflow-x-auto">
@@ -27,21 +26,21 @@
     <MudItem xs="12" Class="mud-elevation-15 rounded">
         <MudGrid>
             <MudItem xs="10">
-                <MudTextField @bind-Value="_userPrompt" Label="@(DataDictionary.Prompt)"
+                <MudTextField @bind-Value="_userPrompt" Label="@(Prompt)"
                               Variant="Variant.Outlined" Adornment="Adornment.End"
                               AdornmentIcon="@Icons.Material.Filled.VoiceChat"
                               AdornmentColor="Color.Secondary" AutoFocus="true"
-							  Placeholder="@(DataDictionary.ChatPrompt)" Lines="3"
+							  Placeholder="@(ChatPrompt)" Lines="3"
                               Disabled=@(_isRecognizingSpeech || _isReceivingResponse) IconSize="Size.Large"
                               autocomplete="off" title="OpenAI chat prompt — (press 'Enter' to send)" />
             </MudItem>
             <MudItem xs="1">
                 <MudStack Class="justify-center align-content-center flex-wrap flex-grow-1 pt-1">
-					<MudFab Color="Color.Secondary" Label=@(_isRecognizingSpeech ? DataDictionary.Stop : DataDictionary.Speak) Size="Size.Medium"
+					<MudFab Color="Color.Secondary" Label=@(_isRecognizingSpeech ? Stop : Speak) Size="Size.Medium"
                             StartIcon=@(_isRecognizingSpeech ? @Icons.Material.Filled.MicOff : Icons.Material.Filled.Mic)
                             OnClick="@OnRecognizeSpeechClick" Disabled=@_isReceivingResponse />
 
-                    <MudFab Color="Color.Primary" Label="@(DataDictionary.Ask)" Size="Size.Medium"
+                    <MudFab Color="Color.Primary" Label="@(Ask)" Size="Size.Medium"
                             StartIcon=@Icons.Material.Filled.Send
                             OnClick="@OnSendPrompt" Disabled=@(_isRecognizingSpeech || _isReceivingResponse) />
                 </MudStack>
