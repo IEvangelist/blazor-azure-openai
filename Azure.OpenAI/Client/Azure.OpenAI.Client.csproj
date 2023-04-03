@@ -29,4 +29,13 @@
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <EmbeddedResource Update="Pages\VoiceChat\VoiceChat.fa.resx">
+	    <SubType>Designer</SubType>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Pages\VoiceChat\VoiceChat.en.resx">
+	    <Generator></Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
+
 </Project>
