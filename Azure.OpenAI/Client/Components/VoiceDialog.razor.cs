@@ -1,7 +1,7 @@
-﻿using Azure.OpenAI.Client.Pages.VoiceChat;
-using Microsoft.Extensions.Localization;
+﻿// Copyright (c) David Pine. All rights reserved.
+// Licensed under the MIT License.
 
-namespace Azure.OpenAI.Client.Components.VoiceDialog;
+namespace Azure.OpenAI.Client.Components;
 
 public sealed partial class VoiceDialog : IDisposable
 {
@@ -18,9 +18,7 @@ public sealed partial class VoiceDialog : IDisposable
 
     [CascadingParameter] public required MudDialogInstance Dialog { get; set; }
 
-
-    #region VoiceDialogLocalizer
-    [Inject] public IStringLocalizer<VoiceDialog> Localizer { get; set; }
+    [Inject] public required IStringLocalizer<VoiceDialog> Localizer { get; set; }
 
     public string ClientVoicesMsg => Localizer[nameof(ClientVoicesMsg)];
     public string Voice => Localizer[nameof(Voice)];
@@ -29,8 +27,6 @@ public sealed partial class VoiceDialog : IDisposable
     public string LoadVoicesError => Localizer[nameof(LoadVoicesError)];
     public string cancel => Localizer[nameof(cancel)];
     public string Save => Localizer[nameof(Save)];
-
-    #endregion \VoiceDialogLocalizer
 
     protected override async Task OnInitializedAsync()
     {

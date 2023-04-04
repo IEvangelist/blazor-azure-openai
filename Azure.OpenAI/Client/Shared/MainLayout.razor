@@ -1,6 +1,4 @@
-﻿@using Azure.OpenAI.Client.Shared.NavMenu
-@inherits LayoutComponentBase
-@inject ILocalStorageService LocalStorage
+﻿@inherits LayoutComponentBase
 
 <MudThemeProvider @bind-IsDarkMode="@_isDarkTheme" Theme="_theme" />
 <MudDialogProvider FullWidth="true" MaxWidth="MaxWidth.Small"
@@ -38,8 +36,8 @@
 								 ToggledTitle="Switch to Light Theme" ToggledIcon=@Icons.Material.Filled.WbSunny ToggledColor=@Color.Default />
 			<MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Size="Size.Large"
 						   Href="https://github.com/IEvangelist/blazor-azure-openai" Target="_blank" />
-
-			<CultureSelector />
+            <MudIconButton Icon="@Icons.Material.Filled.Language" Color="Color.Inherit" Size="Size.Large"
+                OnClick="@ShowCultureDialog" />
 
 		</MudAppBar>
 		<MudDrawer @bind-Open="_drawerOpen" Elevation="5" Color=Color.Dark>
@@ -59,20 +57,3 @@
 		</MudMainContent>
 	</MudLayout>
 </MudRTLProvider>
-@code {
-	const string PrefersDarkThemeKey = "prefers-dark-scheme";
-
-	MudTheme _theme = new();
-	bool _drawerOpen = true;
-	bool _isDarkTheme
-	{
-		get => LocalStorage.GetItem<bool>(PrefersDarkThemeKey);
-		set => LocalStorage.SetItem<bool>(PrefersDarkThemeKey, value);
-	}
-
-	bool _isRightToLeft =>
-	    Thread.CurrentThread.CurrentUICulture is { TextInfo.IsRightToLeft: true };
-
-	void DrawerToggle() => _drawerOpen = !_drawerOpen;
-	void OnToggledChanged() => _isDarkTheme = !_isDarkTheme;
-}

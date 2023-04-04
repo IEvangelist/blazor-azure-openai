@@ -1,5 +1,4 @@
 ﻿@page "/"
-@using Microsoft.Extensions.Localization;
 
 <PageTitle>Home</PageTitle>
 
@@ -37,11 +36,3 @@
                        Href="https://www.mudblazor.com/" Title="MudBlazor link." />
     </MudCardActions>
 </MudCard>
-
-@code {
-	#region IndexLocalizer
-	[Inject] public IStringLocalizer<Index> Localizer { get; set; }
-
-	public string BingImageText => Localizer[nameof(BingImageText)];
-	#endregion \IndexLocalizer
-}

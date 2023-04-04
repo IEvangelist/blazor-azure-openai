@@ -1,4 +1,7 @@
-﻿namespace Azure.OpenAI.Client.Services;
+﻿// Copyright (c) David Pine. All rights reserved.
+// Licensed under the MIT License.
+
+namespace Azure.OpenAI.Client.Services;
 
 public sealed class OpenAIPromptQueue
 {
@@ -30,7 +33,7 @@ public sealed class OpenAIPromptQueue
                 using var scope = _provider.CreateScope();
 
                 var client = scope.ServiceProvider.GetRequiredService<HttpClient>();
-                var response = await client.PostAsync("openai/chat", body);
+                var response = await client.PostAsync("api/openai/chat", body);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -93,6 +96,7 @@ public sealed class OpenAIPromptQueue
                         if (isEscapeSequence)
                         {
                             isEscapeSequence = false;
+
                             buffer.Add('\\');
                             buffer.Add(partialResponse);
 
@@ -100,11 +104,11 @@ public sealed class OpenAIPromptQueue
                         }
 
                         if (partialResponse is ',' &&
-                        segment is
-                        {
-                            SawStartingQuote: true,
-                            SawEndingQuote: true
-                        })
+                            segment is
+                            {
+                                SawStartingQuote: true,
+                                SawEndingQuote: true
+                            })
                         {
                             var bufferedResponse = new string(buffer.ToArray());
                             _responseBuffer.Append(bufferedResponse);
@@ -159,8 +163,11 @@ public sealed class OpenAIPromptQueue
         var text = builder.ToString();
         logger.LogInformation("Before normalize\n\t{Text}", text);
 
+        var bytes = Encoding.Unicode.GetBytes(text);
+        text = Encoding.UTF8.GetString(
+            Encoding.Convert(Encoding.Unicode, Encoding.UTF8, bytes));
+
         text = text.Replace("null", "")
-            .Replace("\\\\u", "\\u")
             .Replace("\r", "\n")
             .Replace("\\n\\r", "\n")
             .Replace("\\n", "\n");

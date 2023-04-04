@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿// Copyright (c) David Pine. All rights reserved.
+// Licensed under the MIT License.
+
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Azure.OpenAI.Client.Server.Pages;

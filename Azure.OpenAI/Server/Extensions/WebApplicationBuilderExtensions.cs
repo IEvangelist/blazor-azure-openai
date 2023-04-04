@@ -1,4 +1,7 @@
-﻿namespace Azure.OpenAI.Server.Extensions;
+﻿// Copyright (c) David Pine. All rights reserved.
+// Licensed under the MIT License.
+
+namespace Azure.OpenAI.Server.Extensions;
 
 internal static class WebApplicationBuilderExtensions
 {

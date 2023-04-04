@@ -1,19 +1,22 @@
-﻿namespace Azure.OpenAI.Server.Extensions;
+﻿// Copyright (c) David Pine. All rights reserved.
+// Licensed under the MIT License.
 
-internal static class RouteGroupExtensions
+namespace Azure.OpenAI.Server.Extensions;
+
+internal static class ChatRouteGroupExtensions
 {
     internal static RouteGroupBuilder MapOpenAI(this RouteGroupBuilder openAI)
     {
-        openAI.MapPost("chat", OnChatPromptPost);
+        openAI.MapPost("chat", PostChatPromptAsync);
 
         return openAI;
     }
 
-    static async IAsyncEnumerable<string> OnChatPromptPost(OpenAIClient client, [FromBody] ChatPrompt prompt)
+    static async IAsyncEnumerable<string> PostChatPromptAsync(OpenAIClient client, [FromBody] ChatPrompt prompt)
     {
-        var deploymentId = Environment.GetEnvironmentVariable("") ?? "pine-chat";
+        var deploymentId = Environment.GetEnvironmentVariable("AzureOpenAI__DeploymentId") ?? "pine-chat";
         var response = await client.GetChatCompletionsStreamingAsync(
-            "pine-chat", new ChatCompletionsOptions
+            deploymentId, new ChatCompletionsOptions
             {
                 Messages =
                 {

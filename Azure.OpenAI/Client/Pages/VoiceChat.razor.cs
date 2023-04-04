@@ -1,7 +1,7 @@
-﻿using Azure.OpenAI.Client.Components.VoiceDialog;
-using Microsoft.Extensions.Localization;
+﻿// Copyright (c) David Pine. All rights reserved.
+// Licensed under the MIT License.
 
-namespace Azure.OpenAI.Client.Pages.VoiceChat;
+namespace Azure.OpenAI.Client.Pages;
 
 public sealed partial class VoiceChat : IDisposable
 {
@@ -30,21 +30,17 @@ public sealed partial class VoiceChat : IDisposable
     [Inject] public required ILocalStorageService LocalStorage { get; set; }
     [Inject] public required ISessionStorageService SessionStorage { get; set; }
     [Inject] public required IJSInProcessRuntime JavaScript { get; set; }
-
-    #region VoiceChatLocalizer
-    [Inject] public IStringLocalizer<VoiceChat> Localizer { get; set; }
+    [Inject] public required IStringLocalizer<VoiceChat> Localizer { get; set; }
 
     public string Prompt => Localizer[nameof(Prompt)];
     public string Save => Localizer[nameof(Save)];
     public string Speak => Localizer[nameof(Speak)];
     public string Stop => Localizer[nameof(Stop)];
     public string Voice => Localizer[nameof(Voice)];
-    public string Voicechat => Localizer[nameof(Voicechat)];
+    public string Chat => Localizer[nameof(Chat)];
     public string ChatPrompt => Localizer[nameof(ChatPrompt)];
     public string Ask => Localizer[nameof(Ask)];
-    public string TTPPreferences => Localizer[nameof(TTPPreferences)];
-    
-    #endregion \VoiceChatLocalizer
+    public string TTSPreferences => Localizer[nameof(TTSPreferences)];
 
     protected override void OnInitialized()
     {
@@ -161,7 +157,7 @@ public sealed partial class VoiceChat : IDisposable
 
     async Task ShowVoiceDialog()
     {
-        var dialog = await Dialog.ShowAsync<VoiceDialog>(title: TTPPreferences);
+        var dialog = await Dialog.ShowAsync<VoiceDialog>(title: TTSPreferences);
         var result = await dialog.Result;
         if (result is not { Canceled: true })
         {

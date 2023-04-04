@@ -3,9 +3,9 @@
 
 namespace Azure.OpenAI.Client.Extensions;
 
-internal static class Localization
+internal static class WebAssemblyHostExtensions
 {
-    internal static void ConfigCulture(this WebAssemblyHost host)
+    internal static WebAssemblyHost DetectClientCulture(this WebAssemblyHost host)
     {
         var localStorage = host.Services.GetRequiredService<ILocalStorageService>();
         var clientCulture = localStorage.GetItem<string>("blazor-openai-client-culture");
@@ -14,5 +14,7 @@ internal static class Localization
         CultureInfo culture = new(clientCulture);
         CultureInfo.DefaultThreadCurrentCulture = culture;
         CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+        return host;
     }
 }
