@@ -119,6 +119,7 @@
   </resheader>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
+    <comment>Common</comment>
   </data>
   <data name="ClientVoicesMessage" xml:space="preserve">
     <value>Requesting client voices...</value>
