@@ -3,6 +3,28 @@ pre {
     padding-bottom: 2rem;
 }
 
+blockquote:empty {
+    display: none;
+    pointer-events: none;
+}
+
+blockquote:not(:empty) {
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    background: rgba(0,0,0,.2);
+    margin-bottom: .5rem;
+}
+
+    blockquote:not(:empty) p::before {
+        content: '\201C';
+        font-size: 1.5rem;
+    }
+
+    blockquote:not(:empty) p::after {
+        content: '\201D';
+        font-size: 1.5rem;
+    }
+
 ul, ol {
     padding: 1.5rem;
 }

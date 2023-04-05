@@ -10,7 +10,6 @@ builder.Services.AddHttpClient();
 builder.Services.AddHttpLogging(
     options => options.LoggingFields = HttpLoggingFields.All);
 
-builder.Services.AddControllers();
 builder.Services.AddMemoryCache();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
