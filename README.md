@@ -4,6 +4,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![build & test](https://github.com/IEvangelist/blazor-azure-openai/actions/workflows/dotnet.yml/badge.svg)](https://github.com/IEvangelist/blazor-azure-openai/actions/workflows/dotnet.yml)
+[![localization](https://github.com/IEvangelist/blazor-azure-openai/actions/workflows/localization.yml/badge.svg)](https://github.com/IEvangelist/blazor-azure-openai/actions/workflows/localization.yml)
 
 ## Getting Started
 
