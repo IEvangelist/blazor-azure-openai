@@ -119,5 +119,6 @@
   </resheader>
   <data name="SelectLanguageTitle" xml:space="preserve">
     <value>Select Langauage</value>
+    <comment>The title for the culture dialog.</comment>
   </data>
 </root>

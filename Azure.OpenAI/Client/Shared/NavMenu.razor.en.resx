@@ -119,6 +119,7 @@
   </resheader>
   <data name="HomeNavLabel" xml:space="preserve">
     <value>Home</value>
+    <comment>Nav bar home label</comment>
   </data>
   <data name="VoiceChatNavLabel" xml:space="preserve">
     <value>VoiceChat</value>

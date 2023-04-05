@@ -124,7 +124,7 @@
     <value>Requesting client voices...</value>
   </data>
   <data name="LoadVoicesError" xml:space="preserve">
-    <value>Unable to load available voices</value>
+    <value>Unable to load available voices.</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
