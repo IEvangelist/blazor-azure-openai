@@ -20,12 +20,12 @@ public sealed partial class VoiceDialog : IDisposable
 
     [Inject] public required IStringLocalizer<VoiceDialog> Localizer { get; set; }
 
-    public string ClientVoicesMsg => Localizer[nameof(ClientVoicesMsg)];
+    public string ClientVoicesMessage => Localizer[nameof(ClientVoicesMessage)];
     public string Voice => Localizer[nameof(Voice)];
     public string VoiceSpeed => Localizer[nameof(VoiceSpeed)];
-    public string TTPEnabled => Localizer[nameof(TTPEnabled)];
+    public string TTSEnabled => Localizer[nameof(TTSEnabled)];
     public string LoadVoicesError => Localizer[nameof(LoadVoicesError)];
-    public string cancel => Localizer[nameof(cancel)];
+    public string Cancel => Localizer[nameof(Cancel)];
     public string Save => Localizer[nameof(Save)];
 
     protected override async Task OnInitializedAsync()
@@ -57,9 +57,9 @@ public sealed partial class VoiceDialog : IDisposable
         Voice = selectedVoice
     };
 
-    void SaveVoiceSelection() => Dialog.Close(DialogResult.Ok(_voicePreferences));
+    void OnSaveVoiceSelection() => Dialog.Close(DialogResult.Ok(_voicePreferences));
 
-    void Cancel() => Dialog.Close(DialogResult.Ok(_voicePreferences));
+    void OnCancel() => Dialog.Close(DialogResult.Ok(_voicePreferences));
 
     void IDisposable.Dispose() => SpeechSynthesis.UnsubscribeFromVoicesChanged();
 }

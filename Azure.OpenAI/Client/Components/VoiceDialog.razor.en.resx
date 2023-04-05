@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cancel" xml:space="preserve">
+  <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="ClientVoicesMsg" xml:space="preserve">
+  <data name="ClientVoicesMessage" xml:space="preserve">
     <value>Requesting client voices...</value>
   </data>
   <data name="LoadVoicesError" xml:space="preserve">
@@ -129,7 +129,7 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="TTPEnabled" xml:space="preserve">
+  <data name="TTSEnabled" xml:space="preserve">
     <value>Text-to-speech Enabled (responses will be read aloud)</value>
   </data>
   <data name="Voice" xml:space="preserve">

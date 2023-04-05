@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Change" xml:space="preserve">
-    <value>Change</value>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
   </data>
-  <data name="SelectLanguage" xml:space="preserve">
+  <data name="SelectLanguageLabel" xml:space="preserve">
     <value>Select Language</value>
   </data>
 </root>

@@ -7,7 +7,7 @@ public sealed partial class NavMenu
 {
     [Inject] public required IStringLocalizer<NavMenu> Localizer { get; set; }
 
-    string Home => Localizer[nameof(Home)];
+    string HomeNavLabel => Localizer[nameof(HomeNavLabel)];
 
-    string VoiceChat => Localizer[nameof(VoiceChat)];
+    string VoiceChatNavLabel => Localizer[nameof(VoiceChatNavLabel)];
 }

@@ -5,7 +5,7 @@
         {
             case RequestVoiceState.RequestingVoices:
                 <div class="d-flex">
-				<MudText Typo="Typo.subtitle1" Class="flex-grow-1">@(ClientVoicesMsg)</MudText>
+				<MudText Typo="Typo.subtitle1" Class="flex-grow-1">@(ClientVoicesMessage)</MudText>
                     <MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
                 </div>
                 break;
@@ -32,7 +32,7 @@
                     </MudSlider>
 
                     <MudCheckBox @bind-Checked=@_voicePreferences!.IsEnabled Size="Size.Large" Color="Color.Primary"
-                                 Label="@(TTPEnabled)" />
+                                 Label="@(TTSEnabled)" />
                 }
                 break;
             default:
@@ -43,11 +43,11 @@
 
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="Cancel" Size="Size.Large"
-                   Variant="Variant.Filled">@(cancel)</MudButton>
+        <MudButton OnClick="OnCancel" Size="Size.Large"
+                   Variant="Variant.Filled">@(Cancel)</MudButton>
         <MudSpacer />
         <MudButton Color="Color.Secondary" Size="Size.Large"
                    StartIcon="@Icons.Material.Filled.Save"
-                   Variant="Variant.Filled" OnClick="SaveVoiceSelection">@(Save)</MudButton>
+                   Variant="Variant.Filled" OnClick="OnSaveVoiceSelection">@(Save)</MudButton>
     </DialogActions>
 </MudDialog>

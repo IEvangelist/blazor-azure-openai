@@ -14,8 +14,8 @@ public sealed partial class CultureDialog
     [Inject] public required IStringLocalizer<CultureDialog> Localizer { get; set; }
     [Inject] public required CultureService CultureService { get; set; }
 
-    private string Change => Localizer[nameof(Change)];
-    private string SelectLanguage => Localizer[nameof(SelectLanguage)];
+    private string Select => Localizer[nameof(Select)];
+    private string SelectLanguageLabel => Localizer[nameof(SelectLanguageLabel)];
 
     private IDictionary<CultureInfo, AzureCulture>? _supportedCultures;
     private CultureInfo _selectedCulture = CultureInfo.CurrentCulture;

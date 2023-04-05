@@ -141,7 +141,4 @@
   <data name="TTSPreferences" xml:space="preserve">
     <value>Text-to-speech Preferences</value>
   </data>
-  <data name="Voice" xml:space="preserve">
-    <value>Voice</value>
-  </data>
 </root>

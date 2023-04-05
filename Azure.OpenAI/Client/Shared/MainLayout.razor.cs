@@ -22,9 +22,9 @@ public sealed partial class MainLayout
     [Inject] public required IDialogService Dialog { get; set; }
     [Inject] public required IStringLocalizer<MainLayout> Localizer { get; set; }
 
-    string SelectLanguage => Localizer[nameof(SelectLanguage)];
+    string SelectLanguageTitle => Localizer[nameof(SelectLanguageTitle)];
 
-    void ShowCultureDialog() => Dialog.Show<CultureDialog>(SelectLanguage);
+    void ShowCultureDialog() => Dialog.Show<CultureDialog>(SelectLanguageTitle);
 
     void DrawerToggle() => _drawerOpen = !_drawerOpen;
 

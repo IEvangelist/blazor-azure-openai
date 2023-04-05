@@ -32,15 +32,14 @@ public sealed partial class VoiceChat : IDisposable
     [Inject] public required IJSInProcessRuntime JavaScript { get; set; }
     [Inject] public required IStringLocalizer<VoiceChat> Localizer { get; set; }
 
-    public string Prompt => Localizer[nameof(Prompt)];
-    public string Save => Localizer[nameof(Save)];
-    public string Speak => Localizer[nameof(Speak)];
-    public string Stop => Localizer[nameof(Stop)];
-    public string Voice => Localizer[nameof(Voice)];
-    public string Chat => Localizer[nameof(Chat)];
-    public string ChatPrompt => Localizer[nameof(ChatPrompt)];
-    public string Ask => Localizer[nameof(Ask)];
-    public string TTSPreferences => Localizer[nameof(TTSPreferences)];
+    string Prompt => Localizer[nameof(Prompt)];
+    string Save => Localizer[nameof(Save)];
+    string Speak => Localizer[nameof(Speak)];
+    string Stop => Localizer[nameof(Stop)];
+    string Chat => Localizer[nameof(Chat)];
+    string ChatPrompt => Localizer[nameof(ChatPrompt)];
+    string Ask => Localizer[nameof(Ask)];
+    string TTSPreferences => Localizer[nameof(TTSPreferences)];
 
     protected override void OnInitialized()
     {
