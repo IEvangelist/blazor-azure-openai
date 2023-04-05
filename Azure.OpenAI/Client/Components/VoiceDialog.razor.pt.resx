@@ -58,7 +58,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BingImageText" xml:space="preserve">
-    <value>این عکس با استفاده از هوش مصنوعی مولد ایجاد شده است</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+    <comment>Common</comment>
+  </data>
+  <data name="ClientVoicesMessage" xml:space="preserve">
+    <value>Solicitando vozes de clientes...</value>
+  </data>
+  <data name="LoadVoicesError" xml:space="preserve">
+    <value>Não é possível carregar as vozes disponíveis.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="TTSEnabled" xml:space="preserve">
+    <value>Conversão de texto em fala ativada (as respostas serão lidas em voz alta)</value>
+  </data>
+  <data name="Voice" xml:space="preserve">
+    <value>Voz</value>
+  </data>
+  <data name="VoiceSpeed" xml:space="preserve">
+    <value>Velocidade de voz</value>
   </data>
 </root>

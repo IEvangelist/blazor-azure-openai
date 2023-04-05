@@ -58,7 +58,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BingImageText" xml:space="preserve">
-    <value>این عکس با استفاده از هوش مصنوعی مولد ایجاد شده است</value>
+  <data name="SelectLanguageTitle" xml:space="preserve">
+    <value>Selecteer Langauage</value>
+    <comment>The title for the CultureDialog component.</comment>
   </data>
 </root>
