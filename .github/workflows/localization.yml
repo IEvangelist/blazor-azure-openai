@@ -19,6 +19,8 @@ env:
 jobs:
   translate:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@main
