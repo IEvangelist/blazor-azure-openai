@@ -58,7 +58,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BingImageText" xml:space="preserve">
-    <value>این عکس با استفاده از هوش مصنوعی مولد ایجاد شده است</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Érvénytelenít</value>
+    <comment>Common</comment>
+  </data>
+  <data name="ClientVoicesMessage" xml:space="preserve">
+    <value>Ügyfélhangok kérése...</value>
+  </data>
+  <data name="LoadVoicesError" xml:space="preserve">
+    <value>Nem lehet betölteni az elérhető hangokat.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Megment</value>
+  </data>
+  <data name="TTSEnabled" xml:space="preserve">
+    <value>Szövegfelolvasás: Engedélyezve (a válaszok felolvasásra kerülnek)</value>
+  </data>
+  <data name="Voice" xml:space="preserve">
+    <value>Hang</value>
+  </data>
+  <data name="VoiceSpeed" xml:space="preserve">
+    <value>Hangsebesség</value>
   </data>
 </root>
