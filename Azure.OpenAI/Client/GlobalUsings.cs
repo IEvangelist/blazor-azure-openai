@@ -11,7 +11,6 @@ global using Azure.OpenAI.Client.Components;
 global using Azure.OpenAI.Client.Extensions;
 global using Azure.OpenAI.Client.Models;
 global using Azure.OpenAI.Client.Services;
-global using Azure.OpenAI.Client.Shared;
 global using Azure.OpenAI.Shared;
 global using Markdig;
 global using Microsoft.AspNetCore.Components;

@@ -1,6 +1,8 @@
 ﻿// Copyright (c) David Pine. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Text.RegularExpressions;
+
 namespace Azure.OpenAI.Client.Services;
 
 public sealed class OpenAIPromptQueue
@@ -161,20 +163,19 @@ public sealed class OpenAIPromptQueue
         }
 
         var text = builder.ToString();
-        logger.LogInformation("Before normalize\n\t{Text}", text);
 
-        var bytes = Encoding.Unicode.GetBytes(text);
-        text = Encoding.UTF8.GetString(
-            Encoding.Convert(Encoding.Unicode, Encoding.UTF8, bytes));
+        logger.LogDebug("Before normalize\n\t{Text}", text);
 
-        text = text.Replace("null", "")
-            .Replace("\r", "\n")
+        text = text.StartsWith("null,") ? text[5..] : text;
+        text = text.Replace("\r", "\n")
             .Replace("\\n\\r", "\n")
             .Replace("\\n", "\n");
 
-        logger.LogInformation("After normalize:\n\t{Text}", text);
+        text = Regex.Unescape(text);
 
-        return text.StartsWith(",") ? text[1..] : text;
+        logger.LogDebug("After normalize:\n\t{Text}", text);
+
+        return text;
     }
 }
 
