@@ -62,4 +62,16 @@
     <value>Vælg Langauage</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>Skift til mørkt tema</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>Skift til Lystema</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>Skift navigationssidebjælke</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>Besøg GitHub-lageret</value>
+  </data>
 </root>

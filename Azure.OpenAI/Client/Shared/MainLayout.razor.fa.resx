@@ -62,4 +62,16 @@
     <value>انتخاب Langauage</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>سوئیچ به تم تاریک</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>سوئیچ به تم نور</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>نوار جانبی ناوبری را شعبده بازی کنید</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>بازدید از مخزن GitHub</value>
+  </data>
 </root>

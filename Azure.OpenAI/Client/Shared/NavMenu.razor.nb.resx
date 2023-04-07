@@ -63,6 +63,6 @@
     <comment>Nav bar Home label.</comment>
   </data>
   <data name="VoiceChatNavLabel" xml:space="preserve">
-    <value>VoiceChat</value>
+    <value>Stemmechat</value>
   </data>
 </root>

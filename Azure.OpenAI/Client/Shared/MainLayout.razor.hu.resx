@@ -62,4 +62,16 @@
     <value>Válassza a Langauage lehetőséget</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>Váltás sötét témára</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>Váltás világos témára</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>Navigációs oldalsáv váltása</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>Keresse fel a GitHub-adattárat</value>
+  </data>
 </root>

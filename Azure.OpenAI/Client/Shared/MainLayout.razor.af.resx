@@ -62,4 +62,16 @@
     <value>Kies Langauage</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>Skakel oor na donker tema</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>Skakel oor na ligte tema</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>Wissel navigasie sybalk</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>Besoek die GitHub-bewaarplek</value>
+  </data>
 </root>

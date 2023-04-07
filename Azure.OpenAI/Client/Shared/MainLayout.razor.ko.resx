@@ -62,4 +62,16 @@
     <value>언어 선택</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>어두운 테마로 전환</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>밝은 테마로 전환</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>탐색 사이드바 전환</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>GitHub 리포지토리 방문하기</value>
+  </data>
 </root>

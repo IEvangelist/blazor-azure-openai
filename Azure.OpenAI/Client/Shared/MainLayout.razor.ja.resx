@@ -62,4 +62,16 @@
     <value>言語を選択</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>ダークテーマに切り替える</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>ライトテーマに切り替える</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>ナビゲーションサイドバーの切り替え</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>GitHub リポジトリにアクセスする</value>
+  </data>
 </root>

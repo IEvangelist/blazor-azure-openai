@@ -62,4 +62,16 @@
     <value>Langauage'ı seçin</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>Koyu Temaya Geç</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>Işık Temasına Geç</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>Gezinme kenar çubuğunu değiştirme</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>GitHub deposunu ziyaret edin</value>
+  </data>
 </root>
