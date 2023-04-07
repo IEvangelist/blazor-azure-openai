@@ -6,7 +6,7 @@ namespace Azure.OpenAI.Client.EndToEndTests;
 [Collection(PlaywrightCollectionDefinition.EndToEndTests)]
 public sealed partial class TestPageLoad
 {
-    private const string TestHost = "https://localhost:7000";
+    private const string TestHost = "http://localhost:4200";
 
     private readonly PlaywrightAsyncLifetime _asyncLifetime;
 

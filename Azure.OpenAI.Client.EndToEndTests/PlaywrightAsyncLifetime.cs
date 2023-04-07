@@ -19,7 +19,9 @@ public partial class PlaywrightAsyncLifetime : IAsyncLifetime
         };
 
         EnsurePlaywrightIsInstalled();
-        await TrustDeveloperCertsAsync();
+
+        // Has no effect on Linux.
+        // await TrustDeveloperCertsAsync();
 
         _playwright = await Playwright.CreateAsync();
 
