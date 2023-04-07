@@ -15,13 +15,13 @@ This example relies on three environment variables:
 
 ```PowerShell
 setx AzureOpenAI__ApiKey "<Your Azure OpenAI API Key>"
-setx AzureOpenAI__ApiEndpoint "<Your Azure OpenAI API endpoint>"
+setx AzureOpenAI__Endpoint "<Your Azure OpenAI API endpoint>"
 setx AzureOpenAI__DeploymentId "<Your Azure OpenAI deploymend id>"
 ```
 
 ```bash
 export AzureOpenAI__ApiKey="<Your Azure OpenAI API Key>"
-export AzureOpenAI__ApiEndpoint="<Your Azure OpenAI API endpoint>"
+export AzureOpenAI__Endpoint="<Your Azure OpenAI API endpoint>"
 export AzureOpenAI__DeploymentId="<Your Azure OpenAI deploymend id>"
 ```
 
