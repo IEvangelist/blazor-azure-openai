@@ -62,4 +62,16 @@
     <value>בחר Langauage</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>מעבר לערכת נושא כהה</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>מעבר לערכת נושא קלה</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>החלפת מצב של סרגל הצד של הניווט</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>בקר במאגר GitHub</value>
+  </data>
 </root>

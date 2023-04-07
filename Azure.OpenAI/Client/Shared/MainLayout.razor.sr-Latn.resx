@@ -62,4 +62,16 @@
     <value>Izaberite Langauage</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>Prebacivanje na tamnu temu</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>Prebaci se na temu svetla</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>Uključuje/isključi bočnu traku za navigaciju</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>Posetite depo GitHub</value>
+  </data>
 </root>

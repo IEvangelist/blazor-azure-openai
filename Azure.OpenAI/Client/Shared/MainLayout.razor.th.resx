@@ -62,4 +62,16 @@
     <value>เลือก Langauage</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>เปลี่ยนเป็นธีมมืด</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>เปลี่ยนเป็นธีมแสง</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>สลับแถบด้านข้างการนําทาง</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>เยี่ยมชมที่เก็บ GitHub</value>
+  </data>
 </root>

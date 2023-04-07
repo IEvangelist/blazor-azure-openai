@@ -62,4 +62,16 @@
     <value>اختر لغة</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>التبديل إلى المظهر الداكن</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>التبديل إلى موضوع الضوء</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>تبديل الشريط الجانبي للتنقل</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>قم بزيارة مستودع GitHub</value>
+  </data>
 </root>

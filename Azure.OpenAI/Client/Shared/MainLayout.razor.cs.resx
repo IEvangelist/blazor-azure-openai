@@ -62,4 +62,16 @@
     <value>Vyberte Langauage</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>Přepnout na tmavý motiv</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>Přepnout na světlý motiv</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>Přepnout postranní panel navigace</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>Navštívit úložiště GitHub</value>
+  </data>
 </root>

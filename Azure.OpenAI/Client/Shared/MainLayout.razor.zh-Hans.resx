@@ -62,4 +62,16 @@
     <value>选择语言</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>切换到深色主题</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>切换到浅色主题</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>切换导航侧边栏</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>访问 GitHub 存储库</value>
+  </data>
 </root>

@@ -62,4 +62,16 @@
     <value>Seleccioneu Langauage</value>
     <comment>The title for the CultureDialog component.</comment>
   </data>
+  <data name="SwitchToDarkTheme" xml:space="preserve">
+    <value>Canvieu a Tema fosc</value>
+  </data>
+  <data name="SwitchToLightTheme" xml:space="preserve">
+    <value>Canvieu al tema de la llum</value>
+  </data>
+  <data name="ToggleNavBar" xml:space="preserve">
+    <value>Canvia la barra lateral de navegació</value>
+  </data>
+  <data name="VisitGitHubRepository" xml:space="preserve">
+    <value>Visiteu el repositori de GitHub</value>
+  </data>
 </root>
