@@ -5,14 +5,12 @@ namespace Azure.OpenAI.Client.Shared;
 
 public sealed partial class MainLayout
 {
-    const string PrefersDarkThemeKey = "prefers-dark-scheme";
-
     MudTheme _theme = new();
     bool _drawerOpen = true;
     bool _isDarkTheme
     {
-        get => LocalStorage.GetItem<bool>(PrefersDarkThemeKey);
-        set => LocalStorage.SetItem<bool>(PrefersDarkThemeKey, value);
+        get => LocalStorage.GetItem<bool>(StorageKeys.PrefersDarkThemeKey);
+        set => LocalStorage.SetItem<bool>(StorageKeys.PrefersDarkThemeKey, value);
     }
 
     bool _isRightToLeft =>
@@ -23,6 +21,10 @@ public sealed partial class MainLayout
     [Inject] public required IStringLocalizer<MainLayout> Localizer { get; set; }
 
     string SelectLanguageTitle => Localizer[nameof(SelectLanguageTitle)];
+    string SwitchToDarkTheme => Localizer[nameof(SwitchToDarkTheme)];
+    string SwitchToLightTheme => Localizer[nameof(SwitchToLightTheme)];
+    string ToggleNavBar => Localizer[nameof(ToggleNavBar)];
+    string VisitGitHubRepository => Localizer[nameof(VisitGitHubRepository)];
 
     void ShowCultureDialog() => Dialog.Show<CultureDialog>(SelectLanguageTitle);
 

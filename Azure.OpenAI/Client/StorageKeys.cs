@@ -5,5 +5,6 @@ namespace Azure.OpenAI.Client;
 
 internal static class StorageKeys
 {
-    internal static string AppCultureKey = "blazor-openai-client-culture";
+    internal const string AppCultureKey = "blazor-openai-client-culture";
+    internal const string PrefersDarkThemeKey = "prefers-dark-scheme";
 }

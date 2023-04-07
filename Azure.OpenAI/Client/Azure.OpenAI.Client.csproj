@@ -30,13 +30,4 @@
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <EmbeddedResource Update="Pages\VoiceChat.razor.fa.resx">
-	    <SubType>Designer</SubType>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\VoiceChat.razor.en.resx">
-	    <Generator></Generator>
-	  </EmbeddedResource>
-	</ItemGroup>
-
 </Project>

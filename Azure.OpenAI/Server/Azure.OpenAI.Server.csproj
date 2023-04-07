@@ -19,5 +19,8 @@
 		<ProjectReference Include="..\Shared\Azure.OpenAI.Shared.csproj" />
 	</ItemGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="Azure.OpenAI.Client.EndToEndTests" />
+    </ItemGroup>
 
 </Project>
