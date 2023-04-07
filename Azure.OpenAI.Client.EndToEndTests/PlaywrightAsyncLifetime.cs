@@ -19,6 +19,7 @@ public partial class PlaywrightAsyncLifetime : IAsyncLifetime
         };
 
         EnsurePlaywrightIsInstalled();
+        await TrustDeveloperCertsAsync();
 
         _playwright = await Playwright.CreateAsync();
 
@@ -67,6 +68,23 @@ public partial class PlaywrightAsyncLifetime : IAsyncLifetime
         {
             throw new Exception($"""
                 Playwright exited: {exitCode} when calling 'install'
+                """);
+        }
+    }
+
+    private static async Task TrustDeveloperCertsAsync()
+    {
+        var result = await Cli.Wrap("dotnet")
+            .WithArguments(builder =>
+                builder.Add("dev-certs")
+                    .Add("https")
+                    .Add("--trust"))
+            .ExecuteAsync();
+
+        if (result.ExitCode is not 0)
+        {
+            throw new Exception($"""
+                dotnet exited: {result.ExitCode} when calling 'dev-certs https --trust'
                 """);
         }
     }

@@ -6,6 +6,7 @@ global using System.Runtime.CompilerServices;
 global using System.Text.Json;
 global using System.Text.RegularExpressions;
 global using Azure.OpenAI.Client.EndToEndTests.Browser;
+global using CliWrap;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Mvc.Testing;
 global using Microsoft.Extensions.Hosting;
