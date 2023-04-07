@@ -11,7 +11,7 @@ on:
 
 env:
     AzureOpenAI__ApiKey: ${{ secrets.AZURE_OPENAI_APIKEY }}
-    AzureOpenAI__ApiEndpoint: ${{ secrets.AZURE_OPENAI_APIENDPOINT }}
+    AzureOpenAI__Endpoint: ${{ secrets.AZURE_OPENAI_APIENDPOINT }}
     AzureOpenAI__DeploymentId: ${{ secrets.AZURE_OPENAI_DEPLOYMENTID }}  
 
 jobs:
