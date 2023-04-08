@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure.OpenAI.Client.EndToEndTests", "Azure.OpenAI.Client.EndToEndTests\Azure.OpenAI.Client.EndToEndTests.csproj", "{890885A3-7EAC-4B6E-8946-C94B14975032}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.OpenAI.Client.EndToEndTests", "Azure.OpenAI.Client.EndToEndTests\Azure.OpenAI.Client.EndToEndTests.csproj", "{890885A3-7EAC-4B6E-8946-C94B14975032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

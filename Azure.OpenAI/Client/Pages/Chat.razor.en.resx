@@ -117,14 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChatNavLabel" xml:space="preserve">
+  <data name="Ask" xml:space="preserve">
+    <value>Ask</value>
+  </data>
+  <data name="ChatPrompt" xml:space="preserve">
+    <value>Enter OpenAI + Azure Search prompt</value>
+  </data>
+  <data name="ChatTitle" xml:space="preserve">
     <value>Chat</value>
   </data>
-  <data name="HomeNavLabel" xml:space="preserve">
-    <value>Home</value>
-    <comment>Nav bar Home label.</comment>
-  </data>
-  <data name="VoiceChatNavLabel" xml:space="preserve">
-    <value>Voice Chat</value>
+  <data name="Prompt" xml:space="preserve">
+    <value>Prompt</value>
   </data>
 </root>

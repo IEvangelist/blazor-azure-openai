@@ -105,7 +105,19 @@ ul, ol {
     }
 
 
-.rtl-lang
-{
+.rtl-lang {
     direction:rtl;
 }
+
+.hljs-copy-button {
+    top: 3em !important;
+}
+
+    .hljs-copy-button:hover {
+        filter: brightness(150%);
+    }
+
+    .hljs-copy-button[data-copied="true"] {
+        padding: 1em;
+        background-color: darkgreen;
+    }

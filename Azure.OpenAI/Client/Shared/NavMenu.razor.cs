@@ -10,4 +10,6 @@ public sealed partial class NavMenu
     string HomeNavLabel => Localizer[nameof(HomeNavLabel)];
 
     string VoiceChatNavLabel => Localizer[nameof(VoiceChatNavLabel)];
+
+    string ChatNavLabel => Localizer[nameof(ChatNavLabel)];
 }
