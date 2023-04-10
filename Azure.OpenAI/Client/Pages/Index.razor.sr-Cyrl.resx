@@ -58,7 +58,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AzureSdkGitHubLinkTitle" xml:space="preserve">
+    <value>ГитХуб линк за Азуре .НЕТ СДК.</value>
+  </data>
+  <data name="BingImageCreatorLinkText" xml:space="preserve">
+    <value>Бинг - Имаге Цреатер (поwеред бy ДАЛЛ-Е)</value>
+  </data>
   <data name="BingImageText" xml:space="preserve">
     <value>Ова фотографија је креирана помоћу генеративног АИ</value>
+  </data>
+  <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
+    <value>Мицрософт Леарн веза за Азуре ОпенАИ.</value>
+  </data>
+  <data name="MudBlazorLink" xml:space="preserve">
+    <value>Веза библиотеке компоненти МудБлазор.</value>
+  </data>
+  <data name="NuGetLinkAzureOpenAI" xml:space="preserve">
+    <value>НуГет линк за Азуре.АИ.ОпенАИ.</value>
   </data>
 </root>

@@ -58,7 +58,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AzureSdkGitHubLinkTitle" xml:space="preserve">
+    <value>Azure .NET SDK için GitHub bağlantısı.</value>
+  </data>
+  <data name="BingImageCreatorLinkText" xml:space="preserve">
+    <value>Bing - Görüntü Oluşturucu (DALL-E tarafından desteklenmektedir)</value>
+  </data>
   <data name="BingImageText" xml:space="preserve">
     <value>Bu fotoğraf üretici AI kullanılarak oluşturuldu</value>
+  </data>
+  <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
+    <value>Azure OpenAI için Microsoft Learn bağlantısı.</value>
+  </data>
+  <data name="MudBlazorLink" xml:space="preserve">
+    <value>MudBlazor Bileşen Kitaplığı bağlantısı.</value>
+  </data>
+  <data name="NuGetLinkAzureOpenAI" xml:space="preserve">
+    <value>Azure.AI.OpenAI için NuGet bağlantısı.</value>
   </data>
 </root>

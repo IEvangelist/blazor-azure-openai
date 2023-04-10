@@ -58,7 +58,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AzureSdkGitHubLinkTitle" xml:space="preserve">
+    <value>Link GitHub pentru Azure .NET SDK.</value>
+  </data>
+  <data name="BingImageCreatorLinkText" xml:space="preserve">
+    <value>Bing - Image Creater (powered by DALL-E)</value>
+  </data>
   <data name="BingImageText" xml:space="preserve">
     <value>Această fotografie a fost creată folosind AI generativă</value>
+  </data>
+  <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
+    <value>Linkul Microsoft Learn pentru Azure OpenAI.</value>
+  </data>
+  <data name="MudBlazorLink" xml:space="preserve">
+    <value>MudBlazor Componenta Biblioteca link-ul.</value>
+  </data>
+  <data name="NuGetLinkAzureOpenAI" xml:space="preserve">
+    <value>Link NuGet pentru Azure.AI.OpenAI.</value>
   </data>
 </root>
