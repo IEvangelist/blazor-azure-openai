@@ -7,6 +7,7 @@ public sealed partial class Index
 {
     [Inject] public required IStringLocalizer<Index> Localizer { get; set; }
 
+    string HomeTitle => Localizer[nameof(HomeTitle)];
     string BingImageText => Localizer[nameof(BingImageText)];
     string BingImageCreatorLinkText => Localizer[nameof(BingImageCreatorLinkText)];
     string AzureSdkGitHubLinkTitle => Localizer[nameof(AzureSdkGitHubLinkTitle)];
