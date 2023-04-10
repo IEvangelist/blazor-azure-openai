@@ -40,12 +40,16 @@ public sealed class CultureService
                     .GroupBy(culture => culture.TwoLetterISOLanguageName)
                     .Where(group => azureCultures.ContainsKey(group.Key)))
         {
-            CultureInfo culture;
             var azureCulture = azureCultures[group.Key];
-
-            if (group.Key == "en")
+            var culture = group.Key switch
             {
-                culture = group.Single(c => c.Name == "en-US");
+                "en" => group.Single(c => c.Name is "en-US"),
+                "sv" => group.Single(c => c.Name is "sv-SE"),
+                _ => null
+            };
+
+            if (culture is not null)
+            {
                 clientSupportedCultures.Add((culture, azureCulture));
                 continue;
             }

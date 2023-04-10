@@ -43,10 +43,8 @@ public sealed partial class VoiceChat : IDisposable
 
     protected override void OnInitialized()
     {
-        if (SessionStorage.GetItem<HashSet<string>>("openai-prompt-responses") is
-            {
-                Count: > 0
-            } responses)
+        if (SessionStorage.GetItem<HashSet<string>>(
+            "openai-prompt-responses") is { Count: > 0 } responses)
         {
             _responses = responses;
         }

@@ -12,7 +12,7 @@
         <CardHeaderContent>
             <MudText Typo="Typo.h5">
                 <MudLink Href="https://www.nuget.org/packages/Azure.AI.OpenAI" Target="_blank">
-                    Azure.AI.OpenAI
+                    Azure.AI.OpenAI 📦
                 </MudLink>
             </MudText>
             <MudText Typo="Typo.h6">Blazor 💜 OpenAI</MudText>
@@ -21,18 +21,21 @@
     <MudCardMedia Image="bing-generated.jpg" Height="580" />
     <MudCardContent>
         <MudText Typo="Typo.body2">
-            @(BingImageText) <MudLink Href="https://www.bing.com/images/create/" Target="_blank">Bing - Image Creater (powered by DALL-E)</MudLink>.
+            @BingImageText
+            <MudLink Href="https://www.bing.com/images/create/" Target="_blank">
+                @BingImageCreatorLinkText
+            </MudLink>.
         </MudText>
     </MudCardContent>
     <MudCardActions>
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Size="Size.Large" Target="_blank"
-                       Href="https://github.com/Azure/azure-sdk-for-net" Title="GitHub link for the Azure .NET SDK." />
+                       Href="https://github.com/Azure/azure-sdk-for-net" Title="@AzureSdkGitHubLinkTitle" />
         <MudIconButton Icon="@Icons.Material.Filled.GetApp" Size="Size.Large" Target="_blank"
-                       Href="https://www.nuget.org/packages/Azure.AI.OpenAI" Title="NuGet link for Azure.AI.OpenAI" />
+                       Href="https://www.nuget.org/packages/Azure.AI.OpenAI" Title="@NuGetLinkAzureOpenAI" />
         <MudIconButton Icon="@Icons.Custom.Brands.Microsoft" Size="Size.Large" Target="_blank"
                        Href="https://learn.microsoft.com/azure/cognitive-services/openai" 
-                       Title="Microsoft Learn link for Azure OpenAI." />
+                       Title="@MicrosoftLearnContentLinkTitle" />
         <MudIconButton Icon="@Icons.Custom.Brands.MudBlazor" Size="Size.Large" Target="_blank"
-                       Href="https://www.mudblazor.com/" Title="MudBlazor link." />
+                       Href="https://www.mudblazor.com/" Title="@MudBlazorLink" />
     </MudCardActions>
 </MudCard>

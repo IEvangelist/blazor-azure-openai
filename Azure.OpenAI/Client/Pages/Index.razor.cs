@@ -8,4 +8,9 @@ public sealed partial class Index
     [Inject] public required IStringLocalizer<Index> Localizer { get; set; }
 
     string BingImageText => Localizer[nameof(BingImageText)];
+    string BingImageCreatorLinkText => Localizer[nameof(BingImageCreatorLinkText)];
+    string AzureSdkGitHubLinkTitle => Localizer[nameof(AzureSdkGitHubLinkTitle)];
+    string NuGetLinkAzureOpenAI => Localizer[nameof(NuGetLinkAzureOpenAI)];
+    string MicrosoftLearnContentLinkTitle => Localizer[nameof(MicrosoftLearnContentLinkTitle)];
+    string MudBlazorLink => Localizer[nameof(MudBlazorLink)];
 }
