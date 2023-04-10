@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>這張照片是使用生成式AI創建的</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>家</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>Microsoft Learn link for Azure OpenAI。</value>
   </data>

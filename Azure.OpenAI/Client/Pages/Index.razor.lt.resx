@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>Ši nuotrauka buvo sukurta naudojant generacinį AI</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Namon</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>"Microsoft Learn" saitas, skirtas "Azure OpenAI".</value>
   </data>

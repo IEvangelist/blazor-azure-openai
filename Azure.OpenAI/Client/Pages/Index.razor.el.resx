@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>Αυτή η φωτογραφία δημιουργήθηκε χρησιμοποιώντας γενετικό AI</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Σπίτι</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>Σύνδεση Microsoft Learn για το Azure OpenAI.</value>
   </data>

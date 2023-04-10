@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>Bu fotoğraf üretici AI kullanılarak oluşturuldu</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Ev</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>Azure OpenAI için Microsoft Learn bağlantısı.</value>
   </data>

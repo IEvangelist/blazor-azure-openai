@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>Ez a fénykép generatív mesterséges intelligencia használatával készült</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Otthon</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>Microsoft Learn hivatkozás az Azure OpenAI-hoz.</value>
   </data>

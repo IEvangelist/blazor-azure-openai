@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>Tämä valokuva on luotu generatiivisella tekoälyllä</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Koti</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>Microsoft Learn -linkki Azure OpenAI:lle.</value>
   </data>

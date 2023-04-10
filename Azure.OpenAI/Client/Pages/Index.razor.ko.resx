@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>이 사진은 제너레이티브 AI를 사용하여 제작되었습니다.</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>집</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>Azure OpenAI에 대한 Microsoft Learn 링크.</value>
   </data>
