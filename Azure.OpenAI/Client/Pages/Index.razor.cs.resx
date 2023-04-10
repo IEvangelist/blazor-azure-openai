@@ -58,7 +58,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AzureSdkGitHubLinkTitle" xml:space="preserve">
+    <value>Odkaz na GitHub pro sadu Azure .NET SDK.</value>
+  </data>
+  <data name="BingImageCreatorLinkText" xml:space="preserve">
+    <value>Bing – Nástroj pro vytváření obrázků (využívá technologii DALL-E)</value>
+  </data>
   <data name="BingImageText" xml:space="preserve">
     <value>Tato fotografie byla vytvořena pomocí generativní umělé inteligence</value>
+  </data>
+  <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
+    <value>Odkaz Microsoft Learn pro Azure OpenAI.</value>
+  </data>
+  <data name="MudBlazorLink" xml:space="preserve">
+    <value>Odkaz na knihovnu komponent MudBlazor.</value>
+  </data>
+  <data name="NuGetLinkAzureOpenAI" xml:space="preserve">
+    <value>Odkaz NuGet pro Azure.AI.OpenAI.</value>
   </data>
 </root>

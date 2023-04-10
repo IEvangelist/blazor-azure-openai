@@ -58,7 +58,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AzureSdkGitHubLinkTitle" xml:space="preserve">
+    <value>Lien GitHub pour le Kit de développement logiciel (SDK) Azure .NET.</value>
+  </data>
+  <data name="BingImageCreatorLinkText" xml:space="preserve">
+    <value>Bing - Image Creatorr (optimisé par DALL-E)</value>
+  </data>
   <data name="BingImageText" xml:space="preserve">
     <value>Cette photo a été créée à l’aide de l’IA générative</value>
+  </data>
+  <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
+    <value>Lien Microsoft Learn pour Azure OpenAI.</value>
+  </data>
+  <data name="MudBlazorLink" xml:space="preserve">
+    <value>Lien vers la bibliothèque de composants MudBlazor.</value>
+  </data>
+  <data name="NuGetLinkAzureOpenAI" xml:space="preserve">
+    <value>Lien NuGet pour Azure.AI.OpenAI.</value>
   </data>
 </root>

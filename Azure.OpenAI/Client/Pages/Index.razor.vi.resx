@@ -58,7 +58,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AzureSdkGitHubLinkTitle" xml:space="preserve">
+    <value>Liên kết GitHub cho Azure .NET SDK.</value>
+  </data>
+  <data name="BingImageCreatorLinkText" xml:space="preserve">
+    <value>Bing - Trình tạo hình ảnh (được cung cấp bởi DALL-E)</value>
+  </data>
   <data name="BingImageText" xml:space="preserve">
     <value>Bức ảnh này được tạo ra bằng cách sử dụng AI tạo ra</value>
+  </data>
+  <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
+    <value>Liên kết Microsoft Learn cho Azure OpenAI.</value>
+  </data>
+  <data name="MudBlazorLink" xml:space="preserve">
+    <value>Liên kết Thư viện thành phần MudBlazor.</value>
+  </data>
+  <data name="NuGetLinkAzureOpenAI" xml:space="preserve">
+    <value>Liên kết NuGet cho Azure.AI.OpenAI.</value>
   </data>
 </root>

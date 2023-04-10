@@ -58,7 +58,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AzureSdkGitHubLinkTitle" xml:space="preserve">
+    <value>ارتباط GitHub ل Azure .NET SDK.</value>
+  </data>
+  <data name="BingImageCreatorLinkText" xml:space="preserve">
+    <value>Bing - منشئ الصور (مدعوم من DALL-E)</value>
+  </data>
   <data name="BingImageText" xml:space="preserve">
     <value>تم إنشاء هذه الصورة باستخدام الذكاء الاصطناعي التوليدية</value>
+  </data>
+  <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
+    <value>ارتباط Microsoft Learn ل Azure OpenAI.</value>
+  </data>
+  <data name="MudBlazorLink" xml:space="preserve">
+    <value>رابط مكتبة مكونات MudBlazor.</value>
+  </data>
+  <data name="NuGetLinkAzureOpenAI" xml:space="preserve">
+    <value>رابط NuGet ل Azure.AI.OpenAI.</value>
   </data>
 </root>
