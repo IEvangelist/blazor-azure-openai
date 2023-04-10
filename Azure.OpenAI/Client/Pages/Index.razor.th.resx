@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>ภาพนี้สร้างขึ้นโดยใช้ AI เชิงกําเนิด</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>บ้าน</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>ลิงก์ Microsoft Learn สําหรับ Azure OpenAI</value>
   </data>

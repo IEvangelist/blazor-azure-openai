@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>Hierdie foto is geskep met behulp van generatiewe AI</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Huis</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>Microsoft Learn skakel vir Azure OpenAI.</value>
   </data>

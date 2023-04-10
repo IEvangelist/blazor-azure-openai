@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>Ova fotografija je kreirana pomoću generativnog AI</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Kuжi</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>Microsoft Learn veza za Azure OpenAI.</value>
   </data>

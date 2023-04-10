@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>این عکس با استفاده از هوش مصنوعی مولد ایجاد شده است</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>خانه</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>Microsoft Learn link for Azure OpenAI.</value>
   </data>

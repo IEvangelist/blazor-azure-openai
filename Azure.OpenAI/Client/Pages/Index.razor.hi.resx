@@ -67,6 +67,9 @@
   <data name="BingImageText" xml:space="preserve">
     <value>यह तस्वीर जनरेटिव एआई का उपयोग कर के बनाई गई थी</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>घर</value>
+  </data>
   <data name="MicrosoftLearnContentLinkTitle" xml:space="preserve">
     <value>Azure OpenAI के लिए Microsoft जानें लिंक.</value>
   </data>
