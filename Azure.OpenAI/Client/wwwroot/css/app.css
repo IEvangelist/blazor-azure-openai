@@ -1,6 +1,11 @@
 pre {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+
+div.mud-tabs-panels > div > pre {
+    padding-top: initial;
+    padding-bottom: initial;
 }
 
 blockquote:empty {
@@ -12,13 +17,14 @@ blockquote:not(:empty) {
     padding: 1rem 1.5rem;
     border-radius: 6px;
     background: rgba(0,0,0,.2);
-    margin-bottom: .5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
     blockquote:not(:empty) p::before {
         content: '\201C';
         font-size: 2rem;
-        padding-right: 1.5rem;
+        padding-right: .5rem;
     }
 
 ul, ol {
@@ -106,11 +112,11 @@ ul, ol {
 
 
 .rtl-lang {
-    direction:rtl;
+    direction: rtl;
 }
 
 .hljs-copy-button {
-    top: 3em !important;
+    top: 2em !important;
 }
 
     .hljs-copy-button:hover {
@@ -119,5 +125,122 @@ ul, ol {
 
     .hljs-copy-button[data-copied="true"] {
         padding: 1em;
-        background-color: darkgreen;
+        background-color: #1b5e20;
     }
+
+        .hljs-copy-button[data-copied="true"]:hover {
+            filter: none;
+            background-color: initial;
+        }
+
+.mud-nav-item {
+    font-size: 1.2rem;
+}
+
+.mud-navmenu > * > a > svg {
+    font-size: 2rem;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.full-height {
+    height: 100% !important;
+}
+
+.filter-shadow {
+    filter: drop-shadow(0px 0px 5px rbga(0,0,0,.5));
+}
+
+.clickable {
+    border: 3px solid transparent;
+    cursor: pointer;
+}
+
+    .clickable:hover {
+        border-width: 3px;
+        border-color: var(--mud-palette-secondary-lighten);
+    }
+
+iframe {
+    min-height: 60vh;
+    min-width: 100%;
+}
+
+.icon-huge {
+    font-size: 4rem;
+}
+
+.dim {
+    filter: brightness(90%);
+}
+
+    .dim:hover {
+        transition: all 0.3s ease-out;
+        filter: brightness(80%);
+    }
+
+.text-align-center {
+    text-align: center;
+}
+
+/* Address various Lighthouse audit issues */
+.mud-snackbar.mud-snackbar-blurred {
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+}
+
+.mud-input-control.mud-input-number-control input[type=number] {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+}
+
+button {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.mud-tooltip-root {
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+}
+
+.ten-twelves {
+    min-width: calc(100% / 12 * 10) !important;
+    width: calc(100% / 12 * 10) !important;
+}
+
+#toggle-mic > span.mud-badge-wrapper > span.mud-badge-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    inset: auto auto calc(100% - 1.2rem) calc(100% - 1rem);
+}
+
+    #toggle-mic > span.mud-badge-wrapper > span.mud-badge-icon > svg {
+        font-size: 1.2rem;
+        margin-inline-start: 0;
+        margin-top: .1rem;
+    }
+
+#toggle-mic[mic="on"] > span.mud-badge-wrapper > span.mud-badge-icon {
+    animation: active 1.5s infinite;
+}
+
+@keyframes active {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(118,106,231,0.4);
+    }
+
+    70% {
+        -webkit-box-shadow: 0 0 0 1.2rem rgba(118,106,231,0);
+    }
+
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(118,106,231,0);
+    }
+}

@@ -120,11 +120,20 @@
   <data name="Ask" xml:space="preserve">
     <value>Ask</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Asked at {0:T} on {0:d}</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Voice Chat</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Enter an Azure.AI.OpenAI chat prompt.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Use Shift + Enter for new lines.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Open text-to-speech seetings dialog?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Prompt</value>

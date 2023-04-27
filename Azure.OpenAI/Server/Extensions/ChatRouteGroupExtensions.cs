@@ -12,9 +12,11 @@ internal static class ChatRouteGroupExtensions
         return openAI;
     }
 
-    static async IAsyncEnumerable<string> PostChatPromptAsync(OpenAIClient client, [FromBody] ChatPrompt prompt)
+    static async IAsyncEnumerable<TokenizedResponse> PostChatPromptAsync(
+        OpenAIClient client, ChatPrompt prompt, IConfiguration config)
     {
-        var deploymentId = Environment.GetEnvironmentVariable("AzureOpenAI__DeploymentId") ?? "pine-chat";
+        var deploymentId = config["AzureOpenAI__DeploymentId"] ?? "pine-chat";
+
         var response = await client.GetChatCompletionsStreamingAsync(
             deploymentId, new ChatCompletionsOptions
             {
@@ -38,7 +40,7 @@ internal static class ChatRouteGroupExtensions
         {
             await foreach (var message in choice.GetMessageStreaming())
             {
-                yield return message.Content;
+                yield return new TokenizedResponse(message.Content);
             }
         }
     }

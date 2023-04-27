@@ -5,18 +5,15 @@ namespace Azure.OpenAI.Client.Pages;
 
 public sealed partial class VoiceChat : IDisposable
 {
-    string _userPrompt = "";
-    bool _isRecognizingSpeech = false;
-    bool _isReceivingResponse = false;
-    bool _isReadingResponse = false;
-
-    string? _intermediateResponse = null;
-    IDisposable? _recognitionSubscription;
-    SpeechRecognitionErrorEvent? _errorEvent;
-    VoicePreferences? _voicePreferences;
-    HashSet<string> _responses = new();
-
-    readonly MarkdownPipeline _pipeline = new MarkdownPipelineBuilder()
+    private string _userQuestion = "";
+    private UserQuestion _currentQuestion;
+    private bool _isRecognizingSpeech = false;
+    private bool _isReceivingResponse = false;
+    private bool _isReadingResponse = false;
+    private IDisposable? _recognitionSubscription;
+    private VoicePreferences? _voicePreferences;
+    private readonly Dictionary<UserQuestion, string?> _questionAndAnswerMap = new();
+    private readonly MarkdownPipeline _pipeline = new MarkdownPipelineBuilder()
         .ConfigureNewLine("\n")
         .UseAdvancedExtensions()
         .UseEmojiAndSmiley()
@@ -28,28 +25,12 @@ public sealed partial class VoiceChat : IDisposable
     [Inject] public required ISpeechRecognitionService SpeechRecognition { get; set; }
     [Inject] public required ISpeechSynthesisService SpeechSynthesis { get; set; }
     [Inject] public required ILocalStorageService LocalStorage { get; set; }
-    [Inject] public required ISessionStorageService SessionStorage { get; set; }
     [Inject] public required IJSInProcessRuntime JavaScript { get; set; }
+    [Inject] public required ILogger<VoiceChat> Logger { get; set; }
     [Inject] public required IStringLocalizer<VoiceChat> Localizer { get; set; }
 
-    string Prompt => Localizer[nameof(Prompt)];
-    string Save => Localizer[nameof(Save)];
-    string Speak => Localizer[nameof(Speak)];
-    string Stop => Localizer[nameof(Stop)];
-    string Chat => Localizer[nameof(Chat)];
-    string ChatPrompt => Localizer[nameof(ChatPrompt)];
-    string Ask => Localizer[nameof(Ask)];
-    string TTSPreferences => Localizer[nameof(TTSPreferences)];
-
-    protected override void OnInitialized()
-    {
-        if (SessionStorage.GetItem<HashSet<string>>(
-            "openai-prompt-responses") is { Count: > 0 } responses)
-        {
-            _responses = responses;
-        }
-        _voicePreferences = new VoicePreferences(LocalStorage);
-    }
+    [CascadingParameter(Name = nameof(IsReversed))]
+    public required bool IsReversed { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -59,80 +40,82 @@ public sealed partial class VoiceChat : IDisposable
         }
     }
 
-    void OnSendPrompt()
+    private void OnSendPrompt()
     {
-        if (_isReceivingResponse)
+        if (_isReceivingResponse || string.IsNullOrWhiteSpace(_userQuestion))
         {
             return;
         }
 
         _isReceivingResponse = true;
+        _currentQuestion = new(_userQuestion, DateTime.Now);
+        _questionAndAnswerMap[_currentQuestion] = null;
 
         OpenAIPrompts.Enqueue(
-            _userPrompt,
-            async response => await InvokeAsync(() =>
-        {
-            var (_, responseText, isComplete) = response;
-            var promptWithResponseText = $"""
-                > {_userPrompt}
-
-                {responseText}
-                """;
-            var html = Markdown.ToHtml(promptWithResponseText, _pipeline);
-
-            _intermediateResponse = html;
-
-            if (isComplete)
+            _userQuestion,
+            async (PromptResponse response) => await InvokeAsync(() =>
             {
-                _responses.Add(_intermediateResponse);
-                SessionStorage.SetItem("openai-prompt-responses", _responses);
+                var (_, responseText, isComplete) = response;
+                var html = Markdown.ToHtml(responseText, _pipeline);
 
-                _intermediateResponse = null;
-                _isReadingResponse = true;
+                _questionAndAnswerMap[_currentQuestion] = html;
 
-                var (voice, rate, isEnabled) = _voicePreferences!;
-                if (isEnabled)
+                if (isComplete)
                 {
-                    var utterance = new SpeechSynthesisUtterance
+                    _voicePreferences = new VoicePreferences(LocalStorage);
+                    var (voice, rate, isEnabled) = _voicePreferences;
+                    if (isEnabled)
                     {
-                        Rate = rate,
-                        Text = responseText
-                    };
-                    if (voice is not null)
-                    {
-                        utterance.Voice = new SpeechSynthesisVoice
+                        _isReadingResponse = true;
+                        var utterance = new SpeechSynthesisUtterance
                         {
-                            Name = voice
+                            Rate = rate,
+                            Text = responseText
                         };
+                        if (voice is not null)
+                        {
+                            utterance.Voice = new SpeechSynthesisVoice
+                            {
+                                Name = voice
+                            };
+                        }
+                        SpeechSynthesis.Speak(utterance, duration =>
+                        {
+                            _isReadingResponse = false;
+                            StateHasChanged();
+                        });
                     }
-                    SpeechSynthesis.Speak(utterance, duration =>
-                    {
-                        _isReadingResponse = false;
-                        StateHasChanged();
-                    });
                 }
-            }
 
-            _isReceivingResponse = isComplete is false;
-            if (isComplete)
-            {
-                _userPrompt = "";
-            }
+                _isReceivingResponse = isComplete is false;
+                if (isComplete)
+                {
+                    _userQuestion = "";
+                    _currentQuestion = default;
+                }
 
-            StateHasChanged();
-        }));
+                StateHasChanged();
+            }));
+    }
+
+    private void OnKeyUp(KeyboardEventArgs args)
+    {
+        if (args is { Key: "Enter", ShiftKey: false })
+        {
+            OnSendPrompt();
+        }
     }
 
     protected override void OnAfterRender(bool firstRender) =>
         JavaScript.InvokeVoid("highlight");
 
-    void StopTalking()
+    private void StopTalking()
     {
         SpeechSynthesis.Cancel();
         _isReadingResponse = false;
     }
 
-    void OnRecognizeSpeechClick()
+    private void OnRecognizeSpeechClick()
     {
         if (_isRecognizingSpeech)
         {
@@ -152,9 +135,9 @@ public sealed partial class VoiceChat : IDisposable
         }
     }
 
-    async Task ShowVoiceDialog()
+    private async Task ShowVoiceDialogAsync()
     {
-        var dialog = await Dialog.ShowAsync<VoiceDialog>(title: TTSPreferences);
+        var dialog = await Dialog.ShowAsync<VoiceDialog>(title: "🔊 Text-to-speech Preferences");
         var result = await dialog.Result;
         if (result is not { Canceled: true })
         {
@@ -162,34 +145,36 @@ public sealed partial class VoiceChat : IDisposable
         }
     }
 
-    void OnStarted()
+    private void OnStarted()
     {
         _isRecognizingSpeech = true;
         StateHasChanged();
     }
 
-    void OnEnded()
+    private void OnEnded()
     {
         _isRecognizingSpeech = false;
         StateHasChanged();
     }
 
-    void OnError(SpeechRecognitionErrorEvent errorEvent)
+    private void OnError(SpeechRecognitionErrorEvent errorEvent)
     {
-        _errorEvent = errorEvent;
+        Logger.LogWarning(
+            "{Error}: {Message}", errorEvent.Error, errorEvent.Message);
+
         StateHasChanged();
     }
 
-    void OnRecognized(string transcript)
+    private void OnRecognized(string transcript)
     {
-        _userPrompt = _userPrompt switch
+        _userQuestion = _userQuestion switch
         {
             null => transcript,
-            _ => $"{_userPrompt.Trim()} {transcript}".Trim()
+            _ => $"{_userQuestion.Trim()} {transcript}".Trim()
         };
 
         StateHasChanged();
     }
 
-    void IDisposable.Dispose() => _recognitionSubscription?.Dispose();
+    public void Dispose() => _recognitionSubscription?.Dispose();
 }

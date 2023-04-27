@@ -1,6 +1,6 @@
 ﻿@page "/"
 
-<PageTitle>@HomeTitle</PageTitle>
+<PageTitle>@Localizer["Home"]</PageTitle>
 
 <MudCard Elevation="25">
     <MudCardHeader>
@@ -21,21 +21,21 @@
     <MudCardMedia Image="bing-generated.jpg" Height="580" />
     <MudCardContent>
         <MudText Typo="Typo.body2">
-            @BingImageText
-            <MudLink Href="https://www.bing.com/images/create/" Target="_blank">
-                @BingImageCreatorLinkText
-            </MudLink>.
+            @Localizer["BingImageText"] <MudLink Href="https://www.bing.com/images/create/" Target="_blank">@Localizer["PoweredByDalle"]</MudLink>.
         </MudText>
     </MudCardContent>
     <MudCardActions>
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Size="Size.Large" Target="_blank"
-                       Href="https://github.com/Azure/azure-sdk-for-net" Title="@AzureSdkGitHubLinkTitle" />
+                       Href="https://github.com/Azure/azure-sdk-for-net" 
+                       Title=@Localizer["AzureSdkGitHubLink"] />
         <MudIconButton Icon="@Icons.Material.Filled.GetApp" Size="Size.Large" Target="_blank"
-                       Href="https://www.nuget.org/packages/Azure.AI.OpenAI" Title="@NuGetLinkAzureOpenAI" />
+                       Href="https://www.nuget.org/packages/Azure.AI.OpenAI" 
+                       Title=@Localizer["AzureOpenAINuGetLink"] />
         <MudIconButton Icon="@Icons.Custom.Brands.Microsoft" Size="Size.Large" Target="_blank"
                        Href="https://learn.microsoft.com/azure/cognitive-services/openai" 
-                       Title="@MicrosoftLearnContentLinkTitle" />
+                       Title=@Localizer["MicrosoftAzureOpenAILink"] />
         <MudIconButton Icon="@Icons.Custom.Brands.MudBlazor" Size="Size.Large" Target="_blank"
-                       Href="https://www.mudblazor.com/" Title="@MudBlazorLink" />
+                       Href="https://www.mudblazor.com/" 
+                       Title=@Localizer["MudBlazorLink" ] />
     </MudCardActions>
 </MudCard>
