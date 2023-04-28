@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Domandare</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Richiesta a {0:T} su {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Sto generando una risposta, per favore aspetta ...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Chat vocale</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Immettere un prompt di chat di Azure.AI.OpenAI.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Usa Maiusc + Invio per le nuove righe.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Aprire la finestra di dialogo di seeting di sintesi vocale?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Sollecito</value>

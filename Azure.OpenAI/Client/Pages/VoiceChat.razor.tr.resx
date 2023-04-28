@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Sormak</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>{0:T} tarihinde {0:d} üzerinde soruldu</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Bir cevap üretiyorum, lütfen bekleyin...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Sesli Sohbet</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Azure.AI.OpenAI sohbet istemi girin.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Yeni satırlar için Shift + Enter tuşlarını kullanın.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Metin okuma görünümleri iletişim kutusunu açık mı?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Istemi</value>

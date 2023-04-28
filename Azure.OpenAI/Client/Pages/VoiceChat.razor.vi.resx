@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Hỏi</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Được hỏi lúc {0:T} on {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Tôi đang tạo câu trả lời, vui lòng đợi...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Trò chuyện thoại</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Nhập lời nhắc trò chuyện Azure.AI.OpenAI.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Sử dụng Shift + Enter cho các dòng mới.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Mở hộp thoại tìm kiếm văn bản thành giọng nói?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Nhắc</value>

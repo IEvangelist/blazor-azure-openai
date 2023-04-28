@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Pitati</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Upitan u {0:T} u {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Generiram odgovor, molim vas pričekajte...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
-    <value>Glasovni chat</value>
+    <value>Glasovni razgovor</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Unesite upit za čavrljanje servisa Azure.AI.OpenAI.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Za nove retke koristite Shift + Enter.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Otvaranje dijaloškog okvira za seeting pretvaranja teksta u govor?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Brz</value>
@@ -80,6 +92,6 @@
     <value>Prestati!!</value>
   </data>
   <data name="TTSPreferences" xml:space="preserve">
-    <value>Preference teksta u govor</value>
+    <value>Preference pretvaranja teksta u govor</value>
   </data>
 </root>

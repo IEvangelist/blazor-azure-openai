@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Soruş</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>{0:d} üzərində {0:T} ünvanında soruşulub</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Cavab yaradıram, xahiş edirəm gözləyin...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Səsli Söhbət</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Azure.AI.OpenAI chat prompt daxil olun.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Yeni sətirlər üçün Shift + Enter istifadə edin.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Mətndən-ifadəyə seetings dialoqunu aç?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Syn</value>

@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Fråga</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Frågad vid {0:T} på {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Jag genererar ett svar, vänta ...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Röstchatt</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Ange en Azure.AI.OpenAI-chattprompt.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Använd Skift + Enter för nya rader.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Öppna text-till-tal-dialogrutan?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Snabb</value>

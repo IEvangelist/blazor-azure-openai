@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Ζητώ</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Ερώτηση στις {0:T} στις {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Δημιουργώ μια απάντηση, παρακαλώ περιμένετε...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Φωνητική συνομιλία</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Εισαγάγετε ένα μήνυμα προτροπής συνομιλίας Azure.AI.OpenAI.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Χρησιμοποιήστε το συνδυασμό πλήκτρων Shift + Enter για νέες γραμμές.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Ανοίξτε το παράθυρο διαλόγου seetings κειμένου σε ομιλία;</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Προτροπή</value>

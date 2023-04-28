@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Питам</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Попитан в {0:T} на {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Аз генерирам отговор, моля изчакайте...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Гласов чат</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Въведете подкана за чат на Azure.AI.OpenAI.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Използвайте Shift + Enter за нови редове.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Отваряне на диалоговия прозорец за прозиране на текст към говор?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Бърз</value>

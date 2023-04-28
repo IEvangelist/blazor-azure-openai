@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Klausti</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Paklausė {0:T} on {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Sugeneruoju atsakymą, palaukite...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Balso pokalbis</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
-    <value>Įveskite "Azure.AI.OpenAI" pokalbių raginimą.</value>
+    <value>Įveskite Azure.AI.OpenAI pokalbių raginimą.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Naudokite "Shift" + "Enter" naujoms eilutėms.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Atidaryti teksto į kalbą matymo dialogo langą?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Raginimas</value>

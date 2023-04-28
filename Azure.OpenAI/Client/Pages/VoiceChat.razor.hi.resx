@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>पूछना</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>{0:d} पर {0:T} पर पूछा गया</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>मैं एक जवाब पैदा कर रहा हूं, कृपया प्रतीक्षा करें ...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>वॉयस चैट</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>एक Azure.AI.OpenAI चैट प्रॉम्प्ट दर्ज करें।</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>नई लाइनों के लिए Shift + Enter का उपयोग करें.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>टेक्स्ट-टू-स्पीच सीटिंग संवाद खोलें?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>तुरन्त</value>

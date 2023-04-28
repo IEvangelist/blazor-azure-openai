@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Vragen</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Gevraagd bij {0:T} op {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Ik genereer een antwoord, even geduld...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
-    <value>Voice Chat</value>
+    <value>Voicechat</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Voer een Azure.AI.OpenAI-chatprompt in.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Gebruik Shift + Enter voor nieuwe regels.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Dialoogvenster tekst-naar-spraak openen?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Prompt</value>
