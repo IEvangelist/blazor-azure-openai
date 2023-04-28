@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Minta</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Ditanya pada {0:T} pada {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Saya membuat jawaban, harap tunggu ...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Obrolan Suara</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Masukkan perintah obrolan Azure.AI.OpenAI.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Gunakan Shift + Enter untuk baris baru.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Buka dialog tampilan text-to-speech?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Cepat</value>

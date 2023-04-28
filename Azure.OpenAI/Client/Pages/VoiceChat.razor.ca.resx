@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Preguntar</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Preguntat a les {0:T} el {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Estic generant una resposta, si us plau esperi...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Xat de veu</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Introduïu una sol·licitud de xat de l'Azure.AI.OpenAI.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Utilitzeu Maj + Retorn per a línies noves.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Obriu el diàleg de visualitzacions de text a veu?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Puntual</value>

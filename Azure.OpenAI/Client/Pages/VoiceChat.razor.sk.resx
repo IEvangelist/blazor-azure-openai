@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Žiadať</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Spýtal sa {0:T} dňa {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Generujem odpoveď, počkajte, prosím...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Hlasový chat</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Zadajte výzvu na rozhovor Azure.AI.OpenAI.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Použitie kombinácie klávesov Shift + Enter pre nové riadky.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Otvoriť dialógové okno prevodu textu na reč?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Okamžitý</value>

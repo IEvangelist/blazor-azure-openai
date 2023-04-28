@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>שאל</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>נשאל ב- {0:T} ב- {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>אני מייצר תשובה, אנא המתן...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>צ'אט קולי</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>הזן בקשת צ'אט של Azure.AI.OpenAI.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>השתמש ב- Shift + Enter לשורות חדשות.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>פתח תיבת דו-שיח של טקסט לדיבור?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>בשורת</value>

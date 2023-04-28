@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>묻다</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>{0:d}의 {0:T}에서 물었습니다.</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>답변을 생성하는 중입니다.</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>음성 채팅</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Azure.AI.OpenAI 채팅 프롬프트를 입력합니다.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>새 줄에는 Shift + Enter를 사용합니다.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>텍스트 음성 변환 보기 대화 상자를 열시겠습니까?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>프롬프트</value>
@@ -80,6 +92,6 @@
     <value>멈추다!!</value>
   </data>
   <data name="TTSPreferences" xml:space="preserve">
-    <value>텍스트 음성 변환 기본 설정</value>
+    <value>TTS(텍스트 음성 변환) 기본 설정</value>
   </data>
 </root>

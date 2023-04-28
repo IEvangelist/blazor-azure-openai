@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Kérdez</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Megkérdezve: {0:T} a következőn: {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Generálok egy választ, kérem, várjon...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Hangcsevegés</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Adjon meg egy Azure.AI.OpenAI csevegési kérést.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Használja a Shift + Enter billentyűkombinációt az új sorokhoz.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Nyissa meg a szövegfelolvasó párbeszédpanelt?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Haladéktalan</value>

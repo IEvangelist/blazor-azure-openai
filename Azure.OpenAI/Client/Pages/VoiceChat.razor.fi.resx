@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>Kysyä</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>Kysytään {0:T} {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>Luon vastauksen, odota...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Ääni-chat</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
     <value>Kirjoita Azure.AI.OpenAI-keskustelukehote.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>Käytä näppäinyhdistelmää Vaihto + Enter uusille riveille.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>Avaa teksti puheeksi -seetings-valintaikkuna?</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>Ripeä</value>

@@ -61,11 +61,23 @@
   <data name="Ask" xml:space="preserve">
     <value>بپرسید</value>
   </data>
+  <data name="AskedOnFormat" xml:space="preserve">
+    <value>پرسیده شده در {0:T} در {0:d}</value>
+  </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>من در حال تولید یک پاسخ، لطفا صبر کنید ...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
-    <value>گپ صوتی</value>
+    <value>چت صوتی</value>
   </data>
   <data name="ChatPrompt" xml:space="preserve">
-    <value>وارد کنید Azure.AI.OpenAI چت سریع.</value>
+    <value>یک اعلان گفتگوی Azure.AI.OpenAI را وارد کنید.</value>
+  </data>
+  <data name="InputHelperText" xml:space="preserve">
+    <value>از Shift + Enter برای خطوط جدید استفاده کنید.</value>
+  </data>
+  <data name="OpenTTSDialog" xml:space="preserve">
+    <value>محاورهی seetings متن به گفتار باز شود ؟</value>
   </data>
   <data name="Prompt" xml:space="preserve">
     <value>اعلان</value>
