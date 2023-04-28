@@ -5,6 +5,8 @@ namespace Azure.OpenAI.Client.Pages;
 
 public sealed partial class VoiceChat : IDisposable
 {
+    private const string SessionChatHistoryKey = "session-chat-history";
+
     private string _userQuestion = "";
     private UserQuestion _currentQuestion;
     private bool _isRecognizingSpeech = false;
@@ -12,7 +14,8 @@ public sealed partial class VoiceChat : IDisposable
     private bool _isReadingResponse = false;
     private IDisposable? _recognitionSubscription;
     private VoicePreferences? _voicePreferences;
-    private readonly Dictionary<UserQuestion, string?> _questionAndAnswerMap = new();
+    private Dictionary<UserQuestion, string?> _questionAndAnswerMap = new();
+
     private readonly MarkdownPipeline _pipeline = new MarkdownPipelineBuilder()
         .ConfigureNewLine("\n")
         .UseAdvancedExtensions()
@@ -25,12 +28,19 @@ public sealed partial class VoiceChat : IDisposable
     [Inject] public required ISpeechRecognitionService SpeechRecognition { get; set; }
     [Inject] public required ISpeechSynthesisService SpeechSynthesis { get; set; }
     [Inject] public required ILocalStorageService LocalStorage { get; set; }
+    [Inject] public required ISessionStorageService SessionStorage { get; set; }
     [Inject] public required IJSInProcessRuntime JavaScript { get; set; }
     [Inject] public required ILogger<VoiceChat> Logger { get; set; }
     [Inject] public required IStringLocalizer<VoiceChat> Localizer { get; set; }
 
-    [CascadingParameter(Name = nameof(IsReversed))]
-    public required bool IsReversed { get; set; }
+    protected override void OnInitialized()
+    {
+        if (SessionStorage.GetItem<Dictionary<UserQuestion, string?>>(SessionChatHistoryKey)
+            is Dictionary<UserQuestion, string?> map)
+        {
+            _questionAndAnswerMap = map;
+        }
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -90,6 +100,8 @@ public sealed partial class VoiceChat : IDisposable
                 _isReceivingResponse = isComplete is false;
                 if (isComplete)
                 {
+                    SessionStorage.SetItem(SessionChatHistoryKey, _questionAndAnswerMap);
+
                     _userQuestion = "";
                     _currentQuestion = default;
                 }

@@ -11,7 +11,7 @@
             case RequestVoiceState.FoundVoices:
                 if (_voices is { Length: > 0 })
                 {
-				<MudSelect T="string" Label=@Localizer["Voice"] AdornmentColor="Color.Secondary"
+				    <MudSelect T="string" Label=@Localizer["Voice"] AdornmentColor="Color.Secondary"
                                AutoFocus="true" Strict="true" Variant="Variant.Outlined"
                                AnchorOrigin="Origin.BottomCenter" ReadOnly="(_state is RequestVoiceState.RequestingVoices)"
                                TextChanged="OnValueChanged" 

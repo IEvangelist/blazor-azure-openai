@@ -15,7 +15,7 @@ internal static class ChatRouteGroupExtensions
     static async IAsyncEnumerable<TokenizedResponse> PostChatPromptAsync(
         OpenAIClient client, ChatPrompt prompt, IConfiguration config)
     {
-        var deploymentId = config["AzureOpenAI__DeploymentId"] ?? "pine-chat";
+        var deploymentId = config["AzureOpenAI:DeploymentId"] ?? "pine-chat";
 
         var response = await client.GetChatCompletionsStreamingAsync(
             deploymentId, new ChatCompletionsOptions
@@ -27,9 +27,11 @@ internal static class ChatRouteGroupExtensions
                         You're name is 'Blazor Clippy'.
                         You will always reply with a Markdown formatted response.
                         """),
+
                     new ChatMessage(ChatRole.User, "What's your name?"),
+
                     new ChatMessage(ChatRole.Assistant,
-                        "Hi, my name is **Blazor Clippy**! Nice to meet you."),
+                        "Hi, my name is **Blazor Clippy**! Nice to meet you. 🤓"),
 
                     new ChatMessage(ChatRole.User, prompt.Prompt)
                 }

@@ -29,7 +29,7 @@
         }
         else
         {
-            <MudStack Reverse="@IsReversed" Spacing="12">
+            <MudStack Reverse="false" Spacing="12">
                 @foreach (var ((question, askedOn), answer) in _questionAndAnswerMap)
                 {
                     <MudStack Justify="Justify.Center" AlignItems="AlignItems.Start" Spacing="4">
@@ -94,7 +94,8 @@
                         <MudFab Label=@Localizer[_isRecognizingSpeech ? "Stop" : "Speak"] 
                                 Color="Color.Primary" Size="Size.Large"
                                 StartIcon=@(_isRecognizingSpeech ? @Icons.Material.Filled.MicOff : Icons.Material.Filled.Mic)
-                                OnClick="@OnRecognizeSpeechClick" Disabled=@_isReceivingResponse Class="full-width" />
+                                OnClick="@OnRecognizeSpeechClick" Disabled=@_isReceivingResponse Class="full-width"
+                                mic="@(_isRecognizingSpeech ? "on" : "off")" />
                     </MudItem>
                     <MudItem xs="3" Class="pa-2">
                         <MudTooltip Text=@Localizer["OpenTTSDialog"] Placement="Placement.Top">

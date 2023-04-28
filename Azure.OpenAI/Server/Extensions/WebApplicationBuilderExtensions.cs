@@ -10,10 +10,10 @@ internal static class WebApplicationBuilderExtensions
         app.Services.AddAzureClients(
             factory =>
             {
-                var endpoint = app.Configuration["AzureOpenAI__Endpoint"];
+                var endpoint = app.Configuration["AzureOpenAI:Endpoint"];
                 ArgumentNullException.ThrowIfNull(endpoint);
 
-                var apiKey = app.Configuration["AzureOpenAI__ApiKey"];
+                var apiKey = app.Configuration["AzureOpenAI:ApiKey"];
                 ArgumentNullException.ThrowIfNull(apiKey);
 
                 factory.AddOpenAIClient(

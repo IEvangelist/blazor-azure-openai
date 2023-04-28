@@ -227,7 +227,7 @@ button {
         margin-top: .1rem;
     }
 
-#toggle-mic[mic="on"] > span.mud-badge-wrapper > span.mud-badge-icon {
+*[mic="on"] {
     animation: active 1.5s infinite;
 }
 

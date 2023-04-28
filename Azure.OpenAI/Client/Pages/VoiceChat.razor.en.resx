@@ -123,6 +123,9 @@
   <data name="AskedOnFormat" xml:space="preserve">
     <value>Asked at {0:T} on {0:d}</value>
   </data>
+  <data name="BusyMessage" xml:space="preserve">
+    <value>I'm generating an answer, please wait...</value>
+  </data>
   <data name="Chat" xml:space="preserve">
     <value>Voice Chat</value>
   </data>
