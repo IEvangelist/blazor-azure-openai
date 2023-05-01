@@ -24,4 +24,8 @@ builder.Services.AddScoped<CultureService>();
 var host = builder.Build()
     .DetectClientCulture();
 
+await JSHost.ImportAsync(
+    moduleName: nameof(JavaScriptModule),
+    moduleUrl: $"../site.js?{Guid.NewGuid()}" /* cache bust */);
+
 await host.RunAsync();

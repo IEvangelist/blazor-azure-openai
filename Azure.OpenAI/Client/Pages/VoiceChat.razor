@@ -30,14 +30,14 @@
         else
         {
             <MudStack Reverse="false" Spacing="12">
-                @foreach (var ((question, askedOn), answer) in _questionAndAnswerMap)
+                @foreach (var (askedOn, (question, answer)) in _questionAndAnswerMap)
                 {
                     <MudStack Justify="Justify.Center" AlignItems="AlignItems.Start" Spacing="4">
                         <MudBadge Origin="Origin.TopLeft" Overlap="true" Color="Color.Secondary"
                                   Icon="@Icons.Material.Filled.QuestionMark" Class="d-flex align-self-end">
                             <MudPaper Class="pa-6 d-flex flex-column" Elevation="3">
                                 <MudText Typo="Typo.body1" Align="Align.End">
-                                    @question
+                                    @question.Question
                                 </MudText>
                                 <MudText Typo="Typo.caption" Align="Align.End" Color="Color.Secondary">
                                     @Localizer["AskedOnFormat", askedOn]

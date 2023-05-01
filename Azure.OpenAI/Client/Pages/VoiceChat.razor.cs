@@ -7,6 +7,7 @@ public sealed partial class VoiceChat : IDisposable
 {
     private const string SessionChatHistoryKey = "session-chat-history";
 
+    private DateTime _askedOn;
     private string _userQuestion = "";
     private UserQuestion _currentQuestion;
     private bool _isRecognizingSpeech = false;
@@ -14,7 +15,7 @@ public sealed partial class VoiceChat : IDisposable
     private bool _isReadingResponse = false;
     private IDisposable? _recognitionSubscription;
     private VoicePreferences? _voicePreferences;
-    private Dictionary<UserQuestion, string?> _questionAndAnswerMap = new();
+    private Dictionary<DateTime, QuestionAndAnswer> _questionAndAnswerMap = new();
 
     private readonly MarkdownPipeline _pipeline = new MarkdownPipelineBuilder()
         .ConfigureNewLine("\n")
@@ -35,9 +36,14 @@ public sealed partial class VoiceChat : IDisposable
 
     protected override void OnInitialized()
     {
-        if (SessionStorage.GetItem<Dictionary<UserQuestion, string?>>(SessionChatHistoryKey)
-            is Dictionary<UserQuestion, string?> map)
+        if (SessionStorage.GetItem<Dictionary<DateTime, QuestionAndAnswer>>(SessionChatHistoryKey)
+            is { } map)
         {
+            if (map is null or { Count: 0 })
+            {
+                return;
+            }
+
             _questionAndAnswerMap = map;
         }
     }
@@ -58,8 +64,9 @@ public sealed partial class VoiceChat : IDisposable
         }
 
         _isReceivingResponse = true;
-        _currentQuestion = new(_userQuestion, DateTime.Now);
-        _questionAndAnswerMap[_currentQuestion] = null;
+        _askedOn = DateTime.Now;
+        _currentQuestion = new(_userQuestion, _askedOn);
+        _questionAndAnswerMap[_askedOn] = new QuestionAndAnswer(_currentQuestion);
 
         OpenAIPrompts.Enqueue(
             _userQuestion,
@@ -68,46 +75,60 @@ public sealed partial class VoiceChat : IDisposable
                 var (_, responseText, isComplete) = response;
                 var html = Markdown.ToHtml(responseText, _pipeline);
 
-                _questionAndAnswerMap[_currentQuestion] = html;
-
-                if (isComplete)
+                _questionAndAnswerMap[_askedOn] = _questionAndAnswerMap[_askedOn] with
                 {
-                    _voicePreferences = new VoicePreferences(LocalStorage);
-                    var (voice, rate, isEnabled) = _voicePreferences;
-                    if (isEnabled)
-                    {
-                        _isReadingResponse = true;
-                        var utterance = new SpeechSynthesisUtterance
-                        {
-                            Rate = rate,
-                            Text = responseText
-                        };
-                        if (voice is not null)
-                        {
-                            utterance.Voice = new SpeechSynthesisVoice
-                            {
-                                Name = voice
-                            };
-                        }
-                        SpeechSynthesis.Speak(utterance, duration =>
-                        {
-                            _isReadingResponse = false;
-                            StateHasChanged();
-                        });
-                    }
-                }
+                    Answer = html
+                };
 
                 _isReceivingResponse = isComplete is false;
+
+                JavaScriptModule.ScrollIntoView("replies");
+
                 if (isComplete)
                 {
-                    SessionStorage.SetItem(SessionChatHistoryKey, _questionAndAnswerMap);
-
-                    _userQuestion = "";
-                    _currentQuestion = default;
+                    TrySpeakResponse(responseText);
+                    ResetState();
                 }
 
                 StateHasChanged();
             }));
+    }
+
+    private void TrySpeakResponse(string responseText)
+    {
+        _voicePreferences = new VoicePreferences(LocalStorage);
+        var (voice, rate, isEnabled) = _voicePreferences;
+        if (isEnabled)
+        {
+            _isReadingResponse = true;
+            var utterance = new SpeechSynthesisUtterance
+            {
+                Rate = rate,
+                Text = responseText
+            };
+
+            if (voice is not null)
+            {
+                utterance.Voice = new SpeechSynthesisVoice
+                {
+                    Name = voice
+                };
+            }
+
+            SpeechSynthesis.Speak(utterance, duration =>
+            {
+                _isReadingResponse = false;
+                StateHasChanged();
+            });
+        }
+    }
+
+    private void ResetState()
+    {
+        SessionStorage.SetItem(SessionChatHistoryKey, _questionAndAnswerMap);
+
+        _userQuestion = "";
+        _currentQuestion = default;
     }
 
     private void OnKeyUp(KeyboardEventArgs args)

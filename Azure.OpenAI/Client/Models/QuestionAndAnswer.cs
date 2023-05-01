@@ -3,7 +3,6 @@
 
 namespace Azure.OpenAI.Client.Models;
 
-public record class PromptResponse(
-    string Prompt,
-    string Response,
-    bool IsComplete = false);
+public record class QuestionAndAnswer(
+    UserQuestion Question,
+    string? Answer = null);

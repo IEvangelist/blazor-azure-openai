@@ -1,8 +1,6 @@
 ﻿// Copyright (c) David Pine. All rights reserved.
 // Licensed under the MIT License.
 
-using System.Text.RegularExpressions;
-
 namespace Azure.OpenAI.Client.Services;
 
 public sealed class OpenAIPromptQueue
@@ -37,7 +35,6 @@ public sealed class OpenAIPromptQueue
                 using var client = scope.ServiceProvider.GetRequiredService<HttpClient>();
 
                 var response = await client.PostAsync("api/openai/chat", body);
-
                 if (response.IsSuccessStatusCode)
                 {
                     using var stream = await response.Content.ReadAsStreamAsync();
@@ -55,7 +52,7 @@ public sealed class OpenAIPromptQueue
                         var responseText = NormalizeResponseText(_responseBuffer, _logger);
                         await handler(
                             new PromptResponse(
-                                prompt, responseText));
+                                prompt, responseText, false));
 
                         await Task.Delay(1);
                     }
@@ -68,15 +65,12 @@ public sealed class OpenAIPromptQueue
             }
             finally
             {
-                if (_responseBuffer.Length > 0)
-                {
-                    var responseText = NormalizeResponseText(_responseBuffer, _logger);
-                    await handler(
-                        new PromptResponse(
-                            prompt, responseText, true));
-                    _responseBuffer.Clear();
-                }
+                var responseText = NormalizeResponseText(_responseBuffer, _logger);
+                await handler(
+                    new PromptResponse(
+                        prompt, responseText, true));
 
+                _responseBuffer.Clear();
                 _processPromptTask = null;
             }
         });
