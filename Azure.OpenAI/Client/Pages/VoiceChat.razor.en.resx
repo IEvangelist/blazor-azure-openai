@@ -133,7 +133,10 @@
     <value>Enter an Azure.AI.OpenAI chat prompt.</value>
   </data>
   <data name="InputHelperText" xml:space="preserve">
-    <value>Use Shift + Enter for new lines.</value>
+    <value>Use Shift + Enter for new lines. Markdown is supported.</value>
+  </data>
+  <data name="Interact_with" xml:space="preserve">
+    <value>Interact with</value>
   </data>
   <data name="OpenTTSDialog" xml:space="preserve">
     <value>Open text-to-speech seetings dialog?</value>
@@ -152,5 +155,8 @@
   </data>
   <data name="TTSPreferences" xml:space="preserve">
     <value>Text-to-speech Preferences</value>
+  </data>
+  <data name="using_voice_chat" xml:space="preserve">
+    <value>using voice chat.</value>
   </data>
 </root>

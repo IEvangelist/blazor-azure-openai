@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider @bind-IsDarkMode="@_isDarkTheme" Theme="_theme" />
+<MudThemeProvider @bind-IsDarkMode="@IsDarkTheme" Theme="_theme" />
 <MudDialogProvider FullWidth="true" MaxWidth="MaxWidth.Small"
                    CloseButton="true"
                    DisableBackdropClick="true"
@@ -9,11 +9,11 @@
 <MudSnackbarProvider />
 
 <HeadContent>
-    <ConditionalHeadContent IsDarkTheme="@_isDarkTheme" />
+    <ConditionalHeadContent IsDarkTheme="@IsDarkTheme" />
 </HeadContent>
 
-<MudRTLProvider RightToLeft="_isRightToLeft">
-    <MudLayout class="@(_isRightToLeft ? "rtl-lang" : "")">
+<MudRTLProvider RightToLeft="IsRightToLeft">
+    <MudLayout class="@(IsRightToLeft ? "rtl-lang" : "")">
         <MudAppBar Elevation="20">
 
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit"
@@ -22,10 +22,13 @@
 
             <MudSpacer />
 
-            <MudToggleIconButton Toggled="@_isDarkTheme" ToggledChanged="@OnThemeChanged"
+            <MudIconButton Icon="@Icons.Material.Filled.DeleteForever" Color="Color.Inherit"
+                           OnClick="@OnDeleteClicked" Size="Size.Large" />
+
+            <MudToggleIconButton Toggled="@IsDarkTheme" ToggledChanged="@OnThemeChanged"
                                  Size="Size.Large" ToggledSize="Size.Large"
                                  Title="Switch to Dark Theme" ToggledTitle="Switch to Light Theme"
-                                 Color="@Color.Inherit" ToggledColor="@Color.Warning"
+                                 Color="@Color.Inherit" ToggledColor="@Color.Inherit"
                                  Icon="@Icons.Material.Filled.DarkMode"
                                  ToggledIcon="@Icons.Material.Filled.WbSunny" />
 

@@ -3,6 +3,8 @@ export function scrollIntoView(id) {
     if (element) {
         element.scrollIntoView({
             behavior: 'smooth',
+            block: 'end',
+            inline: 'nearest'
         });
     }
 }

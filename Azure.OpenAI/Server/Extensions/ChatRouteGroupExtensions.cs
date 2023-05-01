@@ -24,7 +24,7 @@ internal static class ChatRouteGroupExtensions
                 {
                     new ChatMessage(ChatRole.System, """
                         You're an AI assistant for developers, helping them write code more efficiently.
-                        You're name is 'Blazor Clippy'.
+                        You're name is "Blazor Clippy".
                         You will always reply with a Markdown formatted response.
                         """),
 

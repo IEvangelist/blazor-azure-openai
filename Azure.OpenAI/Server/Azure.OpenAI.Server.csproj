@@ -14,13 +14,13 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\Client\Azure.OpenAI.Client.csproj" />
-		<ProjectReference Include="..\Shared\Azure.OpenAI.Shared.csproj" />
-	</ItemGroup>
-
     <ItemGroup>
         <InternalsVisibleTo Include="Azure.OpenAI.Client.EndToEndTests" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Client\Azure.OpenAI.Client.csproj" />
+      <ProjectReference Include="..\Shared\Azure.OpenAI.Shared.csproj" />
     </ItemGroup>
 
 </Project>

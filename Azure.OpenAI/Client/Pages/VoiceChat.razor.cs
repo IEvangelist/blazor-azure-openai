@@ -5,6 +5,7 @@ namespace Azure.OpenAI.Client.Pages;
 
 public sealed partial class VoiceChat : IDisposable
 {
+    private const string AnswerElementId = "replies";
     private const string SessionChatHistoryKey = "session-chat-history";
 
     private DateTime _askedOn;
@@ -33,6 +34,7 @@ public sealed partial class VoiceChat : IDisposable
     [Inject] public required IJSInProcessRuntime JavaScript { get; set; }
     [Inject] public required ILogger<VoiceChat> Logger { get; set; }
     [Inject] public required IStringLocalizer<VoiceChat> Localizer { get; set; }
+    [Inject] public required AppState State { get; set; }
 
     protected override void OnInitialized()
     {
@@ -45,7 +47,13 @@ public sealed partial class VoiceChat : IDisposable
             }
 
             _questionAndAnswerMap = map;
+
+            _ = Task.Delay(TimeSpan.FromSeconds(1))
+                    .ContinueWith(
+                        _ => JavaScriptModule.ScrollIntoView(AnswerElementId));
         }
+
+        State.OnDeleteClicked += OnDeleteHistoryClick;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -65,7 +73,7 @@ public sealed partial class VoiceChat : IDisposable
 
         _isReceivingResponse = true;
         _askedOn = DateTime.Now;
-        _currentQuestion = new(_userQuestion, _askedOn);
+        _currentQuestion = new(ToMarkup(_userQuestion), _askedOn);
         _questionAndAnswerMap[_askedOn] = new QuestionAndAnswer(_currentQuestion);
 
         OpenAIPrompts.Enqueue(
@@ -73,7 +81,7 @@ public sealed partial class VoiceChat : IDisposable
             async (PromptResponse response) => await InvokeAsync(() =>
             {
                 var (_, responseText, isComplete) = response;
-                var html = Markdown.ToHtml(responseText, _pipeline);
+                var html = ToMarkup(responseText);
 
                 _questionAndAnswerMap[_askedOn] = _questionAndAnswerMap[_askedOn] with
                 {
@@ -82,7 +90,7 @@ public sealed partial class VoiceChat : IDisposable
 
                 _isReceivingResponse = isComplete is false;
 
-                JavaScriptModule.ScrollIntoView("replies");
+                JavaScriptModule.ScrollIntoView(AnswerElementId);
 
                 if (isComplete)
                 {
@@ -129,6 +137,16 @@ public sealed partial class VoiceChat : IDisposable
 
         _userQuestion = "";
         _currentQuestion = default;
+    }
+
+    private void OnDeleteHistoryClick()
+    {
+        _userQuestion = "";
+        _currentQuestion = default;
+        _questionAndAnswerMap.Clear();
+
+        SessionStorage.RemoveItem(SessionChatHistoryKey);
+        StateHasChanged();
     }
 
     private void OnKeyUp(KeyboardEventArgs args)
@@ -209,5 +227,12 @@ public sealed partial class VoiceChat : IDisposable
         StateHasChanged();
     }
 
-    public void Dispose() => _recognitionSubscription?.Dispose();
+    private string ToMarkup(string content) => Markdown.ToHtml(content, _pipeline);
+
+    public void Dispose()
+    {
+        _recognitionSubscription?.Dispose();
+
+        State.OnDeleteClicked -= OnDeleteHistoryClick;
+    }
 }

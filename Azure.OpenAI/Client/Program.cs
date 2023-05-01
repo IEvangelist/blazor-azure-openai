@@ -11,6 +11,7 @@ builder.Services.AddScoped(
         BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
     });
 
+builder.Services.AddSingleton<AppState>();
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<OpenAIPromptQueue>();
 builder.Services.AddLocalStorageServices();
