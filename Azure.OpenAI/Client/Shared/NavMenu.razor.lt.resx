@@ -61,6 +61,9 @@
   <data name="ChatNavLabel" xml:space="preserve">
     <value>Pokalbių</value>
   </data>
+  <data name="HistoryNavLabel" xml:space="preserve">
+    <value>C istorija #</value>
+  </data>
   <data name="HomeNavLabel" xml:space="preserve">
     <value>Namon</value>
     <comment>Nav bar Home label.</comment>

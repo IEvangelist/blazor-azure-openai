@@ -61,6 +61,9 @@
   <data name="ChatNavLabel" xml:space="preserve">
     <value>잡담</value>
   </data>
+  <data name="HistoryNavLabel" xml:space="preserve">
+    <value>C의 역사 #</value>
+  </data>
   <data name="HomeNavLabel" xml:space="preserve">
     <value>집</value>
     <comment>Nav bar Home label.</comment>

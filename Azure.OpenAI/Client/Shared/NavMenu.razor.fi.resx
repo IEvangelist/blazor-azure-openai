@@ -61,6 +61,9 @@
   <data name="ChatNavLabel" xml:space="preserve">
     <value>Jutella</value>
   </data>
+  <data name="HistoryNavLabel" xml:space="preserve">
+    <value>C: n historia #</value>
+  </data>
   <data name="HomeNavLabel" xml:space="preserve">
     <value>Koti</value>
     <comment>Nav bar Home label.</comment>

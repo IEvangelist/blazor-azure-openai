@@ -61,11 +61,14 @@
   <data name="ChatNavLabel" xml:space="preserve">
     <value>Babbelen</value>
   </data>
+  <data name="HistoryNavLabel" xml:space="preserve">
+    <value>Geschiedenis van C #</value>
+  </data>
   <data name="HomeNavLabel" xml:space="preserve">
     <value>Thuis</value>
     <comment>Nav bar Home label.</comment>
   </data>
   <data name="VoiceChatNavLabel" xml:space="preserve">
-    <value>Voice Chat</value>
+    <value>Voicechat</value>
   </data>
 </root>

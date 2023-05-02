@@ -61,6 +61,9 @@
   <data name="ChatNavLabel" xml:space="preserve">
     <value>Κουβέντα</value>
   </data>
+  <data name="HistoryNavLabel" xml:space="preserve">
+    <value>Ιστορία του C #</value>
+  </data>
   <data name="HomeNavLabel" xml:space="preserve">
     <value>Σπίτι</value>
     <comment>Nav bar Home label.</comment>
