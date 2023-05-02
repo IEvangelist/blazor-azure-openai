@@ -19,7 +19,12 @@ public sealed partial class CultureDialog
 
     protected override async Task OnInitializedAsync()
     {
+        _selectedCulture = CultureInfo.CurrentCulture;
         _supportedCultures = await CultureService.GetAvailableCulturesAsync();
+
+        Logger.LogInformation(
+            "Current culture: {Name} ({ISO}), also found {Num} of available cultures.",
+            _selectedCulture.Name, _selectedCulture.TwoLetterISOLanguageName, _supportedCultures.Count);
     }
 
     void OnSaveCulture()

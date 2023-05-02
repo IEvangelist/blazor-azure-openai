@@ -1,6 +1,8 @@
 ﻿// Copyright (c) David Pine. All rights reserved.
 // Licensed under the MIT License.
 
+using Blazor.Serialization.Extensions;
+
 namespace Azure.OpenAI.Client.Services;
 
 public sealed class OpenAIPromptQueue
@@ -25,8 +27,7 @@ public sealed class OpenAIPromptQueue
             try
             {
                 var options = new JsonSerializerOptions(JsonSerializerDefaults.Web);
-                var json = JsonSerializer.Serialize(
-                    new ChatPrompt { Prompt = prompt }, options);
+                var json = new ChatPrompt { Prompt = prompt }.ToJson(options);
 
                 using var body = new StringContent(json, Encoding.UTF8, "application/json");
                 using var scope = _provider.CreateScope();

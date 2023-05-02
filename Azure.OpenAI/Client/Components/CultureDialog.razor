@@ -17,8 +17,8 @@
                         }
 
                         <MudSelectItem Value="@(culture)">
-                            <span class="pr-4 fi fi-@(GetCultureTwoLetterRegionName(culture))"></span> 
-                            @azureCulture.Name (@culture.Name)
+                            <span class="pr-4 fi fi-@(GetCultureTwoLetterRegionName(culture))" style="font-size: 1.5rem;"></span>
+                            <span class="pl-2">@azureCulture.Name (@culture.Name)</span>
                         </MudSelectItem>
                     }
                 </MudSelect>
@@ -28,7 +28,7 @@
     <DialogActions>
             <MudSpacer />
             <MudButton Color="Color.Secondary" Size="Size.Large"
-                       StartIcon="@Icons.Material.Filled.Check"
+                       StartIcon="@Icons.Material.Filled.Check" Class="ma-4"
                        Variant="Variant.Filled" OnClick="OnSaveCulture">
                 @Localizer["Select"]
             </MudButton>

@@ -18,13 +18,6 @@ public sealed partial class VoiceChat : IDisposable
     private VoicePreferences? _voicePreferences;
     private Dictionary<DateTime, QuestionAndAnswer> _questionAndAnswerMap = new();
 
-    private readonly MarkdownPipeline _pipeline = new MarkdownPipelineBuilder()
-        .ConfigureNewLine("\n")
-        .UseAdvancedExtensions()
-        .UseEmojiAndSmiley()
-        .UseSoftlineBreakAsHardlineBreak()
-        .Build();
-
     [Inject] public required OpenAIPromptQueue OpenAIPrompts { get; set; }
     [Inject] public required IDialogService Dialog { get; set; }
     [Inject] public required ISpeechRecognitionService SpeechRecognition { get; set; }
@@ -73,7 +66,7 @@ public sealed partial class VoiceChat : IDisposable
 
         _isReceivingResponse = true;
         _askedOn = DateTime.Now;
-        _currentQuestion = new(ToMarkup(_userQuestion), _askedOn);
+        _currentQuestion = new(_userQuestion.ToHtml(), _askedOn);
         _questionAndAnswerMap[_askedOn] = new QuestionAndAnswer(_currentQuestion);
 
         OpenAIPrompts.Enqueue(
@@ -81,7 +74,7 @@ public sealed partial class VoiceChat : IDisposable
             async (PromptResponse response) => await InvokeAsync(() =>
             {
                 var (_, responseText, isComplete) = response;
-                var html = ToMarkup(responseText);
+                var html = responseText.ToHtml();
 
                 _questionAndAnswerMap[_askedOn] = _questionAndAnswerMap[_askedOn] with
                 {
@@ -89,14 +82,13 @@ public sealed partial class VoiceChat : IDisposable
                 };
 
                 _isReceivingResponse = isComplete is false;
-
-                JavaScriptModule.ScrollIntoView(AnswerElementId);
-
                 if (isComplete)
                 {
                     TrySpeakResponse(responseText);
                     ResetState();
                 }
+
+                JavaScriptModule.ScrollIntoView(AnswerElementId);
 
                 StateHasChanged();
             }));
@@ -211,7 +203,8 @@ public sealed partial class VoiceChat : IDisposable
     private void OnError(SpeechRecognitionErrorEvent errorEvent)
     {
         Logger.LogWarning(
-            "{Error}: {Message}", errorEvent.Error, errorEvent.Message);
+            "{Error}: {Message}",
+            errorEvent.Error, errorEvent.Message ?? "Error message, unknown.");
 
         StateHasChanged();
     }
@@ -226,8 +219,6 @@ public sealed partial class VoiceChat : IDisposable
 
         StateHasChanged();
     }
-
-    private string ToMarkup(string content) => Markdown.ToHtml(content, _pipeline);
 
     public void Dispose()
     {

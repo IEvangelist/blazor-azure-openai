@@ -214,6 +214,10 @@ button {
     width: calc(100% / 12 * 10) !important;
 }
 
+.text-align-end {
+    text-align: end;
+}
+
 #toggle-mic > span.mud-badge-wrapper > span.mud-badge-icon {
     width: 2rem;
     height: 2rem;

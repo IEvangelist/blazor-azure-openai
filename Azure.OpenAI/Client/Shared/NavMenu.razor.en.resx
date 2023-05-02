@@ -120,6 +120,9 @@
   <data name="ChatNavLabel" xml:space="preserve">
     <value>Chat</value>
   </data>
+  <data name="HistoryNavLabel" xml:space="preserve">
+    <value>History of C#</value>
+  </data>
   <data name="HomeNavLabel" xml:space="preserve">
     <value>Home</value>
     <comment>Nav bar Home label.</comment>
