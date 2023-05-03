@@ -64,7 +64,7 @@ public sealed partial class TestPageLoad
                                 ?.Value
                                 ?? "false";
 
-                        Assert.True(bool.Parse(value ));
+                        Assert.True(bool.Parse(value));
                     }
                 }
             },
@@ -77,7 +77,7 @@ public sealed partial class TestPageLoad
             async (page, context) =>
             {
                 await page.ClickAsync(HTMLSelectors.SelectLanguageButton);
- 
+
                 var locator = page.Locator("div.mud-overlay.mud-overlay-dialog");
                 await Assertions.Expect(locator).ToBeVisibleAsync();
             },

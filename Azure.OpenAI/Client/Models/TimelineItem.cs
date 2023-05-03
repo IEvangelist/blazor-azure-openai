@@ -3,12 +3,12 @@
 
 namespace Azure.OpenAI.Client.Models;
 
-public record class TimelineItem(
+public readonly record struct TimelineItem(
     DateOnly Date,
     string Label,
     string Reference,
     Detail[] Details);
 
-public record class Detail(
+public readonly record struct Detail(
     string Feature,
     string? Reference = null);
