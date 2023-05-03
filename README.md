@@ -45,9 +45,17 @@ export AzureOpenAI__DeploymentId="<Your Azure OpenAI deploymend id>"
 
 ![Example response text](images/response.png)
 
-## Example response text continued
+## Example response text continued 2/4
 
 ![Example response text continued](images/response-two.png)
+
+## Example response text continued 3/4
+
+![Example response text continued](images/response-three.png)
+
+## Example response text continued 4/4
+
+![Example response text continued](images/response-four.png)
 
 ## Contributors ✨
 

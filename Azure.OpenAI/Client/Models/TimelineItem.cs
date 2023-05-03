@@ -10,5 +10,5 @@ public readonly record struct TimelineItem(
     Detail[] Details);
 
 public readonly record struct Detail(
-    string Feature,
+    string Text,
     string? Reference = null);

@@ -28,13 +28,13 @@
             </MudText>
             <MudPaper Class="pa-4 rounded" Width="100%" Outlined="true">
                 <MudList Dense="true" Clickable="true" Color="@color">
-                    @foreach (var (feature, reference) in details.OrderBy(d => d.Feature))
+                    @foreach (var (text, reference) in details.OrderBy(d => d.Text))
                     {
                         <MudListItem Icon="@Icons.Material.Filled.CheckCircle" IconSize="Size.Small"
                                      IconColor="@color" Disabled=@(reference is null)>
                             <MudLink Typo="Typo.body1" Color="Color.Default" Target="_blank"
                                      Style="font-family: monospace;" Href="@(reference ?? "#")">
-                                @((MarkupString)feature.ToHtml())                                
+                                @((MarkupString)text.ToHtml())                                
                             </MudLink>
                         </MudListItem>
                     }

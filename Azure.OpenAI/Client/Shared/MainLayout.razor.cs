@@ -17,7 +17,11 @@ public sealed partial class MainLayout
     bool IsRightToLeft =>
         Thread.CurrentThread.CurrentUICulture is { TextInfo.IsRightToLeft: true };
 
+    bool IsDeleteDisabled =>
+        SessionStorage.Length is 0;
+
     [Inject] public required ILocalStorageService LocalStorage { get; set; }
+    [Inject] public required ISessionStorageService SessionStorage { get; set; }
     [Inject] public required IDialogService Dialog { get; set; }
     [Inject] public required IStringLocalizer<MainLayout> Localizer { get; set; }
     [Inject] public required AppState State { get; set; }

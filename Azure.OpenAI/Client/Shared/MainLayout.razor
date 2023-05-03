@@ -13,7 +13,7 @@
 </HeadContent>
 
 <MudRTLProvider RightToLeft="IsRightToLeft">
-    <MudLayout class="@(IsRightToLeft ? "rtl-lang" : "")">
+    <MudLayout Class="@(IsRightToLeft ? "rtl-lang" : "")">
         <MudAppBar Elevation="20">
 
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit"
@@ -23,7 +23,8 @@
             <MudSpacer />
 
             <MudIconButton Icon="@Icons.Material.Filled.DeleteForever" Color="Color.Inherit"
-                           OnClick="@OnDeleteClicked" Size="Size.Large" />
+                           OnClick="@OnDeleteClicked" Size="Size.Large"
+                           Disabled=@IsDeleteDisabled />
 
             <MudToggleIconButton Toggled="@IsDarkTheme" ToggledChanged="@OnThemeChanged"
                                  Size="Size.Large" ToggledSize="Size.Large"
