@@ -1,8 +1,6 @@
 ﻿// Copyright (c) David Pine. All rights reserved.
 // Licensed under the MIT License.
 
-using Blazor.Serialization.Extensions;
-
 namespace Azure.OpenAI.Client.Services;
 
 public sealed class OpenAIPromptQueue

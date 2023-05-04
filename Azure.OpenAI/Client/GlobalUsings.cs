@@ -15,6 +15,7 @@ global using Azure.OpenAI.Client.Interop;
 global using Azure.OpenAI.Client.Models;
 global using Azure.OpenAI.Client.Services;
 global using Azure.OpenAI.Shared;
+global using Blazor.Serialization.Extensions;
 global using Markdig;
 global using Microsoft.AspNetCore.Components;
 global using Microsoft.AspNetCore.Components.Web;

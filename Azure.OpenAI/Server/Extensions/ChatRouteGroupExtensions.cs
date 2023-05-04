@@ -17,6 +17,8 @@ internal static class ChatRouteGroupExtensions
     {
         var deploymentId = config["AzureOpenAI:DeploymentId"] ?? "pine-chat";
 
+        // TODO: take on different persona, given the ChatPrompt...
+
         var response = await client.GetChatCompletionsStreamingAsync(
             deploymentId, new ChatCompletionsOptions
             {
