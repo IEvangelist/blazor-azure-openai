@@ -5,4 +5,4 @@ namespace Azure.OpenAI.Client.Models;
 
 public record class QuestionAndAnswer(
     UserQuestion Question,
-    string? Answer = null);
+    GeneratedAnswer? Answer = null);

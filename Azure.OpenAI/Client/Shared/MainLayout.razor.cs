@@ -29,5 +29,5 @@ public sealed partial class MainLayout
     void ShowCultureDialog() => Dialog.Show<CultureDialog>(Localizer["SelectLanguageTitle"]);
     void OnMenuClicked() => _drawerOpen = !_drawerOpen;
     void OnThemeChanged() => IsDarkTheme = !IsDarkTheme;
-    void OnDeleteClicked() => State.DeleteClicked();
+    void OnDeleteClicked() => State.DeleteHistoryClicked();
 }

@@ -1,0 +1,16 @@
+﻿<MudPaper Class="pa-6" Elevation="3">
+    <MudStack Spacing="4" Class="full-width">
+        <MudIcon Icon="@Icons.Material.Filled.Error" Color="Color.Error" Size="Size.Large" />
+        <MudText Typo="Typo.h6">
+            Error
+        </MudText>
+        <MudText Typo="Typo.subtitle2">
+            @((MarkupString)Error)
+        </MudText>
+        <div class="d-flex justify-end pt-4">
+            <MudFab Size="Size.Medium" Color="Color.Info"
+                    EndIcon="@Icons.Material.Filled.Replay"
+                    OnClick="@OnRetryClickedAsync" Label="Retry" />
+        </div>
+    </MudStack>
+</MudPaper>

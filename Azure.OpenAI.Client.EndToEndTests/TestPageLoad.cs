@@ -1,6 +1,8 @@
 ﻿// Copyright (c) David Pine. All rights reserved.
 // Licensed under the MIT License.
 
+using Azure.OpenAI.Shared;
+
 namespace Azure.OpenAI.Client.EndToEndTests;
 
 [Collection(PlaywrightCollectionDefinition.EndToEndTests)]
@@ -49,10 +51,7 @@ public sealed partial class TestPageLoad
                 static async Task ExpectedThemeStateAsync(IBrowserContext cxt, string key, bool expected)
                 {
                     var json = await cxt.StorageStateAsync();
-                    var settings = new JsonSerializerOptions(JsonSerializerDefaults.Web)
-                    {
-                        PropertyNameCaseInsensitive = true
-                    };
+                    var settings = JsonSerializationDefaults.Options;
                     var state = JsonSerializer.Deserialize<StorageState>(json, settings);
 
                     Assert.NotNull(state);

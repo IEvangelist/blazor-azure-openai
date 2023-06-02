@@ -3,13 +3,15 @@
 
 namespace Azure.OpenAI.Server.Extensions;
 
-internal static class ChatRouteGroupExtensions
+internal static class EndpointRouteBuilderExtensions
 {
-    internal static RouteGroupBuilder MapOpenAI(this RouteGroupBuilder openAI)
+    internal static IEndpointRouteBuilder MapAzureOpenAiApi(this IEndpointRouteBuilder routeBuilder)
     {
-        openAI.MapPost("chat", PostChatPromptAsync);
+        var api = routeBuilder.MapGroup("api/openai");
 
-        return openAI;
+        api.MapPost("chat", PostChatPromptAsync);
+
+        return routeBuilder;
     }
 
     static async IAsyncEnumerable<TokenizedResponse> PostChatPromptAsync(

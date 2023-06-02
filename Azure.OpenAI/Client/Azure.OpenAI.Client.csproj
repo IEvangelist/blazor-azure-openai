@@ -16,6 +16,7 @@
 		<PackageReference Include="Blazor.SessionStorage.WebAssembly" Version="7.0.3" />
 		<PackageReference Include="Blazor.SpeechRecognition.WebAssembly" Version="7.0.3" />
 		<PackageReference Include="Blazor.SpeechSynthesis.WebAssembly" Version="7.0.3" />
+        <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="7.0.5" />
 		<PackageReference Include="Markdig" Version="0.31.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.5" />

@@ -21,6 +21,9 @@ builder.Services.AddSpeechRecognitionServices();
 builder.Services.AddMudServices();
 builder.Services.AddLocalization();
 builder.Services.AddScoped<CultureService>();
+builder.Services.AddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>();
+builder.Services.AddSingleton(
+    sp => sp.GetRequiredService<ObjectPoolProvider>().CreateStringBuilderPool());
 
 var host = builder.Build()
     .DetectClientCulture();

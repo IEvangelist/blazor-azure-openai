@@ -3,23 +3,23 @@
 
 namespace Azure.OpenAI.Server.Extensions;
 
-internal static class WebApplicationBuilderExtensions
+internal static class ServiceCollectionExtensions
 {
-    internal static WebApplicationBuilder AddAzureOpenAI(this WebApplicationBuilder app)
+    internal static IServiceCollection AddAzureOpenAI(this IServiceCollection services, IConfiguration config)
     {
-        app.Services.AddAzureClients(
+        services.AddAzureClients(
             factory =>
             {
-                var endpoint = app.Configuration["AzureOpenAI:Endpoint"];
+                var endpoint = config["AzureOpenAI:Endpoint"];
                 ArgumentNullException.ThrowIfNull(endpoint);
 
-                var apiKey = app.Configuration["AzureOpenAI:ApiKey"];
+                var apiKey = config["AzureOpenAI:ApiKey"];
                 ArgumentNullException.ThrowIfNull(apiKey);
 
                 factory.AddOpenAIClient(
                     new Uri(endpoint), new AzureKeyCredential(apiKey));
             });
 
-        return app;
+        return services;
     }
 }

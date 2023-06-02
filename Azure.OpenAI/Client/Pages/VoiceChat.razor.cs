@@ -6,7 +6,6 @@ namespace Azure.OpenAI.Client.Pages;
 public sealed partial class VoiceChat : IDisposable
 {
     private const string AnswerElementId = "replies";
-    private const string SessionChatHistoryKey = "session-chat-history";
 
     private DateTime _askedOn;
     private string _userQuestion = "";
@@ -31,7 +30,7 @@ public sealed partial class VoiceChat : IDisposable
 
     protected override void OnInitialized()
     {
-        if (SessionStorage.GetItem<Dictionary<DateTime, QuestionAndAnswer>>(SessionChatHistoryKey)
+        if (SessionStorage.GetItem<Dictionary<DateTime, QuestionAndAnswer>>(StorageKeys.SessionChatHistoryKey)
             is { } map)
         {
             if (map is null or { Count: 0 })
@@ -41,12 +40,12 @@ public sealed partial class VoiceChat : IDisposable
 
             _questionAndAnswerMap = map;
 
-            _ = Task.Delay(TimeSpan.FromSeconds(1))
+            _ = Task.Delay(TimeSpan.FromSeconds(.2))
                     .ContinueWith(
                         _ => JavaScriptModule.ScrollIntoView(AnswerElementId));
         }
 
-        State.OnDeleteClicked += OnDeleteHistoryClick;
+        State.OnDeleteHistoryClicked += OnDeleteHistoryClick;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -57,7 +56,16 @@ public sealed partial class VoiceChat : IDisposable
         }
     }
 
-    private void OnSendPrompt()
+    private Task OnAskQuestionAsync(UserQuestion userQuestion)
+    {
+        _currentQuestion = userQuestion;        
+
+        OnSendPrompt(true);
+
+        return Task.CompletedTask;
+    }
+
+    private void OnSendPrompt(bool repeatQuestion = false)
     {
         if (_isReceivingResponse || string.IsNullOrWhiteSpace(_userQuestion))
         {
@@ -65,24 +73,30 @@ public sealed partial class VoiceChat : IDisposable
         }
 
         _isReceivingResponse = true;
-        _askedOn = DateTime.Now;
-        _currentQuestion = new(_userQuestion.ToHtml(), _askedOn);
+        if (repeatQuestion is false)
+        {
+            _askedOn = DateTime.Now;
+            _currentQuestion = new(_userQuestion, _askedOn);
+        }
+
         _questionAndAnswerMap[_askedOn] = new QuestionAndAnswer(_currentQuestion);
 
         OpenAIPrompts.Enqueue(
             _userQuestion,
             async (PromptResponse response) => await InvokeAsync(() =>
             {
-                var (_, responseText, isComplete) = response;
+                var (_, responseText, isComplete, isError) = response;
                 var html = responseText.ToHtml();
 
                 _questionAndAnswerMap[_askedOn] = _questionAndAnswerMap[_askedOn] with
                 {
-                    Answer = html
+                    Answer = isError ? new(Answer: null, Error: html) : new(Answer: html)
                 };
 
+                SessionStorage.SetItem(StorageKeys.SessionChatHistoryKey, _questionAndAnswerMap);
+
                 _isReceivingResponse = isComplete is false;
-                if (isComplete)
+                if (isComplete && isError is false)
                 {
                     TrySpeakResponse(responseText);
                     ResetState();
@@ -125,8 +139,6 @@ public sealed partial class VoiceChat : IDisposable
 
     private void ResetState()
     {
-        SessionStorage.SetItem(SessionChatHistoryKey, _questionAndAnswerMap);
-
         _userQuestion = "";
         _currentQuestion = default;
     }
@@ -137,7 +149,7 @@ public sealed partial class VoiceChat : IDisposable
         _currentQuestion = default;
         _questionAndAnswerMap.Clear();
 
-        SessionStorage.RemoveItem(SessionChatHistoryKey);
+        SessionStorage.RemoveItem(StorageKeys.SessionChatHistoryKey);
         StateHasChanged();
     }
 
@@ -224,6 +236,6 @@ public sealed partial class VoiceChat : IDisposable
     {
         _recognitionSubscription?.Dispose();
 
-        State.OnDeleteClicked -= OnDeleteHistoryClick;
+        State.OnDeleteHistoryClicked -= OnDeleteHistoryClick;
     }
 }

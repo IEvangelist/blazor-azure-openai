@@ -13,6 +13,7 @@ global using Azure.OpenAI.Client.Components;
 global using Azure.OpenAI.Client.Extensions;
 global using Azure.OpenAI.Client.Interop;
 global using Azure.OpenAI.Client.Models;
+global using Microsoft.Extensions.ObjectPool;
 global using Azure.OpenAI.Client.Services;
 global using Azure.OpenAI.Shared;
 global using Blazor.Serialization.Extensions;

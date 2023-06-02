@@ -5,7 +5,7 @@ namespace Azure.OpenAI.Client.Services;
 
 public sealed class AppState
 {
-    public event Action? OnDeleteClicked;
+    public event Action? OnDeleteHistoryClicked;
 
-    public void DeleteClicked() => OnDeleteClicked?.Invoke();
+    public void DeleteHistoryClicked() => OnDeleteHistoryClicked?.Invoke();
 }

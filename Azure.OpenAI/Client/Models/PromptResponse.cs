@@ -6,4 +6,5 @@ namespace Azure.OpenAI.Client.Models;
 public record class PromptResponse(
     string Prompt,
     string Response,
-    bool IsComplete = false);
+    bool IsComplete = false,
+    bool IsError = false);

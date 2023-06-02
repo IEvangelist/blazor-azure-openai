@@ -18,13 +18,7 @@ public sealed class CultureService
 
         var cultures = await client.GetFromJsonAsync<SharedCultures>(
             "languages?api-version=3.0&scope=translation",
-            new JsonSerializerOptions(JsonSerializerDefaults.Web)
-            {
-                Converters =
-                {
-                    new JsonStringEnumConverter()
-                }
-            });
+            JsonSerializationDefaults.Options);
 
         if (cultures is null or { AvailableCultures.Count: 0 })
         {
