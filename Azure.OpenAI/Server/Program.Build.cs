@@ -1,9 +1,9 @@
 ﻿// Copyright (c) David Pine. All rights reserved.
 // Licensed under the MIT License.
 
-public static partial class Program
+public partial class Program
 {
-    internal static WebApplication BuildApp(this WebApplicationBuilder builder)
+    internal static WebApplication BuildApp(WebApplicationBuilder builder)
     {
         builder.Services.AddAzureOpenAI(builder.Configuration);
 

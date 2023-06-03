@@ -3,8 +3,8 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
-using var app = builder.BuildApp();
+using var app = BuildApp(builder);
 
-app.ConfigureApp();
+ConfigureApp(app);
 
 await app.RunAsync();
