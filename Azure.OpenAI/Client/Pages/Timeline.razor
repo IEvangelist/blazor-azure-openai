@@ -1,48 +1,46 @@
 ﻿@page "/history"
 
-<MudTimeline TimelineAlign="TimelineAlign.Start">
-@foreach (var (index, item) in Items.OrderBy(_ => _.Date).Select((item, i) => (i, item)))
-{
-    var (date, label, reference, details) = item;
-    var color = Colors[index % Colors.Length];
-    var isEven = index % 2 is 0;
-    var dateClass = isEven ? "text-align-end" : "";
-    var labelClass = !isEven ? "text-align-end" : "";    
+<MudTimeline TimelineAlign="TimelineAlign.Start" TimelinePosition="TimelinePosition.Left">
+    @foreach (var (index, item) in Items.OrderBy(_ => _.Date).Select((item, i) => (i, item)))
+    {
+        var (date, label, reference, details) = item;
+        var color = Colors[index % Colors.Length];
+        var isEven = index % 2 is 0;
 
-    <MudTimelineItem Color="@color" Size="Size.Medium" Variant="Variant.Filled">
-        <ItemOpposite>
-                <MudText Color="@color" Typo="Typo.h4" Class="@dateClass" Style="font-family: monospace;">
-                @($"{date:MMMM yyyy}")
-            </MudText>
-        </ItemOpposite>
-        <ItemDot>
-            <MudIcon Icon="@Icons.Material.Filled.Code"  />
-        </ItemDot>
-        <ItemContent>
-            <MudText GutterBottom="true" Class="@labelClass">
-                <MudLink Href="@reference" Target="_blank" Typo="Typo.h4"
-                         Style="font-family: monospace;" Color="@color">
-                    @label
-                    <MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Color="@color" />
-                </MudLink>
-            </MudText>
-            <MudPaper Class="pa-4 rounded" Width="100%" Outlined="true">
-                <MudList Dense="true" Clickable="true" Color="@color">
-                    @foreach (var (text, reference) in details.OrderBy(d => d.Text))
-                    {
-                        <MudListItem Icon="@Icons.Material.Filled.CheckCircle" IconSize="Size.Small"
-                                     IconColor="@color" Disabled=@(reference is null)>
-                            <MudLink Typo="Typo.body1" Color="Color.Default" Target="_blank"
-                                     Style="font-family: monospace;" Href="@(reference ?? "#")">
-                                @((MarkupString)text.ToHtml())                                
-                            </MudLink>
-                        </MudListItem>
-                    }
-                </MudList>
-            </MudPaper>
-        </ItemContent>
-    </MudTimelineItem>
-}
+        <MudTimelineItem Color="@color" Size="Size.Medium" Variant="Variant.Filled">
+            <ItemOpposite>
+                <MudText Color="@color" Typo="Typo.h4" Style="font-family: monospace;">
+                    @($"{date:MMMM yyyy}")
+                </MudText>
+            </ItemOpposite>
+            <ItemDot>
+                <MudIcon Icon="@Icons.Material.Filled.Code" />
+            </ItemDot>
+            <ItemContent>
+                <MudText GutterBottom="true">
+                    <MudLink Href="@reference" Target="_blank" Typo="Typo.h4"
+                             Style="font-family: monospace;" Color="@color">
+                        @label
+                        <MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Color="@color" />
+                    </MudLink>
+                </MudText>
+                <MudPaper Class="pa-4 rounded" Width="100%" Outlined="true">
+                    <MudList Dense="true" Clickable="true" Color="@color">
+                        @foreach (var (text, reference) in details.OrderBy(d => d.Text))
+                        {
+                            <MudListItem Icon="@Icons.Material.Filled.CheckCircle" IconSize="Size.Small"
+                                         IconColor="@color" Disabled=@(reference is null)>
+                                <MudLink Typo="Typo.body1" Color="Color.Default" Target="_blank"
+                                         Style="font-family: monospace;" Href="@(reference ?? "#")">
+                                    @((MarkupString)text.ToHtml())
+                                </MudLink>
+                            </MudListItem>
+                        }
+                    </MudList>
+                </MudPaper>
+            </ItemContent>
+        </MudTimelineItem>
+    }
     <MudScrollToTop VisibleCssClass="visible absolute"
                     HiddenCssClass="invisible">
         <MudFab Color="Color.Primary" IconSize="Size.Large" StartIcon="@Icons.Material.Filled.ArrowUpward" />
