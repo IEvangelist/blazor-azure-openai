@@ -10,14 +10,15 @@ internal static class EndpointRouteBuilderExtensions
         var api = routeBuilder.MapGroup("api/openai");
 
         api.MapPost("chat", PostChatPromptAsync);
+        api.MapPost("image", PostImagePromptAsync);
 
         return routeBuilder;
     }
 
     static async IAsyncEnumerable<TokenizedResponse> PostChatPromptAsync(
-        OpenAIClient client, ChatPrompt prompt, IConfiguration config)
+        OpenAIClient client, RequestPrompt prompt, IConfiguration config)
     {
-        var deploymentId = config["AzureOpenAI:DeploymentId"] ?? "pine-chat";
+        var deploymentId = config["AzureOpenAI:DeploymentId"];
 
         // TODO: take on different persona, given the ChatPrompt...
 
@@ -49,5 +50,27 @@ internal static class EndpointRouteBuilderExtensions
                 yield return new TokenizedResponse(message.Content);
             }
         }
+    }
+
+    static async ValueTask<ImagesResponse> PostImagePromptAsync(
+        OpenAIClient client, RequestPrompt prompt, IConfiguration config)
+    {
+        var deploymentId = config["AzureOpenAI:DeploymentId"];
+
+        var response = await client.GetImageGenerationsAsync(new ImageGenerationOptions
+        {
+            Prompt = prompt.Prompt
+        });
+
+        var images = response.Value;
+
+        return images switch
+        {
+            { Data.Count: > 0 } => new ImagesResponse(
+                Created: images.Created,
+                ImageURLs: images.Data.Select(static d => d.Url).ToArray()),
+
+            _ => new ImagesResponse() { IsSuccessful = false }
+        };
     }
 }

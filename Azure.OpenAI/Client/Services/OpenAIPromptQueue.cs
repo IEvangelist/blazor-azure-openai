@@ -1,8 +1,6 @@
 ﻿// Copyright (c) David Pine. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.Extensions.Logging;
-
 namespace Azure.OpenAI.Client.Services;
 
 public sealed partial class OpenAIPromptQueue
@@ -39,17 +37,20 @@ public sealed partial class OpenAIPromptQueue
                 using var client = scope.ServiceProvider.GetRequiredService<HttpClient>();
 
                 var options = JsonSerializationDefaults.Options;
-                var chatPrompt = new ChatPrompt { Prompt = prompt };
+                var chatPrompt = new RequestPrompt { Prompt = prompt };
                 var json = chatPrompt.ToJson(options);
-                using var body = new StringContent(json, Encoding.UTF8, "application/json");
+                using var body = new StringContent(
+                    json, Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync("api/openai/chat", body);
+                var response = await client.PostAsync(
+                    "api/openai/chat", body);
                 response.EnsureSuccessStatusCode();
 
                 using var stream = await response.Content.ReadAsStreamAsync();
 
                 await foreach (var tokenizedResponse in
-                    JsonSerializer.DeserializeAsyncEnumerable<TokenizedResponse>(stream, options))
+                    JsonSerializer.DeserializeAsyncEnumerable<TokenizedResponse>(
+                        stream, options))
                 {
                     if (tokenizedResponse is null)
                     {
@@ -65,15 +66,20 @@ public sealed partial class OpenAIPromptQueue
                         new PromptResponse(
                             prompt, responseText, false));
 
-                    await Task.Delay(1); // Required for Blazor to render live updates.
+                    // Required for Blazor to render live updates.
+                    await Task.Delay(1);
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogWarning(ex, "Unable to generate response: {Error}", ex.Message);
+                _logger.LogWarning(
+                    ex,
+                    "Unable to generate response: {Error}",
+                    ex.Message);
 
                 await handler(
-                    new PromptResponse(prompt, ex.Message, true, isError = true));
+                    new PromptResponse(
+                        prompt, ex.Message, true, isError = true));
             }
             finally
             {
@@ -93,7 +99,8 @@ public sealed partial class OpenAIPromptQueue
         });
     }
 
-    private static string NormalizeResponseText(StringBuilder builder, ILogger logger, bool debugLogEnabled)
+    private static string NormalizeResponseText(
+        StringBuilder builder, ILogger logger, bool debugLogEnabled)
     {
         if (builder is null or { Length: 0 })
         {
@@ -104,7 +111,9 @@ public sealed partial class OpenAIPromptQueue
 
         if (debugLogEnabled)
         {
-            logger.LogDebug("Before normalize:{Newline}{Tab}{Text}", Environment.NewLine, '\t', text);
+            logger.LogDebug(
+                "Before normalize:{Newline}{Tab}{Text}",
+                Environment.NewLine, '\t', text);
         }
 
         text = LineEndingsRegex().Replace(text, "\n");
@@ -112,7 +121,9 @@ public sealed partial class OpenAIPromptQueue
 
         if (debugLogEnabled)
         {
-            logger.LogDebug("After normalize:{Newline}{Tab}{Text}", Environment.NewLine, '\t', text);
+            logger.LogDebug(
+                "After normalize:{Newline}{Tab}{Text}",
+                Environment.NewLine, '\t', text);
         }
 
         return text;

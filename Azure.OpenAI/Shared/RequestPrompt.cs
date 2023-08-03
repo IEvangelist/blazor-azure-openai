@@ -3,7 +3,7 @@
 
 namespace Azure.OpenAI.Shared;
 
-public class ChatPrompt
+public class RequestPrompt
 {
     public string Prompt { get; set; } = default!;
 }
