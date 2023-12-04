@@ -1,0 +1,52 @@
+﻿<MudStack Reverse="false" Spacing="12">
+    @foreach (var (askedOn, (question, answer)) in QuestionAndAnswerMap)
+    {
+        <MudStack Justify="Justify.Center" AlignItems="AlignItems.Start" Spacing="4">
+            <MudBadge Origin="Origin.TopLeft" Overlap="true" Color="Color.Secondary"
+                      Icon="@Icons.Material.Filled.QuestionMark" Class="d-flex align-self-end">
+                <MudPaper Class="pa-6 d-flex flex-column" Elevation="3">
+                    <MudText Typo="Typo.body1" Align="Align.End">
+                        @((MarkupString)question.Question.ToHtml())
+                    </MudText>
+                    <MudText Typo="Typo.caption" Align="Align.End" Color="Color.Secondary">
+                        @Localizer["AskedOnFormat", askedOn]
+                    </MudText>
+                </MudPaper>
+            </MudBadge>
+            <div class="ten-twelves">
+                @if (answer is null)
+                {
+                    <MudBadge Origin="Origin.TopLeft" Overlap="true" Color="Color.Secondary"
+                              Icon="@Icons.Material.Filled.Lightbulb" Class="full-width">
+                        <MudPaper Class="pa-6" Elevation="3">
+                            <MudText Typo="Typo.h5" Color="Color.Secondary" Class="pb-2">
+                                🤖 @Localizer["BusyMessage"]
+                            </MudText>
+                            <MudProgressCircular Color="Color.Secondary"
+                                                 Indeterminate="true" Class="pb-4" />
+                        </MudPaper>
+                    </MudBadge>
+                }
+                else if (answer.Value.ContainsError)
+                {
+                    <MudBadge Origin="Origin.TopLeft" Overlap="true" Color="Color.Error"
+                              Icon="@Icons.Material.Filled.Error">
+                        <AnswerError Error="@answer.Value.Error" Question="@question"
+                                     OnRetryClicked="@OnAskQuestionAsync" />
+                    </MudBadge>
+                }
+                else
+                {
+                    <MudBadge Origin="Origin.TopLeft" Overlap="true" Color="Color.Secondary"
+                              Icon="@Icons.Material.Filled.AutoAwesome">
+                        <MudPaper Class="pa-6" Elevation="3">
+                            <MudText Typo="Typo.body1">
+                                @((MarkupString)(answer.Value.Answer ?? "Unable to generate answer."))
+                            </MudText>
+                        </MudPaper>
+                    </MudBadge>
+                }
+            </div>
+        </MudStack>
+    }
+</MudStack>

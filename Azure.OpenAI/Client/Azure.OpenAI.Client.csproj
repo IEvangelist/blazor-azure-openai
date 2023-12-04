@@ -7,20 +7,21 @@
         <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
         <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>preview</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0-preview.6.23329.11" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0-preview.6.23329.11" PrivateAssets="all" />
-        <PackageReference Include="Blazor.LocalStorage.WebAssembly" Version="7.0.3" />
-        <PackageReference Include="Blazor.SessionStorage.WebAssembly" Version="7.0.3" />
-        <PackageReference Include="Blazor.SpeechRecognition.WebAssembly" Version="7.0.3" />
-        <PackageReference Include="Blazor.SpeechSynthesis.WebAssembly" Version="7.0.3" />
-        <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="8.0.0-preview.6.23329.11" />
-        <PackageReference Include="Markdig" Version="0.31.0" />
-        <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0-preview.6.23329.7" />
-        <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0-preview.6.23329.11" />
-        <PackageReference Include="MudBlazor" Version="6.7.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" PrivateAssets="all" />
+        <PackageReference Include="Blazor.LocalStorage.WebAssembly" Version="8.0.0" />
+        <PackageReference Include="Blazor.SessionStorage.WebAssembly" Version="8.0.0" />
+        <PackageReference Include="Blazor.SpeechRecognition.WebAssembly" Version="8.0.0" />
+        <PackageReference Include="Blazor.SpeechSynthesis.WebAssembly" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="8.0.0" />
+        <PackageReference Include="Markdig" Version="0.33.0" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
+        <PackageReference Include="MudBlazor" Version="6.11.1" />
     </ItemGroup>
 
     <ItemGroup>

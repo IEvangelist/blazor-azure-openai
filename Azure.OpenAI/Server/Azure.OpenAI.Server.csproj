@@ -7,10 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.6" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.9" />
-        <PackageReference Include="Microsoft.Extensions.Azure" Version="1.6.3" />
-        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+        <PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.9" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Azure" Version="1.7.1" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 

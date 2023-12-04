@@ -117,40 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Ask" xml:space="preserve">
-    <value>Ask</value>
+  <data name="Interact_with" xml:space="preserve">
+    <value>Interact with</value>
   </data>
-  <data name="AskedOnFormat" xml:space="preserve">
-    <value>Asked at {0:T} on {0:d}</value>
-  </data>
-  <data name="BusyMessage" xml:space="preserve">
-    <value>I'm generating an answer, please wait...</value>
-  </data>
-  <data name="Chat" xml:space="preserve">
-    <value>Voice Chat</value>
-  </data>
-  <data name="ChatPrompt" xml:space="preserve">
-    <value>Enter an Azure.AI.OpenAI chat prompt.</value>
-  </data>
-  <data name="InputHelperText" xml:space="preserve">
-    <value>Use Shift + Enter for new lines. Markdown is supported.</value>
-  </data>
-  <data name="OpenTTSDialog" xml:space="preserve">
-    <value>Open text-to-speech seetings dialog?</value>
-  </data>
-  <data name="Prompt" xml:space="preserve">
-    <value>Prompt</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Speak" xml:space="preserve">
-    <value>Speak</value>
-  </data>
-  <data name="Stop" xml:space="preserve">
-    <value>Stop!!</value>
-  </data>
-  <data name="TTSPreferences" xml:space="preserve">
-    <value>Text-to-speech Preferences</value>
+  <data name="using_voice_chat" xml:space="preserve">
+    <value>using voice chat.</value>
   </data>
 </root>

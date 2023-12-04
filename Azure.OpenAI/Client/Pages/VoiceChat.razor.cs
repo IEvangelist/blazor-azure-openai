@@ -13,13 +13,11 @@ public sealed partial class VoiceChat : IDisposable
     private bool _isRecognizingSpeech = false;
     private bool _isReceivingResponse = false;
     private bool _isReadingResponse = false;
-    private IDisposable? _recognitionSubscription;
     private VoicePreferences? _voicePreferences;
     private Dictionary<DateTime, QuestionAndAnswer> _questionAndAnswerMap = new();
 
     [Inject] public required OpenAIPromptQueue OpenAIPrompts { get; set; }
     [Inject] public required IDialogService Dialog { get; set; }
-    [Inject] public required ISpeechRecognitionService SpeechRecognition { get; set; }
     [Inject] public required ISpeechSynthesisService SpeechSynthesis { get; set; }
     [Inject] public required ILocalStorageService LocalStorage { get; set; }
     [Inject] public required ISessionStorageService SessionStorage { get; set; }
@@ -48,32 +46,18 @@ public sealed partial class VoiceChat : IDisposable
         State.OnDeleteHistoryClicked += OnDeleteHistoryClick;
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    private void OnSendPrompt(PromptQuestion prompt)
     {
-        if (firstRender)
-        {
-            await SpeechRecognition.InitializeModuleAsync();
-        }
-    }
+        _userQuestion = prompt.Question;
 
-    private Task OnAskQuestionAsync(UserQuestion userQuestion)
-    {
-        _currentQuestion = userQuestion;        
-
-        OnSendPrompt(true);
-
-        return Task.CompletedTask;
-    }
-
-    private void OnSendPrompt(bool repeatQuestion = false)
-    {
-        if (_isReceivingResponse || string.IsNullOrWhiteSpace(_userQuestion))
+        if (_isReceivingResponse ||
+            string.IsNullOrWhiteSpace(_userQuestion))
         {
             return;
         }
 
         _isReceivingResponse = true;
-        if (repeatQuestion is false)
+        if (prompt.IsRepeat is false)
         {
             _askedOn = DateTime.Now;
             _currentQuestion = new(_userQuestion, _askedOn);
@@ -153,14 +137,6 @@ public sealed partial class VoiceChat : IDisposable
         StateHasChanged();
     }
 
-    private void OnKeyUp(KeyboardEventArgs args)
-    {
-        if (args is { Key: "Enter", ShiftKey: false })
-        {
-            OnSendPrompt();
-        }
-    }
-
     protected override void OnAfterRender(bool firstRender) =>
         JavaScript.InvokeVoid("highlight");
 
@@ -168,26 +144,6 @@ public sealed partial class VoiceChat : IDisposable
     {
         SpeechSynthesis.Cancel();
         _isReadingResponse = false;
-    }
-
-    private void OnRecognizeSpeechClick()
-    {
-        if (_isRecognizingSpeech)
-        {
-            SpeechRecognition.CancelSpeechRecognition(false);
-        }
-        else
-        {
-            var bcp47Tag = CultureInfo.CurrentUICulture.Name;
-
-            _recognitionSubscription?.Dispose();
-            _recognitionSubscription = SpeechRecognition.RecognizeSpeech(
-                bcp47Tag,
-                OnRecognized,
-                OnError,
-                OnStarted,
-                OnEnded);
-        }
     }
 
     private async Task ShowVoiceDialogAsync()
@@ -198,44 +154,10 @@ public sealed partial class VoiceChat : IDisposable
         {
             _voicePreferences = await dialog.GetReturnValueAsync<VoicePreferences>();
         }
-    }
-
-    private void OnStarted()
-    {
-        _isRecognizingSpeech = true;
-        StateHasChanged();
-    }
-
-    private void OnEnded()
-    {
-        _isRecognizingSpeech = false;
-        StateHasChanged();
-    }
-
-    private void OnError(SpeechRecognitionErrorEvent errorEvent)
-    {
-        Logger.LogWarning(
-            "{Error}: {Message}",
-            errorEvent.Error, errorEvent.Message ?? "Error message, unknown.");
-
-        StateHasChanged();
-    }
-
-    private void OnRecognized(string transcript)
-    {
-        _userQuestion = _userQuestion switch
-        {
-            null => transcript,
-            _ => $"{_userQuestion.Trim()} {transcript}".Trim()
-        };
-
-        StateHasChanged();
-    }
+    }   
 
     public void Dispose()
     {
-        _recognitionSubscription?.Dispose();
-
         State.OnDeleteHistoryClicked -= OnDeleteHistoryClick;
     }
 }

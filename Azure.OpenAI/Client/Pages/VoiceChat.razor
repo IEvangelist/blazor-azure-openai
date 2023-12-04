@@ -7,126 +7,18 @@
     <MudItem id="@AnswerElementId" xs="12" Class="d-flex flex-column flex-1">
         @if (_questionAndAnswerMap is { Count: 0 })
         {
-            <MudGrid Justify="Justify.Center" Spacing="2">
-                  <MudItem lg="12">
-                    <MudStack Class="pb-4">
-                        <MudIcon Icon="@Icons.Material.Filled.AutoAwesome"
-                                    Class="icon-huge align-self-center" Color="Color.Primary" />
-                        <MudText Typo="Typo.h2" Class="align-self-center">
-                            @(Localizer["Interact_with"])
-                        </MudText>
-                        <MudText Typo="Typo.h1" Class="align-self-center"
-                                 Style="font-family: monospace;">
-                            Blazor 📎 Clippy
-                        </MudText>
-                        <MudText Typo="Typo.h2" Class="align-self-center">
-                            @(Localizer["using_voice_chat"])
-                        </MudText>
-                    </MudStack>
-                </MudItem>
-            </MudGrid>
+            <Assistant />
         }
         else
         {
-            <MudStack Reverse="false" Spacing="12">
-                @foreach (var (askedOn, (question, answer)) in _questionAndAnswerMap)
-                {
-                    <MudStack Justify="Justify.Center" AlignItems="AlignItems.Start" Spacing="4">
-                        <MudBadge Origin="Origin.TopLeft" Overlap="true" Color="Color.Secondary"
-                                  Icon="@Icons.Material.Filled.QuestionMark" Class="d-flex align-self-end">
-                            <MudPaper Class="pa-6 d-flex flex-column" Elevation="3">
-                                <MudText Typo="Typo.body1" Align="Align.End">
-                                    @((MarkupString)question.Question.ToHtml())
-                                </MudText>
-                                <MudText Typo="Typo.caption" Align="Align.End" Color="Color.Secondary">
-                                    @Localizer["AskedOnFormat", askedOn]
-                                </MudText>
-                            </MudPaper>
-                        </MudBadge>
-                        <div class="ten-twelves">
-                            @if (answer is null)
-                            {
-                                <MudBadge Origin="Origin.TopLeft" Overlap="true" Color="Color.Secondary"
-                                          Icon="@Icons.Material.Filled.Lightbulb" Class="full-width">
-                                    <MudPaper Class="pa-6" Elevation="3">
-                                        <MudText Typo="Typo.h5" Color="Color.Secondary" Class="pb-2">
-                                            🤖 @Localizer["BusyMessage"]
-                                        </MudText>
-                                        <MudProgressCircular Color="Color.Secondary"
-                                                             Indeterminate="true" Class="pb-4" />
-                                    </MudPaper>
-                                </MudBadge>
-                            }
-                            else if (answer.Value.ContainsError)
-                            {
-                                <MudBadge Origin="Origin.TopLeft" Overlap="true" Color="Color.Error"
-                                          Icon="@Icons.Material.Filled.Error">
-                                    <AnswerError Error="@answer.Value.Error" Question="@question"
-                                                 OnRetryClicked="@OnAskQuestionAsync" />
-                                </MudBadge>
-                            }
-                            else
-                            {
-                                <MudBadge Origin="Origin.TopLeft" Overlap="true" Color="Color.Secondary"
-                                          Icon="@Icons.Material.Filled.AutoAwesome">
-                                    <MudPaper Class="pa-6" Elevation="3">
-                                        <MudText Typo="Typo.body1">
-                                            @((MarkupString)(answer.Value.Answer ?? "Unable to generate answer."))
-                                        </MudText>
-                                    </MudPaper>
-                                </MudBadge>
-                            }
-                        </div>
-                    </MudStack>
-                }
-            </MudStack>
+            <QuestionAndAnswerStream OnAskQuestion="@OnSendPrompt" 
+                QuestionAndAnswerMap="@_questionAndAnswerMap" />
         }
     </MudItem>
 </MudGrid>
 <MudGrid Justify="Justify.Center" Class="mud-appbar-fixed-bottom">
     <MudItem xs="12" Class="rounded">
-        <MudGrid>
-            <MudItem xs="12" lg="10">
-                <MudTextField @bind-Value="_userQuestion" Label=@Localizer["Prompt"]
-                              Variant="Variant.Outlined" Adornment="Adornment.End"
-                              AdornmentIcon="@Icons.Material.Filled.VoiceChat"
-                              AdornmentColor="Color.Secondary" AutoFocus="true"
-                              Placeholder=@Localizer["ChatPrompt"] Lines="3" Immediate="true"
-                              HelperText=@Localizer["InputHelperText"]
-                              OnKeyUp="@OnKeyUp" Clearable="true" Counter="1_000" MaxLength="1_000"
-                              Disabled=@(_isRecognizingSpeech || _isReceivingResponse) IconSize="Size.Large"
-                              autocomplete="off" title=@Localizer["ChatPrompt"] />
-            </MudItem>
-            <MudItem xs="0" lg="2" Class="d-flex align-self-center">
-                <MudGrid Justify="Justify.Center">
-                    <MudItem xs="9" Class="pa-2">
-                        <MudFab Label=@Localizer[_isRecognizingSpeech ? "Stop" : "Speak"]
-                                Color="Color.Primary" Size="Size.Large"
-                                StartIcon=@(_isRecognizingSpeech ? @Icons.Material.Filled.MicOff : Icons.Material.Filled.Mic)
-                                OnClick="@OnRecognizeSpeechClick" Disabled=@_isReceivingResponse Class="full-width"
-                                mic="@(_isRecognizingSpeech ? "on" : "off")" />
-                    </MudItem>
-                    <MudItem xs="3" Class="pa-2">
-                        <MudTooltip Text=@Localizer["OpenTTSDialog"] Placement="Placement.Top">
-                            <MudFab Color="Color.Tertiary" Size="Size.Medium"
-                                    StartIcon="@Icons.Material.Filled.SettingsVoice"
-                                    OnClick="@ShowVoiceDialogAsync" />
-                        </MudTooltip>
-                    </MudItem>
-                    <MudItem xs="9" Class="pa-2">
-                        <MudFab Color="Color.Secondary" Label=@Localizer["Ask"] Size="Size.Large"
-                                StartIcon=@Icons.Material.Filled.Send Class="full-width"
-                                OnClick="@(_ => OnSendPrompt())"
-                                Disabled=@(_isRecognizingSpeech || _isReceivingResponse || string.IsNullOrWhiteSpace(_userQuestion)) />
-                    </MudItem>
-                    <MudItem xs="3" Class="pa-2">
-                        <MudFab Color="Color.Warning" Size="Size.Medium"
-                                StartIcon="@Icons.Material.Filled.Stop"
-                                OnClick="@StopTalking" Disabled=@(_isReadingResponse is false) />
-                    </MudItem>
-                </MudGrid>
-            </MudItem>
-        </MudGrid>
+        <UserPrompt OnPromptSubmitted="@OnSendPrompt" />
     </MudItem>
 </MudGrid>
 <MudScrollToTop Selector="#replies"

@@ -6,4 +6,6 @@ namespace Azure.OpenAI.Shared;
 public class RequestPrompt
 {
     public string Prompt { get; set; } = default!;
+
+    public AssistantPersona Persona { get; set; } = AssistantPersona.Clippy;
 }

@@ -20,35 +20,29 @@ internal static class EndpointRouteBuilderExtensions
     {
         var deploymentId = config["AzureOpenAI:DeploymentId"];
 
-        // TODO: take on different persona, given the ChatPrompt...
+        var messages = prompt.Persona.GetMessages();
 
         var response = await client.GetChatCompletionsStreamingAsync(
-            deploymentId, new ChatCompletionsOptions
+            new ChatCompletionsOptions
             {
+                DeploymentName = deploymentId,
                 Messages =
                 {
-                    new ChatMessage(ChatRole.System, """
-                        You're an AI assistant for developers, helping them write code more efficiently.
-                        You're name is "Blazor Clippy".
-                        You will always reply with a Markdown formatted response.
-                        """),
+                    // Set up our OpenAI ChatGPT persona.
+                    new ChatMessage(ChatRole.System, messages.System),
+                    new ChatMessage(ChatRole.User, messages.User),
+                    new ChatMessage(ChatRole.Assistant,messages.Assistant),
 
-                    new ChatMessage(ChatRole.User, "What's your name?"),
-
-                    new ChatMessage(ChatRole.Assistant,
-                        "Hi, my name is **Blazor Clippy**! Nice to meet you. 🤓"),
-
+                    // Feed user prompt into session.
                     new ChatMessage(ChatRole.User, prompt.Prompt)
                 }
             });
 
-        using var completions = response.Value;
-        await foreach (var choice in completions.GetChoicesStreaming())
+        using var completions = response;
+
+        await foreach (var update in completions)
         {
-            await foreach (var message in choice.GetMessageStreaming())
-            {
-                yield return new TokenizedResponse(message.Content);
-            }
+            yield return new TokenizedResponse(update.ContentUpdate);
         }
     }
 
