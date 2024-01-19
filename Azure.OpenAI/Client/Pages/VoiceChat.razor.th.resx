@@ -58,40 +58,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Ask" xml:space="preserve">
-    <value>ถาม</value>
-  </data>
-  <data name="AskedOnFormat" xml:space="preserve">
-    <value>ถามที่ {0:T} บน {0:d}</value>
-  </data>
-  <data name="BusyMessage" xml:space="preserve">
-    <value>ฉันกําลังสร้างคําตอบโปรดรอสักครู่ ...</value>
-  </data>
   <data name="Chat" xml:space="preserve">
     <value>แชทด้วยเสียง</value>
-  </data>
-  <data name="ChatPrompt" xml:space="preserve">
-    <value>ป้อนพร้อมท์แชท Azure.AI.OpenAI</value>
-  </data>
-  <data name="InputHelperText" xml:space="preserve">
-    <value>ใช้ Shift + Enter สําหรับบรรทัดใหม่</value>
-  </data>
-  <data name="OpenTTSDialog" xml:space="preserve">
-    <value>เปิดกล่องโต้ตอบการแปลงข้อความเป็นคําพูด?</value>
-  </data>
-  <data name="Prompt" xml:space="preserve">
-    <value>พร้อมท์</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>ประหยัด</value>
-  </data>
-  <data name="Speak" xml:space="preserve">
-    <value>พูด</value>
-  </data>
-  <data name="Stop" xml:space="preserve">
-    <value>หยุด!!</value>
-  </data>
-  <data name="TTSPreferences" xml:space="preserve">
-    <value>การกําหนดลักษณะการแปลงข้อความเป็นคําพูด</value>
   </data>
 </root>

@@ -58,40 +58,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Ask" xml:space="preserve">
-    <value>頼む</value>
-  </data>
-  <data name="AskedOnFormat" xml:space="preserve">
-    <value>{0:d} の {0:T} で尋ねられました</value>
-  </data>
-  <data name="BusyMessage" xml:space="preserve">
-    <value>私は答えを生成しています、お待ちください...</value>
-  </data>
   <data name="Chat" xml:space="preserve">
     <value>ボイスチャット</value>
-  </data>
-  <data name="ChatPrompt" xml:space="preserve">
-    <value>Azure.AI.OpenAI チャット プロンプトを入力します。</value>
-  </data>
-  <data name="InputHelperText" xml:space="preserve">
-    <value>新しい行には Shift + Enter を使用します。</value>
-  </data>
-  <data name="OpenTTSDialog" xml:space="preserve">
-    <value>テキスト読み上げダイアログを開きますか?</value>
-  </data>
-  <data name="Prompt" xml:space="preserve">
-    <value>プロンプト</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>セーブ</value>
-  </data>
-  <data name="Speak" xml:space="preserve">
-    <value>話す</value>
-  </data>
-  <data name="Stop" xml:space="preserve">
-    <value>止める！！</value>
-  </data>
-  <data name="TTSPreferences" xml:space="preserve">
-    <value>テキスト読み上げの設定</value>
   </data>
 </root>

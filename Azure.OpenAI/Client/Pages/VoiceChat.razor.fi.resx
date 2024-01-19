@@ -58,40 +58,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Ask" xml:space="preserve">
-    <value>Kysyä</value>
-  </data>
-  <data name="AskedOnFormat" xml:space="preserve">
-    <value>Kysytään {0:T} {0:d}</value>
-  </data>
-  <data name="BusyMessage" xml:space="preserve">
-    <value>Luon vastauksen, odota...</value>
-  </data>
   <data name="Chat" xml:space="preserve">
     <value>Ääni-chat</value>
-  </data>
-  <data name="ChatPrompt" xml:space="preserve">
-    <value>Kirjoita Azure.AI.OpenAI-keskustelukehote.</value>
-  </data>
-  <data name="InputHelperText" xml:space="preserve">
-    <value>Käytä näppäinyhdistelmää Vaihto + Enter uusille riveille.</value>
-  </data>
-  <data name="OpenTTSDialog" xml:space="preserve">
-    <value>Avaa teksti puheeksi -seetings-valintaikkuna?</value>
-  </data>
-  <data name="Prompt" xml:space="preserve">
-    <value>Ripeä</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Säästää</value>
-  </data>
-  <data name="Speak" xml:space="preserve">
-    <value>Puhua</value>
-  </data>
-  <data name="Stop" xml:space="preserve">
-    <value>Seis!!</value>
-  </data>
-  <data name="TTSPreferences" xml:space="preserve">
-    <value>Teksti puheeksi -asetukset</value>
   </data>
 </root>

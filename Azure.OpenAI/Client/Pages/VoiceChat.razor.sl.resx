@@ -58,40 +58,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Ask" xml:space="preserve">
-    <value>Vprašati</value>
-  </data>
-  <data name="AskedOnFormat" xml:space="preserve">
-    <value>Na vprašanje v {0:T} v {0:d}</value>
-  </data>
-  <data name="BusyMessage" xml:space="preserve">
-    <value>Dam odgovor, prosim počakajte...</value>
-  </data>
   <data name="Chat" xml:space="preserve">
     <value>Glasovni klepet</value>
-  </data>
-  <data name="ChatPrompt" xml:space="preserve">
-    <value>Vnesite poziv za klepet azure.AI.OpenAI.</value>
-  </data>
-  <data name="InputHelperText" xml:space="preserve">
-    <value>Za nove vrstice uporabite Shift + Enter.</value>
-  </data>
-  <data name="OpenTTSDialog" xml:space="preserve">
-    <value>Odprete pogovorno okno za sestave besedila v govor?</value>
-  </data>
-  <data name="Prompt" xml:space="preserve">
-    <value>Uren</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Shraniti</value>
-  </data>
-  <data name="Speak" xml:space="preserve">
-    <value>Govoriti</value>
-  </data>
-  <data name="Stop" xml:space="preserve">
-    <value>Ustavi se!!</value>
-  </data>
-  <data name="TTSPreferences" xml:space="preserve">
-    <value>Nastavitve besedila v govor</value>
   </data>
 </root>
