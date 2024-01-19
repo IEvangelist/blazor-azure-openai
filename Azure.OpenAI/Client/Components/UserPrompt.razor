@@ -19,7 +19,7 @@
                         OnClick="@OnRecognizeSpeechClick" Disabled=@_isReceivingResponse Class="full-width"
                         mic="@(_isRecognizingSpeech ? "on" : "off")" />
             </MudItem>
-            @* <MudItem xs="3" Class="pa-2">
+            <MudItem xs="3" Class="pa-2">
                 <MudTooltip Text=@Localizer["OpenTTSDialog"] Placement="Placement.Top">
                     <MudFab Color="Color.Tertiary" Size="Size.Medium"
                             StartIcon="@Icons.Material.Filled.SettingsVoice"
@@ -36,7 +36,7 @@
                 <MudFab Color="Color.Warning" Size="Size.Medium"
                         StartIcon="@Icons.Material.Filled.Stop"
                         OnClick="@StopTalking" Disabled=@(_isReadingResponse is false) />
-            </MudItem> *@
+            </MudItem>
         </MudGrid>
     </MudItem>
 </MudGrid>

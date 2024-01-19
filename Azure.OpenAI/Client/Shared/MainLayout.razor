@@ -22,6 +22,21 @@
 
             <MudSpacer />
 
+            <MudSelect @bind-Value="Persona" Label="Persona" Variant="Variant.Filled"
+                       Margin="Margin.Dense" FullWidth="false">
+                @foreach (AssistantPersona item in Enum.GetValues(typeof(AssistantPersona)))
+                {
+                    var name = item switch
+                    {
+                        AssistantPersona.Pirate => "Blazor Black Beard 🦜",
+                        AssistantPersona.Clippy => "Blazor 📎 Clippy",
+                        AssistantPersona.Yoda => "Blazor 🥋 Yoda",
+                        _ => "Blazor 🤖 Bot"
+                    };
+                    <MudSelectItem Value="@item">@name</MudSelectItem>
+                }
+            </MudSelect>
+
             <MudIconButton Icon="@Icons.Material.Filled.DeleteForever" Color="Color.Inherit"
                            OnClick="@OnDeleteClicked" Size="Size.Large"
                            Disabled=@IsDeleteDisabled />
@@ -51,7 +66,9 @@
         </MudDrawer>
         <MudMainContent>
             <MudContainer MaxWidth="MaxWidth.Large" Class="my-6 pt-6">
-                @Body
+                <CascadingValue Value="@Persona">
+                    @Body
+                </CascadingValue>
             </MudContainer>
         </MudMainContent>
     </MudLayout>

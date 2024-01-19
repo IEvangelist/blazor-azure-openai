@@ -3,17 +3,11 @@
 
 namespace Azure.OpenAI.Client.Services;
 
-public sealed class CultureService
+public sealed class CultureService(IHttpClientFactory factory, ILogger<CultureService> logger)
 {
-    readonly IHttpClientFactory _factory;
-    readonly ILogger<CultureService> _logger;
-
-    public CultureService(IHttpClientFactory factory, ILogger<CultureService> logger) =>
-        (_factory, _logger) = (factory, logger);
-
     internal async Task<IDictionary<CultureInfo, AzureCulture>> GetAvailableCulturesAsync()
     {
-        using var client = _factory.CreateClient();
+        using var client = factory.CreateClient();
         client.BaseAddress = new Uri("https://api.cognitive.microsofttranslator.com");
 
         var cultures = await client.GetFromJsonAsync<SharedCultures>(
@@ -65,7 +59,7 @@ public sealed class CultureService
                 }
                 else
                 {
-                    _logger.LogInformation(
+                    logger.LogInformation(
                         "Unable to find cultures for lang: {Key} - from: {Source}",
                         group.Key, string.Join(", ", cultureList.Select(c => c.Name)));
                 }

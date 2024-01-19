@@ -5,15 +5,15 @@ namespace Azure.OpenAI.Client.Pages;
 
 public sealed partial class Timeline
 {
-    internal Color[] Colors { get; } = new[]
-    {
+    internal Color[] Colors { get; } =
+    [
         Color.Primary,
         Color.Secondary,
         Color.Tertiary,
         Color.Info,
         Color.Warning,
         Color.Success
-    };
+    ];
 
     internal ISet<TimelineItem> Items { get; } = new HashSet<TimelineItem>
     {
@@ -21,8 +21,8 @@ public sealed partial class Timeline
             Date: new DateOnly(2002, 1, 1),
             Label: "C# 1.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-10-1",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Classes (`class` type)", "https://learn.microsoft.com/dotnet/csharp/fundamentals/types/classes"),
                 new Detail("Structs (`struct` type)", "https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/struct"),
                 new Detail("Interfaces (`interface` type)", "https://learn.microsoft.com/dotnet/csharp/fundamentals/types/interfaces"),
@@ -32,23 +32,23 @@ public sealed partial class Timeline
                 new Detail("Operators and expressions","https://learn.microsoft.com/dotnet/csharp/language-reference/operators/"),
                 new Detail("Statements","https://learn.microsoft.com/dotnet/csharp/programming-guide/statements-expressions-operators/statements"),
                 new Detail("Attributes", "https://learn.microsoft.com/dotnet/csharp/advanced-topics/reflection-and-attributes"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2003, 1, 1),
             Label: "C# 1.2",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-12",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Introduced `foreach` loop calls `IDisposable.Dispose`")
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2005, 11, 1),
             Label: "C# 2.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-20",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Generics", "https://learn.microsoft.com/dotnet/csharp/fundamentals/types/generics"),
                 new Detail("Partial (`partial`) types", "https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-classes"),
                 new Detail("Anonymous methods", "https://learn.microsoft.com/dotnet/csharp/language-reference/operators/delegate-operator"),
@@ -59,14 +59,14 @@ public sealed partial class Timeline
                 new Detail("Method group conversion (`delegate`)"),
                 new Detail("Introduced `static` classes"),
                 new Detail("Delegate inference"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2007, 11, 1),
             Label: "C# 3.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-30",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Auto-implemented properties", "https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/auto-implemented-properties"),
                 new Detail("Anonymous types", "https://learn.microsoft.com/dotnet/csharp/fundamentals/types/anonymous-types"),
                 new Detail("Query expressions", "https://learn.microsoft.com/dotnet/csharp/linq/query-expression-basics"),
@@ -76,36 +76,36 @@ public sealed partial class Timeline
                 new Detail("Implicitly typed local variables (`var` type)", "https://learn.microsoft.com/dotnet/csharp/language-reference/statements/declarations#implicitly-typed-local-variables"),
                 new Detail("Introduced `partial` methods", "https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/partial-method"),
                 new Detail("Object and collection initializers", "https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/object-and-collection-initializers"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2010, 4, 1),
             Label: "C# 4.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-40",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Dynamic binding (`dynamic` type)", "https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/reference-types"),
                 new Detail("Named/optional arguments", "https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/named-and-optional-arguments"),
                 new Detail("Generic covariant and contravariant", "https://learn.microsoft.com/dotnet/standard/generics/covariance-and-contravariance"),
                 new Detail("Embedded interop types", "https://learn.microsoft.com/dotnet/framework/interop/type-equivalence-and-embedded-interop-types"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2012, 10, 1),
             Label: "C# 5.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-50",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Asynchronous members (`async` and `await`)", "https://learn.microsoft.com/dotnet/csharp/asynchronous-programming/"),
                 new Detail("Caller info attributes", "https://learn.microsoft.com/dotnet/csharp/language-reference/attributes/caller-information"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2015, 7, 1),
             Label: "C# 6.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-60",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Static imports (`using static`)", "https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/using-directive"),
                 new Detail("Exception filters, i.e.; `when (<expression>)`", "https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/when"),
                 new Detail("Auto-property initializers", "https://learn.microsoft.com/dotnet/csharp/properties"),
@@ -113,14 +113,14 @@ public sealed partial class Timeline
                 new Detail("Null propagator", "https://learn.microsoft.com/dotnet/csharp/language-reference/operators/member-access-operators#null-conditional-operators--and-"),
                 new Detail("String interpolation", "https://learn.microsoft.com/dotnet/csharp/language-reference/tokens/interpolated"),
                 new Detail("Introduced `nameof` operator", "https://learn.microsoft.com/dotnet/csharp/language-reference/operators/nameof")
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2017, 3, 1),
             Label: "C# 7.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-70",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Out variables (`out var x`)"),
                 new Detail("Tuples (`ValueTuple`) and deconstruction", "https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/value-tuples"),
                 new Detail("Pattern matching", "https://learn.microsoft.com/dotnet/csharp/fundamentals/functional/pattern-matching"),
@@ -131,26 +131,26 @@ public sealed partial class Timeline
                 new Detail("Discards (`_`)", "https://learn.microsoft.com/dotnet/csharp/fundamentals/functional/discards"),
                 new Detail("Binary literals and digit separators"),
                 new Detail("Throw expressions (`?? throw`)", "https://learn.microsoft.com/dotnet/csharp/language-reference/statements/exception-handling-statements#the-throw-expression"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2017, 8, 1),
             Label: "C# 7.1",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-71",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Introduced `async Main`", "https://learn.microsoft.com/dotnet/csharp/fundamentals/program-structure/main-command-line"),
                 new Detail("Introduced `default` literals expressions", "https://learn.microsoft.com/dotnet/csharp/language-reference/operators/default#default-literal"),
                 new Detail("Inferred tuple element names"),
                 new Detail("Pattern matching on generic type parameters"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2017, 11, 1),
             Label: "C# 7.2",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-72",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Initializers on `stackalloc` arrays"),
                 new Detail("Use `fixed` statements on any valid pattern"),
                 new Detail("Access `fixed` fields without pinning"),
@@ -164,26 +164,26 @@ public sealed partial class Timeline
                 new Detail("Leading underscores in numeric literals"),
                 new Detail("Introduced `private protected` access modifier", "https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/access-modifiers"),
                 new Detail("Conditional `ref` expressions"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2018, 5, 1),
             Label: "C# 7.3",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-73",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Introduced `==` and `!=` with tuple types"),
                 new Detail("Attach attributes to the backing field of auto-implemented properties"),
                 new Detail("Method resolution when arguments differ by `in`"),
                 new Detail("Overload resolution has few ambiguous cases"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2019, 9, 1),
             Label: "C# 8.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-80",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Introduced `readonly` members", "https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/struct#readonly-instance-members"),
                 new Detail("Default interface methods", "https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/interface#default-interface-members"),
                 new Detail("Pattern matching: switch expression enhancements", "https://learn.microsoft.com/dotnet/csharp/language-reference/operators/patterns"),
@@ -199,14 +199,14 @@ public sealed partial class Timeline
                 new Detail("Unmanaged constructed types", "https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/where-generic-type-constraint"),
                 new Detail("Introduced `stackalloc` in nested expressions", "https://learn.microsoft.com/dotnet/csharp/language-reference/operators/stackalloc"),
                 new Detail("Enhancement of interpolated verbatim string", "https://learn.microsoft.com/dotnet/csharp/language-reference/tokens/interpolated"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2020, 11, 1),
             Label: "C# 9.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-90",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Introduced `record` types", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-9#record-types"),
                 new Detail("Init-only property setter", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-9#init-only-setters"),
                 new Detail("Top-level statements", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-9#top-level-statements"),
@@ -224,14 +224,14 @@ public sealed partial class Timeline
                 new Detail("Introduced `with` expressions"),
                 new Detail("Source generators: module initializers", "https://learn.microsoft.com/dotnet/csharp/language-reference/proposals/csharp-9.0/module-initializers"),
                 new Detail("Source generators: new features for `partial` methods", "https://learn.microsoft.com/dotnet/csharp/language-reference/proposals/csharp-9.0/extending-partial-methods"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2021, 11, 1),
             Label: "C# 10.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-10",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Introduced `record struct` types", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-10#record-structs"),
                 new Detail("Improvements on structure types", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-10#improvements-of-structure-types"),
                 new Detail("Interpolated string handlers", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-10#interpolated-string-handler"),
@@ -247,14 +247,14 @@ public sealed partial class Timeline
                 new Detail("Introduced `CallerArgumentExpression` attribute", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-10#callerargumentexpression-attribute-diagnostics"),
                 new Detail("Enhanced `#line pragma`", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-10#enhanced-line-pragma"),
                 new Detail("Introduced `static abstract` members in interfaces", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-11#generic-math-support"),
-            }),
+            ]),
 
         new(
             Date: new DateOnly(2022, 11, 1),
             Label: "C# 11.0",
             Reference: "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-version-history#c-version-11",
-            Details: new[]
-            {
+            Details:
+            [
                 new Detail("Raw `string` literals", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-11#raw-string-literals"),
                 new Detail("Generic math support", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-11#generic-math-support"),
                 new Detail("Generic attributes", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-11#generic-attributes"),
@@ -269,6 +269,6 @@ public sealed partial class Timeline
                 new Detail("Numeric `IntPtr`", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-11#numeric-intptr-and-uintptr"),
                 new Detail("Introduced `ref` fields and scoped `ref`", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-11#ref-fields-and-ref-scoped-variables"),
                 new Detail("Improved method group conversion to `delegate`", "https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-11#improved-method-group-conversion-to-delegate"),
-            }),
+            ]),
     };
 }

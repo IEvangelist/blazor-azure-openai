@@ -14,10 +14,9 @@ public sealed partial class VoiceChat : IDisposable
     private bool _isReceivingResponse = false;
     private bool _isReadingResponse = false;
     private VoicePreferences? _voicePreferences;
-    private Dictionary<DateTime, QuestionAndAnswer> _questionAndAnswerMap = new();
+    private Dictionary<DateTime, QuestionAndAnswer> _questionAndAnswerMap = [];
 
     [Inject] public required OpenAIPromptQueue OpenAIPrompts { get; set; }
-    [Inject] public required IDialogService Dialog { get; set; }
     [Inject] public required ISpeechSynthesisService SpeechSynthesis { get; set; }
     [Inject] public required ILocalStorageService LocalStorage { get; set; }
     [Inject] public required ISessionStorageService SessionStorage { get; set; }
@@ -25,6 +24,7 @@ public sealed partial class VoiceChat : IDisposable
     [Inject] public required ILogger<VoiceChat> Logger { get; set; }
     [Inject] public required IStringLocalizer<VoiceChat> Localizer { get; set; }
     [Inject] public required AppState State { get; set; }
+    [CascadingParameter] public AssistantPersona Persona { get; set; }
 
     protected override void OnInitialized()
     {
@@ -67,6 +67,7 @@ public sealed partial class VoiceChat : IDisposable
 
         OpenAIPrompts.Enqueue(
             _userQuestion,
+            Persona,
             async (PromptResponse response) => await InvokeAsync(() =>
             {
                 var (_, responseText, isComplete, isError) = response;
@@ -144,17 +145,7 @@ public sealed partial class VoiceChat : IDisposable
     {
         SpeechSynthesis.Cancel();
         _isReadingResponse = false;
-    }
-
-    private async Task ShowVoiceDialogAsync()
-    {
-        var dialog = await Dialog.ShowAsync<VoiceDialog>(title: "🔊 Text-to-speech Preferences");
-        var result = await dialog.Result;
-        if (result is not { Canceled: true })
-        {
-            _voicePreferences = await dialog.GetReturnValueAsync<VoicePreferences>();
-        }
-    }   
+    } 
 
     public void Dispose()
     {

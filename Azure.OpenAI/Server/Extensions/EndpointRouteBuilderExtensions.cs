@@ -16,7 +16,10 @@ internal static class EndpointRouteBuilderExtensions
     }
 
     static async IAsyncEnumerable<TokenizedResponse> PostChatPromptAsync(
-        OpenAIClient client, RequestPrompt prompt, IConfiguration config)
+        OpenAIClient client,
+        RequestPrompt prompt,
+        IConfiguration config,
+        [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         var deploymentId = config["AzureOpenAI:DeploymentId"];
 
@@ -29,32 +32,36 @@ internal static class EndpointRouteBuilderExtensions
                 Messages =
                 {
                     // Set up our OpenAI ChatGPT persona.
-                    new ChatMessage(ChatRole.System, messages.System),
-                    new ChatMessage(ChatRole.User, messages.User),
-                    new ChatMessage(ChatRole.Assistant,messages.Assistant),
+                    new ChatRequestSystemMessage(messages.System),
+                    new ChatRequestUserMessage(messages.User),
+                    new ChatRequestAssistantMessage(messages.Assistant),
 
                     // Feed user prompt into session.
-                    new ChatMessage(ChatRole.User, prompt.Prompt)
+                    new ChatRequestUserMessage(prompt.Prompt)
                 }
-            });
+            },
+            cancellationToken);
 
-        using var completions = response;
-
-        await foreach (var update in completions)
+        await foreach (var choice in response.EnumerateValues())
         {
-            yield return new TokenizedResponse(update.ContentUpdate);
+            yield return new TokenizedResponse(choice.ContentUpdate);
         }
     }
 
     static async ValueTask<ImagesResponse> PostImagePromptAsync(
-        OpenAIClient client, RequestPrompt prompt, IConfiguration config)
+        OpenAIClient client,
+        RequestPrompt prompt,
+        IConfiguration config,
+        CancellationToken cancellationToken)
     {
         var deploymentId = config["AzureOpenAI:DeploymentId"];
 
-        var response = await client.GetImageGenerationsAsync(new ImageGenerationOptions
-        {
-            Prompt = prompt.Prompt
-        });
+        var response = await client.GetImageGenerationsAsync(
+            new ImageGenerationOptions
+            {
+                Prompt = prompt.Prompt
+            },
+            cancellationToken);
 
         var images = response.Value;
 
@@ -62,7 +69,7 @@ internal static class EndpointRouteBuilderExtensions
         {
             { Data.Count: > 0 } => new ImagesResponse(
                 Created: images.Created,
-                ImageURLs: images.Data.Select(static d => d.Url).ToArray()),
+                ImageURLs: [..images.Data.Select(static d => d.Url)]),
 
             _ => new ImagesResponse() { IsSuccessful = false }
         };

@@ -5,9 +5,9 @@ namespace Azure.OpenAI.Client.Components;
 
 public sealed partial class VoiceDialog : IDisposable
 {
-    SpeechSynthesisVoice[] _voices = Array.Empty<SpeechSynthesisVoice>();
+    SpeechSynthesisVoice[] _voices = [];
     readonly IList<double> _voiceSpeeds =
-        Enumerable.Range(0, 12).Select(i => (i + 1) * .25).ToList();
+        [..Enumerable.Range(0, 12).Select(i => (i + 1) * .25)];
 
     VoicePreferences? _voicePreferences;
     RequestVoiceState _state;
@@ -50,10 +50,7 @@ public sealed partial class VoiceDialog : IDisposable
         }
     }
 
-    void OnValueChanged(string selectedVoice) => _voicePreferences = _voicePreferences! with
-    {
-        Voice = selectedVoice
-    };
+    void OnValueChanged(string selectedVoice) => _voicePreferences!.Voice = selectedVoice;
 
     void OnSaveVoiceSelection() => Dialog.Close(DialogResult.Ok(_voicePreferences));
 

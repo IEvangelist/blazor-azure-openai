@@ -7,7 +7,7 @@
     <MudItem id="@AnswerElementId" xs="12" Class="d-flex flex-column flex-1">
         @if (_questionAndAnswerMap is { Count: 0 })
         {
-            <Assistant />
+            <Assistant Persona="@Persona" />
         }
         else
         {
@@ -18,7 +18,7 @@
 </MudGrid>
 <MudGrid Justify="Justify.Center" Class="mud-appbar-fixed-bottom">
     <MudItem xs="12" Class="rounded">
-        <UserPrompt OnPromptSubmitted="@OnSendPrompt" />
+        <UserPrompt OnPromptSubmitted="@OnSendPrompt" OnStopTalking="@StopTalking" />
     </MudItem>
 </MudGrid>
 <MudScrollToTop Selector="#replies"

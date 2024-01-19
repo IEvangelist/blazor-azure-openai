@@ -23,7 +23,7 @@ builder.Services.AddLocalization();
 builder.Services.AddScoped<CultureService>();
 builder.Services.AddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>();
 builder.Services.AddSingleton(
-    sp => sp.GetRequiredService<ObjectPoolProvider>().CreateStringBuilderPool());
+    static sp => sp.GetRequiredService<ObjectPoolProvider>().CreateStringBuilderPool());
 
 var host = builder.Build()
     .DetectClientCulture();

@@ -5,5 +5,5 @@ namespace Azure.OpenAI.Client.EndToEndTests.Browser;
 
 public class StorageState
 {
-    public Host[] Origins { get; set; } = Array.Empty<Host>();
+    public Host[] Origins { get; set; } = [];
 }

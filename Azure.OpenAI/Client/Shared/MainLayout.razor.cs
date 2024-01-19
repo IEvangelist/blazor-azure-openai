@@ -14,6 +14,12 @@ public sealed partial class MainLayout
         set => LocalStorage.SetItem<bool>(StorageKeys.PrefersDarkThemeKey, value);
     }
 
+    AssistantPersona Persona
+    {
+        get => LocalStorage.GetItem<AssistantPersona>(StorageKeys.AssistantPersonaKey);
+        set => LocalStorage.SetItem<AssistantPersona>(StorageKeys.AssistantPersonaKey, value);
+    }
+
     bool IsRightToLeft =>
         Thread.CurrentThread.CurrentUICulture is { TextInfo.IsRightToLeft: true };
 

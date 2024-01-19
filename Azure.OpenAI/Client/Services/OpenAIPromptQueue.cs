@@ -3,20 +3,14 @@
 
 namespace Azure.OpenAI.Client.Services;
 
-public sealed partial class OpenAIPromptQueue
-{
-    readonly IServiceProvider _provider;
-    readonly ILogger<OpenAIPromptQueue> _logger;
-    readonly ObjectPool<StringBuilder> _builderPool;
-    Task? _processPromptTask = null;
-
-    public OpenAIPromptQueue(
+public sealed partial class OpenAIPromptQueue(
         IServiceProvider provider,
         ILogger<OpenAIPromptQueue> logger,
-        ObjectPool<StringBuilder> builderPool) =>
-        (_provider, _logger, _builderPool) = (provider, logger, builderPool);
+        ObjectPool<StringBuilder> builderPool)
+{
+    Task? _processPromptTask = null;
 
-    public void Enqueue(string prompt, Func<PromptResponse, Task> handler)
+    public void Enqueue(string prompt, AssistantPersona persona, Func<PromptResponse, Task> handler)
     {
         if (_processPromptTask is not null)
         {
@@ -25,19 +19,19 @@ public sealed partial class OpenAIPromptQueue
 
         _processPromptTask = Task.Run(async () =>
         {
-            var responseBuffer = _builderPool.Get();
+            var responseBuffer = builderPool.Get();
             responseBuffer.Clear(); // Ensure initial state is empty.
 
             var isError = false;
-            var debugLogEnabled = _logger.IsEnabled(LogLevel.Debug);
+            var debugLogEnabled = logger.IsEnabled(LogLevel.Debug);
 
             try
             {
-                using var scope = _provider.CreateScope();
+                using var scope = provider.CreateScope();
                 using var client = scope.ServiceProvider.GetRequiredService<HttpClient>();
 
                 var options = JsonSerializationDefaults.Options;
-                var chatPrompt = new RequestPrompt { Prompt = prompt };
+                var chatPrompt = new RequestPrompt { Prompt = prompt, Persona = persona };
                 var json = chatPrompt.ToJson(options);
                 using var body = new StringContent(
                     json, Encoding.UTF8, "application/json");
@@ -60,7 +54,7 @@ public sealed partial class OpenAIPromptQueue
                     responseBuffer.Append(tokenizedResponse.Content);
 
                     var responseText = NormalizeResponseText(
-                        responseBuffer, _logger, debugLogEnabled);
+                        responseBuffer, logger, debugLogEnabled);
 
                     await handler(
                         new PromptResponse(
@@ -72,7 +66,7 @@ public sealed partial class OpenAIPromptQueue
             }
             catch (Exception ex)
             {
-                _logger.LogWarning(
+                logger.LogWarning(
                     ex,
                     "Unable to generate response: {Error}",
                     ex.Message);
@@ -86,14 +80,14 @@ public sealed partial class OpenAIPromptQueue
                 if (isError is false)
                 {
                     var responseText = NormalizeResponseText(
-                        responseBuffer, _logger, debugLogEnabled);
+                        responseBuffer, logger, debugLogEnabled);
 
                     await handler(
                         new PromptResponse(
                             prompt, responseText, true));
                 }
 
-                _builderPool.Return(responseBuffer);
+                builderPool.Return(responseBuffer);
                 _processPromptTask = null;
             }
         });

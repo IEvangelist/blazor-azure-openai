@@ -17,6 +17,15 @@ public partial class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
 
+        builder.Services.ConfigureHttpJsonOptions(options =>
+        {
+            options.SerializerOptions.Converters.Clear();
+            foreach (var converter in JsonSerializationDefaults.Options.Converters)
+            {
+                options.SerializerOptions.Converters.Add(converter);
+            }
+        });
+        
         return builder.Build();
     }
 }

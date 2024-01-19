@@ -57,7 +57,7 @@ public partial class PlaywrightAsyncLifetime : IAsyncLifetime
 
     private static void EnsurePlaywrightIsInstalled()
     {
-        var exitCode = PlaywrightProgram.Main(new[] { "install-deps" });
+        var exitCode = PlaywrightProgram.Main(["install-deps"]);
         if (exitCode is not 0)
         {
             throw new Exception($"""
@@ -65,7 +65,7 @@ public partial class PlaywrightAsyncLifetime : IAsyncLifetime
                 """);
         }
 
-        exitCode = PlaywrightProgram.Main(new[] { "install" });
+        exitCode = PlaywrightProgram.Main(["install"]);
         if (exitCode is not 0)
         {
             throw new Exception($"""

@@ -6,5 +6,5 @@ namespace Azure.OpenAI.Client.EndToEndTests.Browser;
 public class Host
 {
     public string? Origin { get; set; }
-    public LocalStorage[] LocalStorage { get; set; } = Array.Empty<LocalStorage>();
+    public LocalStorage[] LocalStorage { get; set; } = [];
 }
