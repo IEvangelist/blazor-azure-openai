@@ -58,40 +58,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Ask" xml:space="preserve">
-    <value>Spørge</value>
-  </data>
-  <data name="AskedOnFormat" xml:space="preserve">
-    <value>Spurgt på {0:T} på {0:d}</value>
-  </data>
-  <data name="BusyMessage" xml:space="preserve">
-    <value>Jeg genererer et svar, vent venligst...</value>
-  </data>
   <data name="Chat" xml:space="preserve">
     <value>Stemmechat</value>
-  </data>
-  <data name="ChatPrompt" xml:space="preserve">
-    <value>Angiv en Azure.AI.OpenAI-chatprompt.</value>
-  </data>
-  <data name="InputHelperText" xml:space="preserve">
-    <value>Brug Skift + Enter til nye linjer.</value>
-  </data>
-  <data name="OpenTTSDialog" xml:space="preserve">
-    <value>Åbn tekst-til-tale-dialogboksen?</value>
-  </data>
-  <data name="Prompt" xml:space="preserve">
-    <value>Lynhurtig</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Spare</value>
-  </data>
-  <data name="Speak" xml:space="preserve">
-    <value>Tale</value>
-  </data>
-  <data name="Stop" xml:space="preserve">
-    <value>Stop!!</value>
-  </data>
-  <data name="TTSPreferences" xml:space="preserve">
-    <value>Indstillinger for tekst til tale</value>
   </data>
 </root>
